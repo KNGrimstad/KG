@@ -3,3 +3,15 @@
 </h1>
 
 This repository stores functions used to simplify certain aspects of scRNA-seq data processing, handling, and analysis. 
+
+Add some more stuff here. 
+
+---
+## Installation
+Install the most recent version of this package: 
+```
+devtools::install(KNGrimstad/KG)
+```
+---
+# Functions Included in this Package
+Add a list of stuff here.
