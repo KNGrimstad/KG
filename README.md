@@ -13,5 +13,5 @@ Install the most recent version of this package:
 devtools::install(KNGrimstad/KG)
 ```
 ---
-# Functions Included in this Package
+# Functions Currently Included in this Package
 Add a list of stuff here.
