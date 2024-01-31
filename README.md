@@ -2,9 +2,9 @@
   KG - A Collection of Random scRNA-Seq Functions&nbsp;<img align = "right" src = "KG_logotype.png" width = "114.3" height = "127.275">
 </h1>
 
-This repository stores functions used to simplify certain aspects of scRNA-seq data processing, handling, and analysis. 
+This repository is composed of functions designed to make life easier for the owner of the repo. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
 
-Add some more stuff here. 
+Further descriptions will come.
 
 ---
 ## Installation
@@ -14,4 +14,4 @@ devtools::install(KNGrimstad/KG)
 ```
 ---
 # Functions Currently Included in this Package
-Add a list of stuff here.
+TBA
