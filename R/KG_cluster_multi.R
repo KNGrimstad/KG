@@ -55,8 +55,8 @@ KG_cluster_multi = function(seurat_object,
   }
   if(plot == TRUE){
       message("Constructing cluster tree")
-      t = clustree::clustree(seurat_object@meta.data, prefix = paste("^", assay, "_snn_res.", sep = ""))
+      t = clustree::clustree(seurat_object@meta.data, prefix = paste(assay, "_snn_res.", sep = ""))
+      plot(t)
   }
-  plot(t)
   return(seurat_object)
 }
