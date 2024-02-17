@@ -1,4 +1,5 @@
 #' Hierarchical clustering
+#'
 #' This function is a wrapper for hierarchical clustering of Seurat clusters.
 #' @param seurat_object A Seurat object
 #' @param genes A list of genes to base the clustering on. Default is the variable features.

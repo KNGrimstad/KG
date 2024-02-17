@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_filter_bcr.R
 \name{KG_filter_bcr}
 \alias{KG_filter_bcr}
-\title{Filter AIRR object BCR data
-This function filters BCR data output from IgBLAST.}
+\title{Filter AIRR object BCR data}
 \usage{
 KG_filter_bcr(
   bcr_data,
@@ -25,7 +24,6 @@ KG_filter_bcr(
 \item{hl_pair}{Whether cells with no paired heavy/light chain should be removed.}
 }
 \description{
-Filter AIRR object BCR data
 This function filters BCR data output from IgBLAST.
 }
 \examples{

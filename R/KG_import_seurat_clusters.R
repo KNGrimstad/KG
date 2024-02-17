@@ -1,4 +1,5 @@
 #' Import Seurat-defined clusters to Monocle object
+#'
 #' This function imports the clustering and dimension plot coordinates from a Seurat object and adds them to a Monocle3 object.
 #' @param monocle_object A monocle object.
 #' @param seurat_object A Seurat object.

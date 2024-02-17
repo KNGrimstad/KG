@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_cluster_multi.R
 \name{KG_cluster_multi}
 \alias{KG_cluster_multi}
-\title{Evaluate cluster resolutions with clustree
-This function runs the function FindClusters from the Seurat package, for a range of resolution values and returns a tree plot of the resulting clusters for each given resolution.}
+\title{Evaluate cluster resolutions with clustree}
 \usage{
 KG_cluster_multi(
   seurat_object,
@@ -34,7 +33,6 @@ KG_cluster_multi(
 \item{reduction}{Name of the dimensionality reduction method to use, "pca" by default.}
 }
 \description{
-Evaluate cluster resolutions with clustree
 This function runs the function FindClusters from the Seurat package, for a range of resolution values and returns a tree plot of the resulting clusters for each given resolution.
 }
 \examples{

@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_remove_suffix.R
 \name{KG_remove_suffix}
 \alias{KG_remove_suffix}
-\title{Remove suffix from list of barcodes
-This function removes a suffix from all cells in the specified input list.}
+\title{Remove suffix from list of barcodes}
 \usage{
 KG_remove_suffix(cells, suffix)
 }
@@ -13,7 +12,6 @@ KG_remove_suffix(cells, suffix)
 \item{suffix}{The suffix to be removed from cell names.}
 }
 \description{
-Remove suffix from list of barcodes
 This function removes a suffix from all cells in the specified input list.
 }
 \examples{

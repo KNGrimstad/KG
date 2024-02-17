@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_clone_tree.R
 \name{KG_clone_tree}
 \alias{KG_clone_tree}
-\title{Construct and plot clonal trees
-This function uses the dowser and ggtree packages to construct custom clonal trees.}
+\title{Construct and plot clonal trees}
 \usage{
 KG_clone_tree(
   clones,
@@ -43,7 +42,6 @@ KG_clone_tree(
 \item{stroke}{Thickness of tip border.}
 }
 \description{
-Construct and plot clonal trees
 This function uses the dowser and ggtree packages to construct custom clonal trees.
 }
 \examples{

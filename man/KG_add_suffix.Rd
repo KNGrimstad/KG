@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_add_suffix.R
 \name{KG_add_suffix}
 \alias{KG_add_suffix}
-\title{Add suffix to list of barcodes
-This function adds a suffix to all cells in the specified input list.}
+\title{Add suffix to list of barcodes}
 \usage{
 KG_add_suffix(cells, suffix)
 }
@@ -13,7 +12,6 @@ KG_add_suffix(cells, suffix)
 \item{suffix}{The suffix to be added to the cell names}
 }
 \description{
-Add suffix to list of barcodes
 This function adds a suffix to all cells in the specified input list.
 }
 \examples{

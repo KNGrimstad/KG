@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_project_3D.R
 \name{KG_project_3D}
 \alias{KG_project_3D}
-\title{Project and plot in 3D
-This function projects a Seurat object onto the clusters and UMAP coordinates from a reference, and plots the projected data in 3D.}
+\title{Project and plot in 3D}
 \usage{
 KG_project_3D(
   seurat_object,
@@ -52,7 +51,6 @@ KG_project_3D(
 \item{bg_col}{Controls the background color of the plot.}
 }
 \description{
-Project and plot in 3D
 This function projects a Seurat object onto the clusters and UMAP coordinates from a reference, and plots the projected data in 3D.
 }
 \examples{

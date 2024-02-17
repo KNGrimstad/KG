@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_3DPlot.R
 \name{KG_3DPlot}
 \alias{KG_3DPlot}
-\title{3D UMAP for Seurat object
-This function computes and plots cells in three dimensions.}
+\title{3D UMAP for Seurat object}
 \usage{
 KG_3DPlot(
   seurat_object,
@@ -40,7 +39,6 @@ KG_3DPlot(
 \item{group.by}{Controls how cells should be grouped/colored. By default, uses the default identity of cells in the Seurat object.}
 }
 \description{
-3D UMAP for Seurat object
 This function computes and plots cells in three dimensions.
 }
 \examples{

@@ -1,4 +1,5 @@
 #' 3D UMAP for Seurat object
+#'
 #' This function computes and plots cells in three dimensions.
 #' @param seurat_object A Seurat object.
 #' @param reduction Name of the dimensional reduction method to use as input, "pca" by default.

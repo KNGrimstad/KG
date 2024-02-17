@@ -1,4 +1,5 @@
 #' Convert C calls to isotype
+#'
 #' This function annotates the major isotypes for each cell in a Seurat object based on the heavy chain c calls from the Cell Ranger output.
 #' @param seurat_object A Seurat object.
 #' @param c_call The column in the Seurat object where the C calls are stored.

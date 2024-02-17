@@ -1,4 +1,5 @@
 #' Project and plot in 3D
+#'
 #' This function projects a Seurat object onto the clusters and UMAP coordinates from a reference, and plots the projected data in 3D.
 #' @param seurat_object A Seurat object.
 #' @param reference A Seurat object from which cluster identities and UMAP coordinates/embeddings should be pulled.

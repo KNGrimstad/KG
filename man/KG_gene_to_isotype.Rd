@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_gene_to_isotype.R
 \name{KG_gene_to_isotype}
 \alias{KG_gene_to_isotype}
-\title{Convert C calls to isotype
-This function annotates the major isotypes for each cell in a Seurat object based on the heavy chain c calls from the Cell Ranger output.}
+\title{Convert C calls to isotype}
 \usage{
 KG_gene_to_isotype(seurat_object, c_call)
 }
@@ -13,7 +12,6 @@ KG_gene_to_isotype(seurat_object, c_call)
 \item{c_call}{The column in the Seurat object where the C calls are stored.}
 }
 \description{
-Convert C calls to isotype
 This function annotates the major isotypes for each cell in a Seurat object based on the heavy chain c calls from the Cell Ranger output.
 }
 \examples{

@@ -1,4 +1,5 @@
 #' Calling clones in BCR data
+#'
 #' This function calls clonotypes in BCR data using the dowser and scoper packages.
 #' @param bcr_data A data frame containing the BCR data in AIRR format.
 #' @param threshold Threshold used for hierarchical clustering of sequences. Default is 0.15, i.e., 85% similarity threhsold.
@@ -13,7 +14,7 @@ KG_clones = function(bcr_data,
   require(dowser)
   require(shazam)
   require(dplyr)
-  
+
   # Cluster BCR sequences
   message("Clustering BCR sequences")
   res = scoper::hierarchicalClones(bcr_data,

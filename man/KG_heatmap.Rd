@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_heatmap.R
 \name{KG_heatmap}
 \alias{KG_heatmap}
-\title{Bulk heatmap
-This functions draws a heatmap displaying the relative cluster-average expression of specific genes.}
+\title{Bulk heatmap}
 \usage{
 KG_heatmap(
   seurat_object,
@@ -55,7 +54,6 @@ KG_heatmap(
 \item{raster}{Whether or not the heatmap should be rasterized.}
 }
 \description{
-Bulk heatmap
 This functions draws a heatmap displaying the relative cluster-average expression of specific genes.
 }
 \examples{

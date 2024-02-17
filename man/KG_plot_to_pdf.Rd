@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_plot_to_pdf.R
 \name{KG_plot_to_pdf}
 \alias{KG_plot_to_pdf}
-\title{Print plots trees to PDF.
-This function prints a list of plots to a PDF file.}
+\title{Print plots trees to PDF.}
 \usage{
 KG_plot_to_pdf(
   plots,
@@ -34,7 +33,6 @@ KG_plot_to_pdf(
 \item{portrait}{Wheter or not to use portrait layout (if FALSE, will use horizontal layout).}
 }
 \description{
-Print plots trees to PDF.
 This function prints a list of plots to a PDF file.
 }
 \examples{

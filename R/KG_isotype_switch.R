@@ -1,4 +1,5 @@
 #' Convert isotypes to Switched and Unswitched
+#'
 #' This function annotates the isotype switch status (unswitched vs. switched) based on annotated isotypes in a Seurat object.
 #' @param seurat_object A Seurat object
 #' @export

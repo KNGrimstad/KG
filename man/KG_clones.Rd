@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_clones.R
 \name{KG_clones}
 \alias{KG_clones}
-\title{Calling clones in BCR data
-This function calls clonotypes in BCR data using the dowser and scoper packages.}
+\title{Calling clones in BCR data}
 \usage{
 KG_clones(bcr_data, threshold = 0.15, reference_dir = NULL)
 }
@@ -15,7 +14,6 @@ KG_clones(bcr_data, threshold = 0.15, reference_dir = NULL)
 \item{reference_dir}{Path to directory with IMGT VDJ references to use.}
 }
 \description{
-Calling clones in BCR data
 This function calls clonotypes in BCR data using the dowser and scoper packages.
 }
 \examples{

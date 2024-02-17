@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_fetch_genes.R
 \name{KG_fetch_genes}
 \alias{KG_fetch_genes}
-\title{Fetch all genes with specific prefix expressed in the data
-This function fetches all genes with the specified prefix expressed in the dataset}
+\title{Fetch all genes with specific prefix expressed in the data}
 \usage{
 KG_fetch_genes(seurat_object, gene_prefix)
 }
@@ -13,7 +12,6 @@ KG_fetch_genes(seurat_object, gene_prefix)
 \item{gene_prefix}{The prefix of gene names to be retrieved}
 }
 \description{
-Fetch all genes with specific prefix expressed in the data
 This function fetches all genes with the specified prefix expressed in the dataset
 }
 \examples{

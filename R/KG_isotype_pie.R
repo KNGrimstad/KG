@@ -1,4 +1,5 @@
 #' Plot percentage distribution of isotypes by cluster as pie charts
+#'
 #' This function plots the distribution of Ig isotypes for clusters in a Seurat object.
 #' @param seurat_object A Seurat object
 #' @param MGA_only Whether or not to only plot IgM, IgG, and IgA isotypes

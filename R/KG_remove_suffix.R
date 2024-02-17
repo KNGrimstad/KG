@@ -1,4 +1,5 @@
 #' Remove suffix from list of barcodes
+#'
 #' This function removes a suffix from all cells in the specified input list.
 #' @param cells A list of cell names from a Seurat object.
 #' @param suffix The suffix to be removed from cell names.

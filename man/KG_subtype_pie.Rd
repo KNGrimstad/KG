@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_subtype_pie.R
 \name{KG_subtype_pie}
 \alias{KG_subtype_pie}
-\title{Plot percentage distribution of isotype subtypes by cluster as pie charts
-This function plots the distribution of Ig subtypes of IgG (default) or IgA for clusters in a Seurat object.}
+\title{Plot percentage distribution of isotype subtypes by cluster as pie charts}
 \usage{
 KG_subtype_pie(
   seurat_object,
@@ -28,7 +27,6 @@ KG_subtype_pie(
 \item{ncol}{The number of columns for the layout of the plot}
 }
 \description{
-Plot percentage distribution of isotype subtypes by cluster as pie charts
 This function plots the distribution of Ig subtypes of IgG (default) or IgA for clusters in a Seurat object.
 }
 \examples{

@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_project.R
 \name{KG_project}
 \alias{KG_project}
-\title{Project data
-This function projects a Seurat object onto the clusters and UMAP coordinates from a reference.}
+\title{Project data}
 \usage{
 KG_project(
   seurat_object,
@@ -43,7 +42,6 @@ KG_project(
 \item{reference.idents}{The identity variable to use from the reference for the projection. By default, uses the default identity of the reference object.}
 }
 \description{
-Project data
 This function projects a Seurat object onto the clusters and UMAP coordinates from a reference.
 }
 \examples{

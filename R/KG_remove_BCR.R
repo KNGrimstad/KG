@@ -1,4 +1,5 @@
 #' Remove BCR genes
+#'
 #' This function removes all B-cell receptor genes from a Seurat object.
 #' @param seurat_object A Seurat object
 #' @export

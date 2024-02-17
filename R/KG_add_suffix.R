@@ -1,4 +1,5 @@
 #' Add suffix to list of barcodes
+#'
 #' This function adds a suffix to all cells in the specified input list.
 #' @param cells A list of cell names.
 #' @param suffix The suffix to be added to the cell names

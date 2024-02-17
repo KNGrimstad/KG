@@ -1,4 +1,5 @@
 #' Print plots trees to PDF.
+#'
 #' This function prints a list of plots to a PDF file.
 #' @param plots A list of plots.
 #' @param ncol The number of columns per page.

@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_import_seurat_clusters.R
 \name{KG_import_seurat_clusters}
 \alias{KG_import_seurat_clusters}
-\title{Import Seurat-defined clusters to Monocle object
-This function imports the clustering and dimension plot coordinates from a Seurat object and adds them to a Monocle3 object.}
+\title{Import Seurat-defined clusters to Monocle object}
 \usage{
 KG_import_seurat_clusters(
   monocle_object,
@@ -37,7 +36,6 @@ KG_import_seurat_clusters(
 \item{ident_col}{The identity column to use from the Seurat object. By default, 'seurat_clusters' is used.}
 }
 \description{
-Import Seurat-defined clusters to Monocle object
 This function imports the clustering and dimension plot coordinates from a Seurat object and adds them to a Monocle3 object.
 }
 \examples{

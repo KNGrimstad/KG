@@ -1,4 +1,5 @@
 #' Evaluate cluster resolutions with clustree
+#'
 #' This function runs the function FindClusters from the Seurat package, for a range of resolution values and returns a tree plot of the resulting clusters for each given resolution.
 #' @param seurat_object A Seurat object.
 #' @param max.res The maximum resolution for clustering.

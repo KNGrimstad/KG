@@ -1,4 +1,5 @@
 #' Filter AIRR object BCR data
+#'
 #' This function filters BCR data output from IgBLAST.
 #' @param bcr_data A data frame containing the BCR data in AIRR format.
 #' @param productive Whether unproductive transcripts should be removed.

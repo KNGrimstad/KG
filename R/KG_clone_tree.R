@@ -1,4 +1,5 @@
 #' Construct and plot clonal trees
+#'
 #' This function uses the dowser and ggtree packages to construct custom clonal trees.
 #' @param clones An airrClone object from dowser::formatClones.
 #' @param tips The same as in plotTrees.

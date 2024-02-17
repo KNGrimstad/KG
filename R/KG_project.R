@@ -1,4 +1,5 @@
 #' Project data
+#'
 #' This function projects a Seurat object onto the clusters and UMAP coordinates from a reference.
 #' @param seurat_object A Seurat object.
 #' @param reference A Seurat object from which cluster identities and UMAP coordinates/embeddings should be pulled.
@@ -60,7 +61,7 @@ KG_project = function(seurat_object,
                           query = temp,
                           refdata = list(celltype = reference.idents),
                           reference.reduction = reduction,
-                          reduction.model = "umap")
+                           reduction.model = "umap")
   Idents(temp) = temp$predicted.celltype
   return(temp)
 }

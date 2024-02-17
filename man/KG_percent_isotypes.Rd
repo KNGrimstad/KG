@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_percent_isotypes.R
 \name{KG_percent_isotypes}
 \alias{KG_percent_isotypes}
-\title{Calculate percentage expression of Ig isotypes
-This function calculates the percentage expression of Ig isotypes in each cluster in a Seurat object}
+\title{Calculate percentage expression of Ig isotypes}
 \usage{
 KG_percent_isotypes(seurat_object, MGA_only = TRUE, return_table = FALSE)
 }
@@ -15,7 +14,6 @@ KG_percent_isotypes(seurat_object, MGA_only = TRUE, return_table = FALSE)
 \item{return_table}{Whether the output should include a data frame of the percentages}
 }
 \description{
-Calculate percentage expression of Ig isotypes
 This function calculates the percentage expression of Ig isotypes in each cluster in a Seurat object
 }
 \examples{

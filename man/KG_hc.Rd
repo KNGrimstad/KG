@@ -2,8 +2,7 @@
 % Please edit documentation in R/KG_hc.R
 \name{KG_hc}
 \alias{KG_hc}
-\title{Hierarchical clustering
-This function is a wrapper for hierarchical clustering of Seurat clusters.}
+\title{Hierarchical clustering}
 \usage{
 KG_hc(
   seurat_object,
@@ -28,7 +27,6 @@ KG_hc(
 \item{xlim}{Determines x-axis limits.}
 }
 \description{
-Hierarchical clustering
 This function is a wrapper for hierarchical clustering of Seurat clusters.
 }
 \examples{

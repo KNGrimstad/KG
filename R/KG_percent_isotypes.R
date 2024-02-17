@@ -1,4 +1,5 @@
 #' Calculate percentage expression of Ig isotypes
+#'
 #' This function calculates the percentage expression of Ig isotypes in each cluster in a Seurat object
 #' @param seurat_object A Seurat object
 #' @param MGA_only Whether or not to only include IgM, IgG, and IgG isotypes

@@ -1,4 +1,5 @@
 #' Bulk heatmap
+#'
 #' This functions draws a heatmap displaying the relative cluster-average expression of specific genes.
 #' @param seurat_object A Seurat object.
 #' @param genes A vector of genes for which to plot the expression.
