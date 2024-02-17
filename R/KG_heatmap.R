@@ -61,7 +61,7 @@ KG_heatmap = function(seurat_object,
   names(group_bar_fill_cols) = unique(annotations_df$Cluster)
 
   # Prepare annotations for ComplexHeatmap
-  ha = complexHeatmap::HeatmapAnnotation(df = data.frame(Cluster = annotations_df$Cluster),
+  ha = ComplexHeatmap::HeatmapAnnotation(df = data.frame(Cluster = annotations_df$Cluster),
                          col = list(Cluster = group_bar_fill_cols),
                          which = "col",
                          show_annotation_name = FALSE,
@@ -73,7 +73,7 @@ KG_heatmap = function(seurat_object,
   dynamic_font = max(5, min(15, 20 - length(genes) / 5))
 
   # Create the heatmap
-  ht = complexHeatmap::Heatmap(avg_matrix,
+  ht = ComplexHeatmap::Heatmap(avg_matrix,
 
                # Overall layout
                border = TRUE,
