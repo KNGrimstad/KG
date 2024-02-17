@@ -5,7 +5,9 @@
 #' @param single_IgH Whether cells with multiple heavy chains should be removed.
 #' @param c_annotated Whether cells with no annotated C gene should be removed.
 #' @param hl_pair Whether cells with no paired heavy/light chain should be removed.
-
+#' @export
+#' @examples
+#' KG_filter_bcr(BCR_object)
 KG_filter_bcr = function(bcr_data,
                          productive = TRUE,
                          single_IgH = TRUE,

@@ -11,6 +11,8 @@
 #' @param reference.idents The identity variable to use from the reference for the projection. By default, uses the default identity of the reference object.
 #' @param min.dist Controls how tightly embeddings are allowed to compress points together. Larger values result in more even distribution. Smaller values optimizes more accurately the local structure.
 #' @param spread Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.
+#' @export
+#' @examples
 #' KG_project(B_cell_dataset, B_cell_reference_dataset)
 KG_project = function(seurat_object,
                       reference,

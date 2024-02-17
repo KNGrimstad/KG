@@ -6,6 +6,8 @@
 #' @param cluster The name(s) of then cluster(s) for which to generate pie charts
 #' @param combine Whether or not plots should be combined into a single or separate plots
 #' @param ncol The number of columns for the layout of the plot
+#' @export
+#' @examples
 #' KG_subtype_pie(B_cell_dataset, c_call = "c_call", cluster = "0")
 KG_subtype_pie = function(seurat_object,
                            subtype = "IgG",

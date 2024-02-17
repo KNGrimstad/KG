@@ -8,6 +8,8 @@
 #' @param assay Name of the Seurat assay to use, "RNA" by default.
 #' @param dims The number of dimensions to use for FindNeighbors.
 #' @param reduction Name of the dimensionality reduction method to use, "pca" by default.
+#' @export
+#' @examples
 #' KG_cluster_multi(B_cell_dataset)
 KG_cluster_multi = function(seurat_object,
                             max.res = 1.0,

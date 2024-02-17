@@ -1,7 +1,8 @@
 #' Convert isotypes to Switched and Unswitched
-#'
 #' This function annotates the isotype switch status (unswitched vs. switched) based on annotated isotypes in a Seurat object.
 #' @param seurat_object A Seurat object
+#' @export
+#' @examples
 #' KG_isotype_switch(B_cell_dataset)
 KG_isotype_switch = function(seurat_object){
   # Check that the isotype slot exists

@@ -1,8 +1,9 @@
 #' Convert C calls to isotype
-#'
 #' This function annotates the major isotypes for each cell in a Seurat object based on the heavy chain c calls from the Cell Ranger output.
 #' @param seurat_object A Seurat object.
 #' @param c_call The column in the Seurat object where the C calls are stored.
+#' @export
+#' @examples
 #' KG_gene_to_isotype(B_cell_dataset, "c_call")
 KG_gene_to_isotype = function(seurat_object, c_call){
 

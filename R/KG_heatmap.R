@@ -15,7 +15,9 @@
 #' @param split_row_at A value, or vector of values, detailing at which row numbers a gap should be included. If NULL, no gaps.
 #' @param split_column_at A value, or vector of values, detailing at which column numbers a gap should be included. If NULL, no gaps.
 #' @param raster Whether or not the heatmap should be rasterized.
-
+#' @export
+#' @examples
+#' # KG_heatmap(B_cell_dataset, genes = c("CD19", "CD27", "HLA-DRB1"))
 KG_heatmap = function(seurat_object,
                       genes,
                       assay = "RNA",

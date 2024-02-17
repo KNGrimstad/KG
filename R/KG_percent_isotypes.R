@@ -1,9 +1,10 @@
 #' Calculate percentage expression of Ig isotypes
-#'
 #' This function calculates the percentage expression of Ig isotypes in each cluster in a Seurat object
 #' @param seurat_object A Seurat object
 #' @param MGA_only Whether or not to only include IgM, IgG, and IgG isotypes
 #' @param return_table Whether the output should include a data frame of the percentages
+#' @export
+#' @examples
 #' KG_percent_isotypes(B_cell_dataset)
 KG_percent_isotypes = function(seurat_object,
                                MGA_only = TRUE,

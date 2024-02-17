@@ -8,6 +8,8 @@
 #' @param file The name of the PDF file.
 #' @param pdf_size Size of the PDF.
 #' @param portrait Wheter or not to use portrait layout (if FALSE, will use horizontal layout).
+#' @export
+#' @examples
 #' KG_trees_to_pdf(plots, file = "plot_file")
 KG_plot_to_pdf = function(plots,
                            ncol = 3,

@@ -3,8 +3,9 @@
 #' @param bcr_data A data frame containing the BCR data in AIRR format.
 #' @param threshold Threshold used for hierarchical clustering of sequences. Default is 0.15, i.e., 85% similarity threhsold.
 #' @param reference_dir Path to directory with IMGT VDJ references to use.
+#' @export
+#' @examples
 #' KG_clones(bcr_dataset)
-
 KG_clones = function(bcr_data,
                      threshold = 0.15,
                      reference_dir = NULL){

@@ -1,11 +1,13 @@
 #' Hierarchical clustering
-#' This function streamlines hierarchical clustering of Seurat clusters.
+#' This function is a wrapper for hierarchical clustering of Seurat clusters.
 #' @param seurat_object A Seurat object
 #' @param genes A list of genes to base the clustering on. Default is the variable features.
 #' @param assay The name of the Seurat object assay to use.
 #' @param title Plot title.
 #' @param ident_col Identity column to use.Default is 'seurat_clusters'.
 #' @param xlim Determines x-axis limits.
+#' @export
+#' @examples
 #' KG_hc(B_cell_dataset)
 KG_hc = function(seurat_object,
                  genes = NULL,

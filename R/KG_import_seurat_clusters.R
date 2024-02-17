@@ -9,6 +9,8 @@
 #' @param min.dist If sparse = TRUE, controls how tightly embeddings are allowed to compress points together. Larger values result in more even distribution. Smaller values optimizes more accurately the local structure.
 #' @param spread Effective scale of embedded points. If sparse = TRUE, determines, along with min.dist, how clumped embedded points are.
 #' @param ident_col The identity column to use from the Seurat object. By default, 'seurat_clusters' is used.
+#' @export
+#' @examples
 #' KG_import_seurat_clusters(monocle_object, B_cell_dataset)
 KG_import_seurat_clusters = function(monocle_object,
                                      seurat_object,

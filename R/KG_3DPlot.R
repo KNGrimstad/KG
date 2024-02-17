@@ -10,6 +10,8 @@
 #' @param min.dist Controls how tightly embeddings are allowed to compress points together. Larger values result in more even distribution. Smaller values optimize more accurately the local structure.
 #' @param spread Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.
 #' @param group.by Controls how cells should be grouped/colored. By default, uses the default identity of cells in the Seurat object.
+#' @export
+#' @examples
 #' KG_3DPlot(B_cell_dataset)
 KG_3DPlot = function(seurat_object,
                      dims = 1:35,

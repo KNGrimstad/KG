@@ -16,6 +16,9 @@
 #' @param bg_col Controls the background color of the plot.
 #' @param min.dist Controls how tightly embeddings are allowed to compress points together. Larger values result in more even distribution. Smaller values optimize more accurately the local structure.
 #' @param spread Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.
+#' @export
+#' @examples
+#' # KG_project_3D(B_cell_dataset, reference_object)
 KG_project_3D = function(seurat_object,
                          reference,
                          assay = "RNA",

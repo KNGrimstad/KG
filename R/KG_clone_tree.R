@@ -11,7 +11,9 @@
 #' @param breaks The breaks for the x-axis.
 #' @param common_scale Define if branches should have the same scale across trees.
 #' @param stroke Thickness of tip border.
-
+#' @export
+#' @examples
+#' KG_clone_tree(B_cell_clones)
 KG_clone_tree = function(clones,
                          tips = "c_call",
                          tip_palette = NULL,

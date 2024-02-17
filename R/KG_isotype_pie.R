@@ -1,11 +1,12 @@
 #' Plot percentage distribution of isotypes by cluster as pie charts
-#'
 #' This function plots the distribution of Ig isotypes for clusters in a Seurat object.
 #' @param seurat_object A Seurat object
 #' @param MGA_only Whether or not to only plot IgM, IgG, and IgA isotypes
 #' @param cluster Name of cluster(s) for which to generate pie charts
 #' @param combine Whether or not plots should be combined into a single or separate plots
 #' @param ncol The number of columns for the layout of the plot
+#' @export
+#' @examples
 #' KG_isotype_pie(B_cell_dataset, cluster = "0")
 KG_isotype_pie = function(seurat_object,
                           MGA_only = TRUE,
