@@ -58,3 +58,6 @@ KG_heatmap(
 Bulk heatmap
 This functions draws a heatmap displaying the relative cluster-average expression of specific genes.
 }
+\examples{
+# KG_heatmap(B_cell_dataset, genes = c("CD19", "CD27", "HLA-DRB1"))
+}

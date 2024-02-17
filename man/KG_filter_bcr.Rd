@@ -28,3 +28,6 @@ KG_filter_bcr(
 Filter AIRR object BCR data
 This function filters BCR data output from IgBLAST.
 }
+\examples{
+KG_filter_bcr(BCR_object)
+}

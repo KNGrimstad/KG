@@ -34,8 +34,7 @@ KG_project(
 
 \item{min.dist}{Controls how tightly embeddings are allowed to compress points together. Larger values result in more even distribution. Smaller values optimizes more accurately the local structure.}
 
-\item{spread}{Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.
-KG_project(B_cell_dataset, B_cell_reference_dataset)}
+\item{spread}{Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.}
 
 \item{reduction.model}{Name of dimensional reduction model to use for plotting, "umap" by default.}
 
@@ -46,4 +45,7 @@ KG_project(B_cell_dataset, B_cell_reference_dataset)}
 \description{
 Project data
 This function projects a Seurat object onto the clusters and UMAP coordinates from a reference.
+}
+\examples{
+KG_project(B_cell_dataset, B_cell_reference_dataset)
 }

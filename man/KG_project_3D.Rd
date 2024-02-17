@@ -55,3 +55,6 @@ KG_project_3D(
 Project and plot in 3D
 This function projects a Seurat object onto the clusters and UMAP coordinates from a reference, and plots the projected data in 3D.
 }
+\examples{
+# KG_project_3D(B_cell_dataset, reference_object)
+}

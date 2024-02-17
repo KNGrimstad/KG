@@ -2,14 +2,18 @@
 % Please edit documentation in R/KG_isotype_switch.R
 \name{KG_isotype_switch}
 \alias{KG_isotype_switch}
-\title{Convert isotypes to Switched and Unswitched}
+\title{Convert isotypes to Switched and Unswitched
+This function annotates the isotype switch status (unswitched vs. switched) based on annotated isotypes in a Seurat object.}
 \usage{
 KG_isotype_switch(seurat_object)
 }
 \arguments{
-\item{seurat_object}{A Seurat object
-KG_isotype_switch(B_cell_dataset)}
+\item{seurat_object}{A Seurat object}
 }
 \description{
+Convert isotypes to Switched and Unswitched
 This function annotates the isotype switch status (unswitched vs. switched) based on annotated isotypes in a Seurat object.
+}
+\examples{
+KG_isotype_switch(B_cell_dataset)
 }

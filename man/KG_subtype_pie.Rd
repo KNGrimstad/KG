@@ -25,10 +25,12 @@ KG_subtype_pie(
 
 \item{combine}{Whether or not plots should be combined into a single or separate plots}
 
-\item{ncol}{The number of columns for the layout of the plot
-KG_subtype_pie(B_cell_dataset, c_call = "c_call", cluster = "0")}
+\item{ncol}{The number of columns for the layout of the plot}
 }
 \description{
 Plot percentage distribution of isotype subtypes by cluster as pie charts
 This function plots the distribution of Ig subtypes of IgG (default) or IgA for clusters in a Seurat object.
+}
+\examples{
+KG_subtype_pie(B_cell_dataset, c_call = "c_call", cluster = "0")
 }

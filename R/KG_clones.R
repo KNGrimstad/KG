@@ -11,50 +11,53 @@ KG_clones = function(bcr_data,
                      reference_dir = NULL){
   require(scoper)
   require(dowser)
+  require(shazam)
+  require(dplyr)
+  
   # Cluster BCR sequences
   message("Clustering BCR sequences")
-  res = hierarchicalClones(bcr_data,
-                           cell_id = "cell_id",
-                           threshold = threshold,
-                           only_heavy = FALSE,
-                           split_light = TRUE,
-                           summarize_clones = FALSE)
+  res = scoper::hierarchicalClones(bcr_data,
+                                   cell_id = "cell_id",
+                                   threshold = threshold,
+                                   only_heavy = FALSE,
+                                   split_light = TRUE,
+                                   summarize_clones = FALSE)
 
   # Read in references
-  references = readIMGT(dir = reference_dir)
+  references = dowser::readIMGT(dir = reference_dir)
 
-  igh = createGermlines(filter(res, locus == "IGH"), references)
-  igk = createGermlines(filter(res, locus == "IGK"), references)
-  igl = createGermlines(filter(res, locus == "IGL"), references)
+  igh = dowser::createGermlines(filter(res, locus == "IGH"), references)
+  igk = dowser::createGermlines(filter(res, locus == "IGK"), references)
+  igl = dowser::createGermlines(filter(res, locus == "IGL"), references)
 
   # Calculate SHM frequency
   ## Heavy chain
   message("Calculating SHM frequency in\nheavy chains")
-  igh_data = observedMutations(igh,
-                               sequenceColumn = "sequence_alignment",
-                               germlineColumn = "germline_alignment_d_mask",
-                               regionDefinition = IMGT_V,
-                               frequency = TRUE,
-                               combine = TRUE,
-                               nproc = 1)
+  igh_data = shazam::observedMutations(igh,
+                                       sequenceColumn = "sequence_alignment",
+                                       germlineColumn = "germline_alignment_d_mask",
+                                       regionDefinition = IMGT_V,
+                                       frequency = TRUE,
+                                       combine = TRUE,
+                                       nproc = 1)
     ## Kappa chain
   message("kappa chains")
-  igk_data = observedMutations(igk,
-                             sequenceColumn = "sequence_alignment",
-                             germlineColumn = "germline_alignment_d_mask",
-                             regionDefinition = IMGT_V,
-                             frequency = TRUE,
-                             combine = TRUE,
-                             nproc = 1)
+  igk_data = shazam::observedMutations(igk,
+                                       sequenceColumn = "sequence_alignment",
+                                       germlineColumn = "germline_alignment_d_mask",
+                                       regionDefinition = IMGT_V,
+                                       frequency = TRUE,
+                                       combine = TRUE,
+                                       nproc = 1)
   ## Lambda chain
   message("lambda chains")
-  igl_data = observedMutations(igl,
-                             sequenceColumn = "sequence_alignment",
-                             germlineColumn = "germline_alignment_d_mask",
-                             regionDefinition = IMGT_V,
-                             frequency = TRUE,
-                             combine = TRUE,
-                             nproc = 1)
+  igl_data = shazam::observedMutations(igl,
+                                       sequenceColumn = "sequence_alignment",
+                                       germlineColumn = "germline_alignment_d_mask",
+                                       regionDefinition = IMGT_V,
+                                       frequency = TRUE,
+                                       combine = TRUE,
+                                       nproc = 1)
 
   # Combine data
   clone_data = rbind(igh_data, igl_data, igk_data)

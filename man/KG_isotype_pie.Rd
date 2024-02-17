@@ -2,7 +2,8 @@
 % Please edit documentation in R/KG_isotype_pie.R
 \name{KG_isotype_pie}
 \alias{KG_isotype_pie}
-\title{Plot percentage distribution of isotypes by cluster as pie charts}
+\title{Plot percentage distribution of isotypes by cluster as pie charts
+This function plots the distribution of Ig isotypes for clusters in a Seurat object.}
 \usage{
 KG_isotype_pie(
   seurat_object,
@@ -21,9 +22,12 @@ KG_isotype_pie(
 
 \item{combine}{Whether or not plots should be combined into a single or separate plots}
 
-\item{ncol}{The number of columns for the layout of the plot
-KG_isotype_pie(B_cell_dataset, cluster = "0")}
+\item{ncol}{The number of columns for the layout of the plot}
 }
 \description{
+Plot percentage distribution of isotypes by cluster as pie charts
 This function plots the distribution of Ig isotypes for clusters in a Seurat object.
+}
+\examples{
+KG_isotype_pie(B_cell_dataset, cluster = "0")
 }

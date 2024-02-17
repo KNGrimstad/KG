@@ -16,29 +16,34 @@ KG_hc = function(seurat_object,
                  ident_col = "seurat_clusters",
                  xlim = c(NA, 200)){
 
+  require(Seurat)
+  require(SeuratObject)
+  require(ggtree)
+  require(ggplot2)
+
   temp = seurat_object
-  Idents(temp) = temp[[ident_col, drop = TRUE]]
+  Seurat::Idents(temp) = temp[[ident_col, drop = TRUE]]
 
   # Construct a cluster tree
   if(is.null(genes)){
-    genes = VariableFeatures(seurat_object)
+    genes = Seurat::VariableFeatures(seurat_object)
   }
   message("Building cluster tree")
-  tree = BuildClusterTree(seurat_object,
-                          assay = assay,
-                          features = genes,
-                          verbose = FALSE)
+  tree = Seurat::BuildClusterTree(seurat_object,
+                                  assay = assay,
+                                  features = genes,
+                                  verbose = FALSE)
 
-  phytree = Tool(object = tree,
+  phytree = SeuratObject::Tool(object = tree,
                  slot = "BuildClusterTree")
 
   if(is.null(title)){
-    dendro = ggtree(phytree) +
+    dendro = ggtree::ggtree(phytree) +
       geom_tiplab() +
       theme_tree() +
       xlim(xlim)
   } else {
-    dendro = ggtree(phytree) +
+    dendro = ggtree::ggtree(phytree) +
       geom_tiplab() +
       theme_tree() +
       xlim(xlim) +

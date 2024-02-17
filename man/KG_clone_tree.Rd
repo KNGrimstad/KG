@@ -46,3 +46,6 @@ KG_clone_tree(
 Construct and plot clonal trees
 This function uses the dowser and ggtree packages to construct custom clonal trees.
 }
+\examples{
+KG_clone_tree(B_cell_clones)
+}

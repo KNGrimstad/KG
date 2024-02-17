@@ -31,10 +31,12 @@ KG_cluster_multi(
 
 \item{dims}{The number of dimensions to use for FindNeighbors.}
 
-\item{reduction}{Name of the dimensionality reduction method to use, "pca" by default.
-KG_cluster_multi(B_cell_dataset)}
+\item{reduction}{Name of the dimensionality reduction method to use, "pca" by default.}
 }
 \description{
 Evaluate cluster resolutions with clustree
 This function runs the function FindClusters from the Seurat package, for a range of resolution values and returns a tree plot of the resulting clusters for each given resolution.
+}
+\examples{
+KG_cluster_multi(B_cell_dataset)
 }

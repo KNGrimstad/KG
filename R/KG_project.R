@@ -25,40 +25,42 @@ KG_project = function(seurat_object,
                       reduction.model = "umap",
                       reference.reduction = "pca",
                       reference.idents = NULL){
+  require(Seurat)
+  require(ggplot2)
 
   temp = seurat_object
-  DefaultAssay(temp) = assay
+  Seurat::DefaultAssay(temp) = assay
 
   # Get reference model
   message("Calculating components")
-  ref = RunUMAP(reference,
-                dims = dims,
-                return.model = T,
-                n.components = 2,
-                min.dist = min.dist,
-                spread = spread,
-                assay = reference.assay)
+  ref = Seurat::RunUMAP(reference,
+                        dims = dims,
+                        return.model = T,
+                        n.components = 2,
+                        min.dist = min.dist,
+                        spread = spread,
+                        assay = reference.assay)
   # Project data
   message("Finding transfer anchors")
-  anchors = FindTransferAnchors(reference = ref,
-                                query = temp,
-                                dims = dims,
-                                reference.reduction = reference.reduction)
+  anchors = Seurat::FindTransferAnchors(reference = ref,
+                                        query = temp,
+                                        dims = dims,
+                                        reference.reduction = reference.reduction)
 
   message("Transferring data")
-  predictions = TransferData(anchorset = anchors,
-                             refdata = ref[[reference.idents, drop = TRUE]],
-                             dims = dims)
+  predictions = Seurat::TransferData(anchorset = anchors,
+                                     refdata = ref[[reference.idents, drop = TRUE]],
+                                     dims = dims)
 
-  temp = AddMetaData(temp, metadata = predictions)
+  temp = Seurat::AddMetaData(temp, metadata = predictions)
 
   message("Mapping query")
-  temp = MapQuery(anchorset = anchors,
-                           reference = ref,
-                           query = temp,
-                           refdata = list(celltype = reference.idents),
-                           reference.reduction = reduction,
-                           reduction.model = "umap")
+  temp = Seurat::MapQuery(anchorset = anchors,
+                          reference = ref,
+                          query = temp,
+                          refdata = list(celltype = reference.idents),
+                          reference.reduction = reduction,
+                          reduction.model = "umap")
   Idents(temp) = temp$predicted.celltype
   return(temp)
 }

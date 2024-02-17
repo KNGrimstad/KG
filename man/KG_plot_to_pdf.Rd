@@ -17,6 +17,8 @@ KG_plot_to_pdf(
 )
 }
 \arguments{
+\item{plots}{A list of plots.}
+
 \item{ncol}{The number of columns per page.}
 
 \item{nrow}{The number of rows per page.}
@@ -29,12 +31,12 @@ KG_plot_to_pdf(
 
 \item{pdf_size}{Size of the PDF.}
 
-\item{portrait}{Wheter or not to use portrait layout (if FALSE, will use horizontal layout).
-KG_trees_to_pdf(plots, file = "plot_file")}
-
-\item{trees}{A list of plots.}
+\item{portrait}{Wheter or not to use portrait layout (if FALSE, will use horizontal layout).}
 }
 \description{
 Print plots trees to PDF.
 This function prints a list of plots to a PDF file.
+}
+\examples{
+KG_trees_to_pdf(plots, file = "plot_file")
 }

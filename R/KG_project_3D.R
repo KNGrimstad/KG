@@ -33,33 +33,36 @@ KG_project_3D = function(seurat_object,
                          pt.size = 5,
                          cols = NULL,
                          bg_col = "white"){
+  require(Seurat)
+  require(plotly)
+
   temp = seurat_object
-  DefaultAssay(temp) = assay
+  Seurat::DefaultAssay(temp) = assay
 
   # Prep reference data for 3D
-  ref = RunUMAP(reference,
-                dims = dims,
-                return.model = T,
-                n.components = 3,
-                min.dist = min.dist,
-                spread = spread)
+  ref = Seurat::RunUMAP(reference,
+                        dims = dims,
+                        return.model = T,
+                        n.components = 3,
+                        min.dist = min.dist,
+                        spread = spread)
 
   # Project data
-  anchors = FindTransferAnchors(reference = ref,
-                                query = temp,
-                                dims = dims,
-                                reference.reduction = reference.reduction)
+  anchors = Seurat::FindTransferAnchors(reference = ref,
+                                        query = temp,
+                                        dims = dims,
+                                        reference.reduction = reference.reduction)
 
-  predictions = TransferData(anchorset = anchors,
-                             refdata = ref[[reference_idents, drop = TRUE]],
-                             dims = dims)
-  temp = AddMetaData(temp, metadata = predictions)
-  temp = MapQuery(anchorset = anchors, reference = ref,
-                  query = temp,
-                  refdata = list(celltype = reference_idents),
-                  reference.reduction = reduction,
-                  reduction.model = "umap")
-  Idents(temp) = temp$predicted.celltype
+  predictions = Seurat::TransferData(anchorset = anchors,
+                                     refdata = ref[[reference_idents, drop = TRUE]],
+                                     dims = dims)
+  temp = Seurat::AddMetaData(temp, metadata = predictions)
+  temp = Seurat::MapQuery(anchorset = anchors, reference = ref,
+                          query = temp,
+                          refdata = list(celltype = reference_idents),
+                          reference.reduction = reduction,
+                          reduction.model = "umap")
+  Seurat::Idents(temp) = temp$predicted.celltype
 
   # Plot 3D
   df = data.frame(umap1 = temp@reductions$ref.umap@cell.embeddings[,
@@ -72,12 +75,12 @@ KG_project_3D = function(seurat_object,
   }
 
   # Plot in 3D
-  plot_ly(df, x = ~umap1,
-          y = ~umap2,
-          z = ~umap3,
-          color = ~cell,
-          marker = list(size = pt.size),
-          colors = cols) %>%
+  plotly::plot_ly(df, x = ~umap1,
+                  y = ~umap2,
+                  z = ~umap3,
+                  color = ~cell,
+                  marker = list(size = pt.size),
+                  colors = cols) %>%
     add_markers() %>%
     layout(scene = list(xaxis = list(title = "UMAP_1"),
                         yaxis = list(title = "UMAP_2"),

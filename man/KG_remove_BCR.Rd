@@ -2,14 +2,18 @@
 % Please edit documentation in R/KG_remove_BCR.R
 \name{KG_remove_BCR}
 \alias{KG_remove_BCR}
-\title{Remove BCR genes}
+\title{Remove BCR genes
+This function removes all B-cell receptor genes from a Seurat object.}
 \usage{
 KG_remove_BCR(seurat_object)
 }
 \arguments{
-\item{seurat_object}{A Seurat object
-KG_remove_BCR(B_cell_dataset)}
+\item{seurat_object}{A Seurat object}
 }
 \description{
+Remove BCR genes
 This function removes all B-cell receptor genes from a Seurat object.
+}
+\examples{
+KG_remove_BCR(B_cell_dataset)
 }

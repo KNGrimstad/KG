@@ -17,6 +17,7 @@ KG_subtype_pie = function(seurat_object,
                            ncol = 2) {
   require(gridExtra)
   require(ggplot2)
+
   if(is.null(cluster)) {
     stop("No cluster specified")
   } else {

@@ -12,10 +12,12 @@ KG_clones(bcr_data, threshold = 0.15, reference_dir = NULL)
 
 \item{threshold}{Threshold used for hierarchical clustering of sequences. Default is 0.15, i.e., 85\% similarity threhsold.}
 
-\item{reference_dir}{Path to directory with IMGT VDJ references to use.
-KG_clones(bcr_dataset)}
+\item{reference_dir}{Path to directory with IMGT VDJ references to use.}
 }
 \description{
 Calling clones in BCR data
 This function calls clonotypes in BCR data using the dowser and scoper packages.
+}
+\examples{
+KG_clones(bcr_dataset)
 }

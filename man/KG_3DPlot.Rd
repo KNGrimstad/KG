@@ -37,10 +37,12 @@ KG_3DPlot(
 
 \item{spread}{Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.}
 
-\item{group.by}{Controls how cells should be grouped/colored. By default, uses the default identity of cells in the Seurat object.
-KG_3DPlot(B_cell_dataset)}
+\item{group.by}{Controls how cells should be grouped/colored. By default, uses the default identity of cells in the Seurat object.}
 }
 \description{
 3D UMAP for Seurat object
 This function computes and plots cells in three dimensions.
+}
+\examples{
+KG_3DPlot(B_cell_dataset)
 }

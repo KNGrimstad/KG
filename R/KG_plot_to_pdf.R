@@ -1,6 +1,6 @@
 #' Print plots trees to PDF.
 #' This function prints a list of plots to a PDF file.
-#' @param trees A list of plots.
+#' @param plots A list of plots.
 #' @param ncol The number of columns per page.
 #' @param nrow The number of rows per page.
 #' @param heading The heading to be printed on each page.
@@ -19,6 +19,9 @@ KG_plot_to_pdf = function(plots,
                            file = NULL,
                            pdf_size = a4,
                            portrait = TRUE){
+  require(stats)
+  require(grDevices)
+
   # Formats
   a4 = c(8.27, 11.69)
   a5 = c(5.83, 8.27)
@@ -26,11 +29,11 @@ KG_plot_to_pdf = function(plots,
 
   # Initiate PDF
   if(portrait){
-    pdf(paste(file, ".pdf", sep = ""),
-        width = pdf_size[1], height = pdf_size[2])
+    grDevices::pdf(paste(file, ".pdf", sep = ""),
+                   width = pdf_size[1], height = pdf_size[2])
   } else{
-    pdf(paste(file, ".pdf", sep = ""),
-        width = pdf_size[2], height = pdf_size[1])
+    grDevices::pdf(paste(file, ".pdf", sep = ""),
+                   width = pdf_size[2], height = pdf_size[1])
   }
 
   # Print plots

@@ -27,6 +27,7 @@ KG_clone_tree = function(clones,
                          stroke = 0.5){
   require(ggtree)
   require(dowser)
+  require(ggplot2)
 
   # Initiate empty list to store plots in
   tree_list = list()
@@ -62,17 +63,17 @@ KG_clone_tree = function(clones,
   }
 
   # Construct trees
-  trees = getTrees(clones,
-                   build = build,
-                   nproc = 1)
+  trees = dowser::getTrees(clones,
+                           build = build,
+                           nproc = 1)
 
-  clone_trees = plotTrees(trees,
-                          tips = tips,
-                          tip_palette = tip_palette,
-                          tipsize = tipsize,
-                          scale = scale,
-                          layout = layout,
-                          common_scale = common_scale)
+  clone_trees = dowser::plotTrees(trees,
+                                  tips = tips,
+                                  tip_palette = tip_palette,
+                                  tipsize = tipsize,
+                                  scale = scale,
+                                  layout = layout,
+                                  common_scale = common_scale)
 
   # Plot clone trees
   for(i in seq(nrow(trees))){

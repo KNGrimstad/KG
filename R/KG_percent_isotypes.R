@@ -9,11 +9,13 @@
 KG_percent_isotypes = function(seurat_object,
                                MGA_only = TRUE,
                                return_table = FALSE){
+  require(Seurat)
+
   # Initialize an empty data frame to store results
   results_df = data.frame()
 
   # Calculate percentages
-  tab = table(Idents(seurat_object), seurat_object$isotype)
+  tab = table(Seurat::Idents(seurat_object), seurat_object$isotype)
   if(MGA_only == TRUE){
     tab = tab[, c(1, 3, 4)]
     for(i in seq_len(nrow(tab))){

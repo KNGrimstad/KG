@@ -21,7 +21,10 @@ KG_cluster_multi = function(seurat_object,
                             reduction = "pca"){
   require(ggtree)
   require(clustree)
-  DefaultAssay(seurat_object) = assay
+  require(Seurat)
+  require(SeuratObject)
+
+  Seurat::DefaultAssay(seurat_object) = assay
 
   # Remove previous clustering if data is integrated
   if(nrow(unique(seurat_object[["orig.ident"]])) >1){
@@ -31,27 +34,27 @@ KG_cluster_multi = function(seurat_object,
     for (col in cluster_columns){
       seurat_object@meta.data[[col]] = NULL
     }
-    seurat_object = UpdateSeuratObject(seurat_object)
+    seurat_object = SeuratObject::UpdateSeuratObject(seurat_object)
   }
   # Perform clustering
   message("Finding neighbors")
-  seurat_object = FindNeighbors(seurat_object,
-                                assay = assay,
-                                reduction = reduction,
-                                dims = dims)
+  seurat_object = Seurat::FindNeighbors(seurat_object,
+                                        assay = assay,
+                                        reduction = reduction,
+                                        dims = dims)
 
   resolutions = seq.int(min.res, max.res, increment)
-  seurat_object = FindNeighbors(seurat_object,
-                                dims = dims,
-                                assay = assay,
-                                reduction = reduction)
+  seurat_object = Seurat::FindNeighbors(seurat_object,
+                                        dims = dims,
+                                        assay = assay,
+                                        reduction = reduction)
   for (i in resolutions){
     message(paste("Finding clusters for resolution", i, sep = " "))
-    seurat_object = FindClusters(seurat_object, resolution = i)
+    seurat_object = Seurat::FindClusters(seurat_object, resolution = i)
   }
   if(plot == TRUE){
       message("Constructing cluster tree")
-      t = clustree(seurat_object@meta.data, prefix = paste("^", assay, "_snn_res.", sep = ""))
+      t = clustree::clustree(seurat_object@meta.data, prefix = paste("^", assay, "_snn_res.", sep = ""))
   }
   plot(t)
   return(seurat_object)

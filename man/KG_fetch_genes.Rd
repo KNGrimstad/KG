@@ -10,10 +10,12 @@ KG_fetch_genes(seurat_object, gene_prefix)
 \arguments{
 \item{seurat_object}{A Seurat object}
 
-\item{gene_prefix}{The prefix of gene names to be retrieved
-KG_fetch_genes(pbmc_dataset, "HLA-")}
+\item{gene_prefix}{The prefix of gene names to be retrieved}
 }
 \description{
 Fetch all genes with specific prefix expressed in the data
 This function fetches all genes with the specified prefix expressed in the dataset
+}
+\examples{
+KG_fetch_genes(pbmc_dataset, "HLA-")
 }

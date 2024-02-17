@@ -3,7 +3,7 @@
 \name{KG_hc}
 \alias{KG_hc}
 \title{Hierarchical clustering
-This function streamlines hierarchical clustering of Seurat clusters.}
+This function is a wrapper for hierarchical clustering of Seurat clusters.}
 \usage{
 KG_hc(
   seurat_object,
@@ -25,10 +25,12 @@ KG_hc(
 
 \item{ident_col}{Identity column to use.Default is 'seurat_clusters'.}
 
-\item{xlim}{Determines x-axis limits.
-KG_hc(B_cell_dataset)}
+\item{xlim}{Determines x-axis limits.}
 }
 \description{
 Hierarchical clustering
-This function streamlines hierarchical clustering of Seurat clusters.
+This function is a wrapper for hierarchical clustering of Seurat clusters.
+}
+\examples{
+KG_hc(B_cell_dataset)
 }

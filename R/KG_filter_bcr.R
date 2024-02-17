@@ -13,6 +13,8 @@ KG_filter_bcr = function(bcr_data,
                          single_IgH = TRUE,
                          c_annotated = TRUE,
                          hl_pair = TRUE){
+  require(dplyr)
+
   # Count number of sequences before filtering
   base_cells = nrow(bcr_data)
 

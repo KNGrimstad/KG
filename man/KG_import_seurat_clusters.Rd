@@ -34,10 +34,12 @@ KG_import_seurat_clusters(
 
 \item{spread}{Effective scale of embedded points. If sparse = TRUE, determines, along with min.dist, how clumped embedded points are.}
 
-\item{ident_col}{The identity column to use from the Seurat object. By default, 'seurat_clusters' is used.
-KG_import_seurat_clusters(monocle_object, B_cell_dataset)}
+\item{ident_col}{The identity column to use from the Seurat object. By default, 'seurat_clusters' is used.}
 }
 \description{
 Import Seurat-defined clusters to Monocle object
 This function imports the clustering and dimension plot coordinates from a Seurat object and adds them to a Monocle3 object.
+}
+\examples{
+KG_import_seurat_clusters(monocle_object, B_cell_dataset)
 }

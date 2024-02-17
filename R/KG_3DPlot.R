@@ -25,12 +25,16 @@ KG_3DPlot = function(seurat_object,
                      group.by = NULL){
   require(plotly)
   require(scales)
+  require(KernSmooth)
+  require(Seurat)
+  require(dplyr)
+
   # Calculate UMAP for three components
   if (!is.null(group.by)){
-    Idents(seurat_object) = seurat_object[[group.by, drop = TRUE]]
+    Seurat::Idents(seurat_object) = seurat_object[[group.by, drop = TRUE]]
   }
   message("Calculating 3D components")
-  temp = RunUMAP(object = seurat_object,
+  temp = Seurat::RunUMAP(object = seurat_object,
                  dims = dims,
                  n.components = 3,
                  min.dist = min.dist,
@@ -47,16 +51,17 @@ KG_3DPlot = function(seurat_object,
 
   # Select color palette
   if(is.null(cols)){
-    cols = hue_pal()(length(levels(df$cell)))
+    cols = scales::hue_pal()(length(levels(df$cell)))
   }
 
   # Plot in 3D
-  plot_ly(df, x = ~umap1,
-          y = ~umap2,
-          z = ~umap3,
-          color = ~cell,
-          marker = list(size = pt.size),
-          colors = cols) %>% add_markers() %>%
+  plotly::plot_ly(df, x = ~umap1,
+                        y = ~umap2,
+                        z = ~umap3,
+                        color = ~cell,
+                        marker = list(size = pt.size),
+                        colors = cols) %>%
+    add_markers() %>%
     layout(scene = list(xaxis = list(title = "UMAP_1"), yaxis = list(title = "UMAP_2"),
                         zaxis = list(title = "UMAP_3"))) %>%
     layout(plot_bgcolor = bg_col) %>%

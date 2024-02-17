@@ -2,16 +2,20 @@
 % Please edit documentation in R/KG_remove_suffix.R
 \name{KG_remove_suffix}
 \alias{KG_remove_suffix}
-\title{Remove suffix from list of barcodes}
+\title{Remove suffix from list of barcodes
+This function removes a suffix from all cells in the specified input list.}
 \usage{
 KG_remove_suffix(cells, suffix)
 }
 \arguments{
 \item{cells}{A list of cell names from a Seurat object.}
 
-\item{suffix}{The suffix to be removed from cell names.
-KG_remove_suffix(list_of_cells, "_4)}
+\item{suffix}{The suffix to be removed from cell names.}
 }
 \description{
+Remove suffix from list of barcodes
 This function removes a suffix from all cells in the specified input list.
+}
+\examples{
+KG_remove_suffix(list_of_cells, "_4")
 }
