@@ -9,7 +9,7 @@ Further descriptions will come.
 ---
 ## Installation
 Install the most recent version of this package: 
-```
+```{r}
 devtools::install("KNGrimstad/KG")
 ```
 ---
