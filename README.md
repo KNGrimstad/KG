@@ -15,7 +15,7 @@ devtools::install("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-<img align = "right" src = "images/example_plots2.png" width = "313" height = "400">
+<img align = "right" src = "images/example_plots3.png" width = "317" height = "350">
 
 * **KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.
 
