@@ -15,7 +15,8 @@ devtools::install("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions
-**KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.<img align = "right" src = "images/example_plots.png" width = "460" height = "460">
+<img align = "right" src = "images/example_plots.png" width = "430" height = "430">
+**KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.
 
 **KG_isotype_pie** - Pie chart of Ig isotype distributions in clusters.
 
