@@ -16,40 +16,40 @@ devtools::install("KNGrimstad/KG")
 # Functions Currently Included in this Package
 ## Fancy plotting functions
 KG_heatmap - make a fancy heatmap for cell-by-cell or cluster-average expression of genes.<img align = "right" src = "images/example_heatmap.png" width = "114" height = "115">
----
+
 KG_isotype_pie - make
----
+
 KG_subtype_pie
----
+
 KG_3DPlot
----
+
 KG_clone_tree
 
 ## Data wrangling
 KG_remove_BCR
----
+
 KG_import_seurat_clusters
----
+
 KG_filter_bcr
----
+
 KG_gene_to_isotype
----
+
 KH_isotype_to_switch
 
 ## Helpful(?) wrappers
 KG_clones
----
+
 KG_cluster_multi
----
+
 KG_integrate_CCA
 
 
 
 ## Minor helpers
 KG_add_suffix
----
+
 KG_remove_suffix
----
+
 KG_fetch_genes
----
+
 KG_plot_to_pdf
