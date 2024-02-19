@@ -10,7 +10,7 @@ Further descriptions will come.
 ## Installation
 Install the most recent version of this package: 
 ```
-devtools::install(KNGrimstad/KG)
+devtools::install("KNGrimstad/KG")
 ```
 ---
 # Functions Currently Included in this Package
