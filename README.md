@@ -15,41 +15,41 @@ devtools::install("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions
-KG_heatmap - make a fancy heatmap for cell-by-cell or cluster-average expression of genes.<img align = "right" src = "images/example_plots.png" width = "460" height = "460">
+**KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.<img align = "right" src = "images/example_plots.png" width = "460" height = "460">
 
-KG_isotype_pie - make
+**KG_isotype_pie** - Pie chart of Ig isotype distributions in clusters.
 
-KG_subtype_pie
+**KG_subtype_pie** - Same as above, but for Ig subtypes.
 
-KG_3DPlot
+**KG_3DPlot** - A classic dimension plot in 3.D
 
-KG_clone_tree
+**KG_dotplot** - Seurat's dot plot, but subjectively nicer.
+
+**KG_clone_tree** - Wrapper to make clone trees from V(D)J-seq data.
 
 ## Data wrangling
-KG_remove_BCR
+**KG_remove_BCR** - Removes BCR genes from the dataset. 
 
-KG_import_seurat_clusters
+**KG_import_seurat_clusters** - Imports Seurat annotations to monocle3 object.
 
-KG_filter_bcr
+**KG_filter_bcr** - Filters an AIRR data frame from V(D)J-seq for quality.
 
-KG_gene_to_isotype
+**KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
 
-KH_isotype_to_switch
+**KG_isotype_to_switch** - Converts Ig isotype to switch status (unswitched/switched).
 
 ## Helpful(?) wrappers
-KG_clones
+**KG_clones** - Wrapper to call clones in V(D)J-seq data.
 
-KG_cluster_multi
+**KG_cluster_multi** - Wrapper to run Seurat's FindClusters for a range of resolutions.
 
-KG_integrate_CCA
-
-
+**KG_integrate_CCA** - Wrapper for Seurat's CCA integration workflow. 
 
 ## Minor helpers
-KG_add_suffix
+**KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
 
-KG_remove_suffix
+**KG_remove_suffix** - Same as above, but for removing a suffix.
 
-KG_fetch_genes
+**KG_fetch_genes** - Returns all genes in a Seurat object with the supplied gene name prefix.
 
-KG_plot_to_pdf
+**KG_plot_to_pdf** - Writes plots to PDF, with customizable layouts.
