@@ -38,7 +38,7 @@ devtools::install("KNGrimstad/KG")
 
 **KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
 
-**KG_isotype_to_switch** - Converts Ig isotype to switch status (unswitched/switched).
+**KG_isotype_switch** - Converts Ig isotype to switch status (unswitched/switched).
 
 ## Helpful(?) wrappers
 **KG_clones** - Wrapper to call clones in V(D)J-seq data.
@@ -46,6 +46,12 @@ devtools::install("KNGrimstad/KG")
 **KG_cluster_multi** - Wrapper to run Seurat's FindClusters for a range of resolutions.
 
 **KG_integrate_CCA** - Wrapper for Seurat's CCA integration workflow. 
+
+**KG_hc** - Wrapper for SEurat's hierarchical clustering.
+
+**KG_project** - Wrapper for Seurat's functions for projecting datasets onto a reference.
+
+**KG_project_3D** - Same as above, but generates a 3D dimension plot. 
 
 ## Minor helpers
 **KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
@@ -55,3 +61,5 @@ devtools::install("KNGrimstad/KG")
 **KG_fetch_genes** - Returns all genes in a Seurat object with the supplied gene name prefix.
 
 **KG_plot_to_pdf** - Writes plots to PDF, with customizable layouts.
+
+**KG_percent_isotypes** - Calculates the percent of Ig isotypes in each Seurat identity.

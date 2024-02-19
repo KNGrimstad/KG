@@ -14,7 +14,7 @@ KG_clones(bcr_data, threshold = 0.15, reference_dir = NULL)
 \item{reference_dir}{Path to directory with IMGT VDJ references to use.}
 }
 \description{
-This function calls clonotypes in BCR data using the dowser and scoper packages.
+This function is a wrapper for calling clonotypes in BCR data using the dowser and scoper packages.
 }
 \examples{
 KG_clones(bcr_dataset)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/KG_heatmap.R
 \name{KG_heatmap}
 \alias{KG_heatmap}
-\title{Bulk heatmap}
+\title{Heatmap of relative gene expression}
 \usage{
 KG_heatmap(
   seurat_object,
