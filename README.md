@@ -17,49 +17,49 @@ devtools::install("KNGrimstad/KG")
 ## Fancy plotting functions 
 <img align = "right" src = "images/example_plots.png" width = "430" height = "430">
 
-**KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.
+* **KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.
 
-**KG_isotype_pie** - Pie chart of Ig isotype distributions in clusters.
+* **KG_isotype_pie** - Pie chart of Ig isotype distributions in clusters.
 
-**KG_subtype_pie** - Same as above, but for Ig subtypes.
+* **KG_subtype_pie** - Same as above, but for Ig subtypes.
 
-**KG_3DPlot** - A classic dimension plot in 3.D
+* **KG_3DPlot** - A classic dimension plot in 3.D
 
-**KG_dotplot** - Seurat's dot plot, but subjectively nicer.
+* **KG_dotplot** - Seurat's dot plot, but subjectively nicer.
 
-**KG_clone_tree** - Wrapper to make clone trees from V(D)J-seq data.
+* **KG_clone_tree** - Wrapper to make clone trees from V(D)J-seq data.
 
 ## Data wrangling
-**KG_remove_BCR** - Removes BCR genes from the dataset. 
+* **KG_remove_BCR** - Removes BCR genes from the dataset. 
 
-**KG_import_seurat_clusters** - Imports Seurat annotations to monocle3 object.
+* **KG_import_seurat_clusters** - Imports Seurat annotations to monocle3 object.
 
-**KG_filter_bcr** - Filters an AIRR data frame from V(D)J-seq for quality.
+* **KG_filter_bcr** - Filters an AIRR data frame from V(D)J-seq for quality.
 
-**KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
+* **KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
 
-**KG_isotype_switch** - Converts Ig isotype to switch status (unswitched/switched).
+* **KG_isotype_switch** - Converts Ig isotype to switch status (unswitched/switched).
 
 ## Helpful(?) wrappers
-**KG_clones** - Wrapper to call clones in V(D)J-seq data.
+* **KG_clones** - Wrapper to call clones in V(D)J-seq data.
 
-**KG_cluster_multi** - Wrapper to run Seurat's FindClusters for a range of resolutions.
+* **KG_cluster_multi** - Wrapper to run Seurat's FindClusters for a range of resolutions.
 
-**KG_integrate_CCA** - Wrapper for Seurat's CCA integration workflow. 
+* **KG_integrate_CCA** - Wrapper for Seurat's CCA integration workflow. 
 
-**KG_hc** - Wrapper for SEurat's hierarchical clustering.
+* **KG_hc** - Wrapper for SEurat's hierarchical clustering.
 
-**KG_project** - Wrapper for Seurat's functions for projecting datasets onto a reference.
+* **KG_project** - Wrapper for Seurat's functions for projecting datasets onto a reference.
 
-**KG_project_3D** - Same as above, but generates a 3D dimension plot. 
+* **KG_project_3D** - Same as above, but generates a 3D dimension plot. 
 
 ## Minor helpers
-**KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
+* **KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
 
-**KG_remove_suffix** - Same as above, but for removing a suffix.
+* **KG_remove_suffix** - Same as above, but for removing a suffix.
 
-**KG_fetch_genes** - Returns all genes in a Seurat object with the supplied gene name prefix.
+* **KG_fetch_genes** - Returns all genes in a Seurat object with the supplied gene name prefix.
 
-**KG_plot_to_pdf** - Writes plots to PDF, with customizable layouts.
+* **KG_plot_to_pdf** - Writes plots to PDF, with customizable layouts.
 
-**KG_percent_isotypes** - Calculates the percent of Ig isotypes in each Seurat identity.
+* **KG_percent_isotypes** - Calculates the percent of Ig isotypes in each Seurat identity.
