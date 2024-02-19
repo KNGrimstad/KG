@@ -1,6 +1,6 @@
 #' Calling clones in BCR data
 #'
-#' This function calls clonotypes in BCR data using the dowser and scoper packages.
+#' This function is a wrapper for calling clonotypes in BCR data using the dowser and scoper packages.
 #' @param bcr_data A data frame containing the BCR data in AIRR format.
 #' @param threshold Threshold used for hierarchical clustering of sequences. Default is 0.15, i.e., 85% similarity threhsold.
 #' @param reference_dir Path to directory with IMGT VDJ references to use.
