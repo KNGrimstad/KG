@@ -58,7 +58,7 @@ KG_isotype_pie = function(seurat_object,
         df_for_plot$Position = cumsum(as.integer(df_for_plot$Value)) - 0.5 * as.integer(df_for_plot$Value)
 
         p = ggplot(df_for_plot, aes(x = "", y = Value, fill = Isotype)) +
-          geom_bar(width = 1, stat = "identity", colour = "black") +
+          geom_bar(width = 1, stat = "identity", colour = "black", stroke = 0.5) +
           coord_polar("y", start = 0) +
           scale_fill_manual(values = c("IgM" = "cornflowerblue",
                                        "IgG" = "brown4",

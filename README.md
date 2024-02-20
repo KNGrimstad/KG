@@ -2,9 +2,9 @@
   KG - A Collection of Random scRNA-Seq Functions&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
 </h1>
 
-This repository is composed of functions designed to make life easier for the owner of the repo. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
+This repository is composed of functions and wrappers designed to make life easier for the owner of the repo. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
 
-Further descriptions will come.
+Some of these functions are exceptionally base, while others are used to construct figures of varying degrees of complexity and customizability. 
 
 ---
 ## Installation
@@ -17,13 +17,15 @@ devtools::install("KNGrimstad/KG")
 ## Fancy plotting functions 
 <img align = "right" src = "images/example_plots3.png" width = "317" height = "350">
 
+* **KG_dimplot** - Make clean dimplots for publications.
+
 * **KG_heatmap** - Fancy heatmap for cell-by-cell or cluster-average expression of genes.
 
 * **KG_isotype_pie** - Pie chart of Ig isotype distributions in clusters.
 
 * **KG_subtype_pie** - Same as above, but for Ig subtypes.
 
-* **KG_3DPlot** - A classic dimension plot in 3.D
+* **KG_3DPlot** - A classic dimension plot in 3D
 
 * **KG_dotplot** - Seurat's dot plot, but subjectively nicer.
 
@@ -40,7 +42,7 @@ devtools::install("KNGrimstad/KG")
 
 * **KG_isotype_switch** - Converts Ig isotype to switch status (unswitched/switched).
 
-## Helpful(?) wrappers
+## Helpful wrappers
 * **KG_clones** - Wrapper to call clones in V(D)J-seq data.
 
 * **KG_cluster_multi** - Wrapper to run Seurat's FindClusters for a range of resolutions.
@@ -53,7 +55,7 @@ devtools::install("KNGrimstad/KG")
 
 * **KG_project_3D** - Same as above, but generates a 3D dimension plot. 
 
-## Minor helpers
+## Misc. helpers
 * **KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
 
 * **KG_remove_suffix** - Same as above, but for removing a suffix.
@@ -63,3 +65,4 @@ devtools::install("KNGrimstad/KG")
 * **KG_plot_to_pdf** - Writes plots to PDF, with customizable layouts.
 
 * **KG_percent_isotypes** - Calculates the percent of Ig isotypes in each Seurat identity.
+

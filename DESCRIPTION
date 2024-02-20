@@ -2,9 +2,9 @@ Package: KG
 Title: A Random Collection of R Functions Related to scRNA-Seqs (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
-    person("Kristoffer", "Grimstad", , "kristoffer.nilsson.grimstad@gu.se", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0001-5460-4246"))
-Description: The point of ht efunctions compiled herein is to make life easier for this PhD student in the context of scRNA-seq processing and analysis. As such, some functions are incredibly base, while others are used to construct custom figures of varying degrees of complexity. .
+    person(given = "Kristoffer", family = "Grimstad", , "kristoffer.nilsson.grimstad@gu.se", role = c("aut", "cre"),
+           comment = c(ORCID = "https://orcid.org/0000-0001-5460-4246"))
+Description: A collection of random functions by and for KG.
 License: `use_mit_license()`
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
