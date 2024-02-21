@@ -15,7 +15,7 @@ devtools::install("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-<img align = "right" src = "images/example_plots3.png" width = "317" height = "350">
+<img align = "right" src = "images/example_plots4.png" width = "273" height = "350">
 
 * **KG_dimplot** - Make clean dimplots for publications.
 

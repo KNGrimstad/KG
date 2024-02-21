@@ -38,7 +38,7 @@ KG_cluster_multi = function(seurat_object,
     seurat_object = SeuratObject::UpdateSeuratObject(seurat_object)
   }
   # Perform clustering
-  cat("Finding neighbors")
+  cat("Finding neighbors\n")
   seurat_object = Seurat::FindNeighbors(seurat_object,
                                         assay = assay,
                                         reduction = reduction,
@@ -46,19 +46,19 @@ KG_cluster_multi = function(seurat_object,
                                         verbose = FALSE)
 
   resolutions = seq.int(min.res, max.res, increment)
+  cat("Finding clusters\n")
   for (i in resolutions){
-    cat(paste("Finding clusters for resolution", i, sep = " "))
-    seurat_object2 = Seurat::FindClusters(seurat_object, resolution = i, verbose = FALSE)
+    seurat_object = Seurat::FindClusters(seurat_object, resolution = i, verbose = FALSE)
   }
 
-  cat("Constructing cluster tree")
-  t = clustree::clustree(seurat_object2@meta.data, prefix = paste(assay, "_snn_res.", sep = ""))
+  cat("Constructing cluster tree\n")
+  t = clustree::clustree(seurat_object@meta.data, prefix = paste(assay, "_snn_res.", sep = ""))
   plot(t)
   select_resolution = readline(prompt = "Select cluster resolution: ")
 
-  cat(paste("Finding clusters at a resolution of", select_resolution, sep = ""))
-  seurat_object = Seurat::FindClusters(seurat_object, resolution = select_resolution, verbose = FALSE)
+  cat(paste("Finding clusters at a resolution of\n", select_resolution, sep = ""))
+  seurat_object = Seurat::FindClusters(seurat_object, resolution = as.numeric(select_resolution), verbose = FALSE)
 
-  cat("Done")
+  cat("Done\n")
   return(seurat_object)
 }
