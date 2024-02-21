@@ -29,7 +29,7 @@ KG_hc = function(seurat_object,
   if(is.null(genes)){
     genes = Seurat::VariableFeatures(seurat_object)
   }
-  message("Building cluster tree")
+  cat("Building cluster tree")
   tree = Seurat::BuildClusterTree(seurat_object,
                                   assay = assay,
                                   features = genes,

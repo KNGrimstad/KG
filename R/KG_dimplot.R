@@ -59,7 +59,7 @@ KG_dimplot = function(seurat_object,
   p = ggplot(a, aes(x = a[,1], y = a[,2], fill = groups)) +
     geom_point(shape = 21, size = pt.size, stroke = stroke) +
     theme_classic() +
-    labs(fill = legend_title) +
+    #labs(fill = legend_title) +
     scale_fill_manual(values = cols) +
     labs(x = names(a)[1], y = names(a)[2])
   if(pub_ready){

@@ -33,7 +33,7 @@ KG_project = function(seurat_object,
   Seurat::DefaultAssay(temp) = assay
 
   # Get reference model
-  message("Calculating components")
+  cat("Calculating components")
   ref = Seurat::RunUMAP(reference,
                         dims = dims,
                         return.model = T,
@@ -42,20 +42,20 @@ KG_project = function(seurat_object,
                         spread = spread,
                         assay = reference.assay)
   # Project data
-  message("Finding transfer anchors")
+  cat("Finding transfer anchors")
   anchors = Seurat::FindTransferAnchors(reference = ref,
                                         query = temp,
                                         dims = dims,
                                         reference.reduction = reference.reduction)
 
-  message("Transferring data")
+  cat("Transferring data")
   predictions = Seurat::TransferData(anchorset = anchors,
                                      refdata = ref[[reference.idents, drop = TRUE]],
                                      dims = dims)
 
   temp = Seurat::AddMetaData(temp, metadata = predictions)
 
-  message("Mapping query")
+  cat("Mapping query")
   temp = Seurat::MapQuery(anchorset = anchors,
                           reference = ref,
                           query = temp,

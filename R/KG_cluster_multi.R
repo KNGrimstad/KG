@@ -1,6 +1,6 @@
 #' Evaluate cluster resolutions with clustree
 #'
-#' This function runs the function FindClusters from the Seurat package, for a range of resolution values and returns a tree plot of the resulting clusters for each given resolution.
+#' This function runs the function FindClusters from the Seurat package, for a range of resolution values, plots the clusters for each resolution, and prompts the user to select an appropriate resolution, and returns the clustered Seurat object for the selected resolution.
 #' @param seurat_object A Seurat object.
 #' @param max.res The maximum resolution for clustering.
 #' @param min.res The minimum resolution for clustering.
@@ -38,25 +38,27 @@ KG_cluster_multi = function(seurat_object,
     seurat_object = SeuratObject::UpdateSeuratObject(seurat_object)
   }
   # Perform clustering
-  message("Finding neighbors")
+  cat("Finding neighbors")
   seurat_object = Seurat::FindNeighbors(seurat_object,
                                         assay = assay,
                                         reduction = reduction,
-                                        dims = dims)
+                                        dims = dims,
+                                        verbose = FALSE)
 
   resolutions = seq.int(min.res, max.res, increment)
-  seurat_object = Seurat::FindNeighbors(seurat_object,
-                                        dims = dims,
-                                        assay = assay,
-                                        reduction = reduction)
   for (i in resolutions){
-    message(paste("Finding clusters for resolution", i, sep = " "))
-    seurat_object = Seurat::FindClusters(seurat_object, resolution = i)
+    cat(paste("Finding clusters for resolution", i, sep = " "))
+    seurat_object2 = Seurat::FindClusters(seurat_object, resolution = i, verbose = FALSE)
   }
-  if(plot == TRUE){
-      message("Constructing cluster tree")
-      t = clustree::clustree(seurat_object@meta.data, prefix = paste(assay, "_snn_res.", sep = ""))
-      plot(t)
-  }
+
+  cat("Constructing cluster tree")
+  t = clustree::clustree(seurat_object2@meta.data, prefix = paste(assay, "_snn_res.", sep = ""))
+  plot(t)
+  select_resolution = readline(prompt = "Select cluster resolution: ")
+
+  cat(paste("Finding clusters at a resolution of", select_resolution, sep = ""))
+  seurat_object = Seurat::FindClusters(seurat_object, resolution = select_resolution, verbose = FALSE)
+
+  cat("Done")
   return(seurat_object)
 }

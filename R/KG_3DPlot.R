@@ -34,7 +34,7 @@ KG_3DPlot = function(seurat_object,
   if (!is.null(group.by)){
     Seurat::Idents(seurat_object) = seurat_object[[group.by, drop = TRUE]]
   }
-  message("Calculating 3D components")
+  cat("Calculating 3D components")
   temp = Seurat::RunUMAP(object = seurat_object,
                  dims = dims,
                  n.components = 3,

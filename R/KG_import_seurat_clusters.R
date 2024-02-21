@@ -31,7 +31,7 @@ KG_import_seurat_clusters = function(monocle_object,
     require(plotly)
     require(scales)
     if(sparse == TRUE){
-      message("Calculating 3D components")
+      cat("Calculating 3D components")
       temp = RunUMAP(object = seurat_object, dims = 1:dims,
                      n.components = 3,
                      spread = spread,
@@ -39,7 +39,7 @@ KG_import_seurat_clusters = function(monocle_object,
                      verbose = F,
                      assay = assay)
     } else {
-      message("Calculating 2D components")
+      cat("Calculating 2D components")
       temp = RunUMAP(object = seurat_object,
                      dims = 1:dims,
                      n.components = 3,
@@ -67,7 +67,6 @@ KG_import_seurat_clusters = function(monocle_object,
     monocle_object@int_colData@listData$reducedDims$UMAP =
       seurat_object@reductions$umap@cell.embeddings
   }
-
-
+  cat("Done")
   return(monocle_object)
 }

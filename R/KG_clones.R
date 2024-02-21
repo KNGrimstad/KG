@@ -16,7 +16,7 @@ KG_clones = function(bcr_data,
   require(dplyr)
 
   # Cluster BCR sequences
-  message("Clustering BCR sequences")
+  cat("Clustering BCR sequences")
   res = scoper::hierarchicalClones(bcr_data,
                                    cell_id = "cell_id",
                                    threshold = threshold,
@@ -33,7 +33,8 @@ KG_clones = function(bcr_data,
 
   # Calculate SHM frequency
   ## Heavy chain
-  message("Calculating SHM frequency in\nheavy chains")
+  cat("Calculating SHM frequency in...")
+  cat("heavy chains")
   igh_data = shazam::observedMutations(igh,
                                        sequenceColumn = "sequence_alignment",
                                        germlineColumn = "germline_alignment_d_mask",
@@ -42,7 +43,7 @@ KG_clones = function(bcr_data,
                                        combine = TRUE,
                                        nproc = 1)
     ## Kappa chain
-  message("kappa chains")
+  cat("kappa chains")
   igk_data = shazam::observedMutations(igk,
                                        sequenceColumn = "sequence_alignment",
                                        germlineColumn = "germline_alignment_d_mask",
@@ -51,7 +52,7 @@ KG_clones = function(bcr_data,
                                        combine = TRUE,
                                        nproc = 1)
   ## Lambda chain
-  message("lambda chains")
+  cat("lambda chains")
   igl_data = shazam::observedMutations(igl,
                                        sequenceColumn = "sequence_alignment",
                                        germlineColumn = "germline_alignment_d_mask",
@@ -62,6 +63,6 @@ KG_clones = function(bcr_data,
 
   # Combine data
   clone_data = rbind(igh_data, igl_data, igk_data)
-
+cat("Done")
   return(clone_data)
 }

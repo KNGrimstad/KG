@@ -33,7 +33,7 @@ KG_cluster_multi(
 \item{reduction}{Name of the dimensionality reduction method to use, "pca" by default.}
 }
 \description{
-This function runs the function FindClusters from the Seurat package, for a range of resolution values and returns a tree plot of the resulting clusters for each given resolution.
+This function runs the function FindClusters from the Seurat package, for a range of resolution values, plots the clusters for each resolution, and prompts the user to select an appropriate resolution, and returns the clustered Seurat object for the selected resolution.
 }
 \examples{
 KG_cluster_multi(B_cell_dataset)
