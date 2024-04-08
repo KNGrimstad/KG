@@ -11,6 +11,7 @@ KG_percent_cells(
   cols = NULL,
   label = T,
   label_size = 3,
+  label_col = "black",
   legend = T
 )
 }
@@ -26,6 +27,8 @@ KG_percent_cells(
 \item{label}{Logical; whether or not to add the percentages as text albels in the plot. Irrelevant for tables.}
 
 \item{label_size}{The size of labels.}
+
+\item{label_col}{Color for the labels.}
 
 \item{legend}{Logical; whether or not to include legend.}
 }

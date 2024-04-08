@@ -7,6 +7,7 @@
 #' @param cols Vector of colors to use.
 #' @param label Logical; whether or not to add the percentages as text albels in the plot. Irrelevant for tables.
 #' @param label_size The size of labels.
+#' @param label_col Color for the labels.
 #' @param legend Logical; whether or not to include legend.
 #' @export
 #' @examples
@@ -17,6 +18,7 @@ KG_percent_cells = function(seurat_object,
                             cols = NULL,
                             label = T,
                             label_size = 3,
+                            label_col = "black",
                             legend = T){
   require(gridExtra)
   require(ggplot2)
@@ -59,7 +61,7 @@ KG_percent_cells = function(seurat_object,
     if(label){
       p = p +
         ggplot2::geom_text(aes(x = 1, label = rev(Labels)),
-                           color = "white",
+                           color = label_col,
                            size = label_size,
                            position = ggplot2::position_stack(vjust = 0.5))
     }
@@ -81,7 +83,7 @@ KG_percent_cells = function(seurat_object,
                              x = 1.32),
                          position = ggplot2::position_stack(vjust = 0.5),
                          size = label_size,
-                         color = "white") +
+                         color = label_col) +
       ggplot2::theme_void() +
       ggplot2::annotate("rect", xmin = -Inf, xmax = 1.105,
                         ymin = 0, ymax = Inf, fill = "black", color = "black") +
@@ -127,7 +129,7 @@ KG_percent_cells = function(seurat_object,
         ggplot2::geom_text(data = df_for_plot, aes(label = paste0(Percentage, "%", sep = ""),
                                                    y = Position),
                            position = ggplot2::position_stack(),
-                           size = label_size, color = "black")
+                           size = label_size, color = label_col)
     }
 
   }
