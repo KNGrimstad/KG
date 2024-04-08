@@ -31,6 +31,8 @@ devtools::install("KNGrimstad/KG")
 
 * **KG_clone_tree** - Wrapper to make clone trees from V(D)J-seq data.
 
+* **KG_percent_cells** - Plots percentage of cells in each cluster.
+
 ## Data wrangling
 * **KG_remove_BCR** - Removes BCR genes from the dataset. 
 
@@ -38,9 +40,13 @@ devtools::install("KNGrimstad/KG")
 
 * **KG_filter_bcr** - Filters an AIRR data frame from V(D)J-seq for quality.
 
+* **KG_filter_pbmcs** - Plots expression for common PBMC genes so you can filter out the cells you want.
+
 * **KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
 
 * **KG_isotype_switch** - Converts Ig isotype to switch status (unswitched/switched).
+
+* **KG_get_trajectory** - Exracts the coordinates from monocle3-generated trajectories.
 
 ## Helpful wrappers
 * **KG_clones** - Wrapper to call clones in V(D)J-seq data.
