@@ -12,6 +12,8 @@
 #' @param stroke Size of border to data points. NOTE: when exportet as PDF, borders can alter the appearance of the plot. To avoid this, export externally as PNG file.
 #' @param legend Whether or not to plot the legend/key to the group identifier.
 #' @param cols A vector of colors to use for the shading of data points.
+#' @param trajectory_coords A vector containing coordinates for drawing trajectory lines.
+#' @param trajectory_col What color to use for the trajectory.
 #' @param pub_ready Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks.
 #' @export
 #' @examples
@@ -27,6 +29,8 @@ KG_dimplot = function(seurat_object,
                       stroke = 0.2,
                       legend = TRUE,
                       cols = NULL,
+                      trajectory_coords = NULL,
+                      trajectory_col = NULL,
                       pub_ready = FALSE) {
   require(Seurat)
   require(viridis)
@@ -41,6 +45,7 @@ KG_dimplot = function(seurat_object,
   group.by = group.by %||% 'ident'
   cells = cells %||% colnames(seurat_object)
 
+  # Extract cell embeddings
   a = data.frame(Embeddings(seurat_object[[reduction]])[cells, dims[1]],
                  Embeddings(seurat_object[[reduction]])[cells, dims[2]],
                  seurat_object[[group.by]][cells, ])
@@ -62,12 +67,20 @@ KG_dimplot = function(seurat_object,
     #labs(fill = legend_title) +
     scale_fill_manual(values = cols) +
     labs(x = names(a)[1], y = names(a)[2])
+
+  if(trajectory_coords){
+    p = p +
+      ggplot2::geom_segment(trajectory_coords, aes(x = source_dim1, xend = target_dim1,
+                                                   y = source_dim2, yend = target_dim2),
+                            color = trajectory_col, size = 0.5)
+  }
+
   if(pub_ready){
     p = p +
       # Set new axis lines, with arrows
       geom_segment(aes(x = min(a[,1]) - 0.25 , y = min(a[,2]) - 0.25,
-                             xend = min(a[,1]) + 2.5, yend = min(a[,2]) - 0.25),
-                         arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
+                       xend = min(a[,1]) + 2.5, yend = min(a[,2]) - 0.25),
+                   arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
       geom_segment(aes(x = min(a[,1]) - 0.25, y = min(a[,2]) - 0.25,
                        xend = min(a[,1]) - 0.25, yend = min(a[,2]) + 2.5),
                    arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
@@ -105,8 +118,8 @@ KG_dimplot = function(seurat_object,
 
     ## Calculate cluster centroids
     group_centers = b %>%
-      group_by(groups) %>%
-      summarize(center_x = mean(Dim1), center_y = mean(Dim2))
+      dplyr::group_by(groups) %>%
+      dplyr::summarize(center_x = mean(Dim1), center_y = mean(Dim2))
 
     ## Add labels to plot
     p = p + geom_text(data = group_centers, aes(x = center_x,

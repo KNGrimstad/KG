@@ -46,7 +46,8 @@ KG_project = function(seurat_object,
   anchors = Seurat::FindTransferAnchors(reference = ref,
                                         query = temp,
                                         dims = dims,
-                                        reference.reduction = reference.reduction)
+                                        reference.reduction = reference.reduction,
+                                        normalization.method = if(assay == "SCT") "")
 
   cat("Transferring data")
   predictions = Seurat::TransferData(anchorset = anchors,

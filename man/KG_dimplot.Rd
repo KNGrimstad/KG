@@ -16,6 +16,8 @@ KG_dimplot(
   stroke = 0.2,
   legend = TRUE,
   cols = NULL,
+  trajectory_coords = NULL,
+  trajectory_col = NULL,
   pub_ready = FALSE
 )
 }
@@ -41,6 +43,10 @@ KG_dimplot(
 \item{legend}{Whether or not to plot the legend/key to the group identifier.}
 
 \item{cols}{A vector of colors to use for the shading of data points.}
+
+\item{trajectory_coords}{A vector containing coordinates for drawing trajectory lines.}
+
+\item{trajectory_col}{What color to use for the trajectory.}
 
 \item{pub_ready}{Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks.}
 }

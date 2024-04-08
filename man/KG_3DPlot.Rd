@@ -14,7 +14,10 @@ KG_3DPlot(
   bg_col = "white",
   min.dist = 0.3,
   spread = 1,
-  group.by = NULL
+  group.by = NULL,
+  trajectory_coords = NULL,
+  trajectory_col = NULL,
+  lwd = 2
 )
 }
 \arguments{
@@ -37,6 +40,10 @@ KG_3DPlot(
 \item{spread}{Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.}
 
 \item{group.by}{Controls how cells should be grouped/colored. By default, uses the default identity of cells in the Seurat object.}
+
+\item{trajectory_coords}{A vector containing coordinates for drawing trajectory lines.}
+
+\item{trajectory_col}{What color to use for the trajectory.}
 }
 \description{
 This function computes and plots cells in three dimensions.
