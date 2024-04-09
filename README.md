@@ -10,7 +10,7 @@ Some of these functions are exceptionally base, while others are used to constru
 ## Installation
 Install the most recent version of this package: 
 ```r
-devtools::install("KNGrimstad/KG")
+devtools::install_github("KNGrimstad/KG")
 ```
 ---
 # Functions Currently Included in this Package
