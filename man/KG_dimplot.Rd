@@ -54,5 +54,5 @@ KG_dimplot(
 This function constructs a nice, clean dimplot from dimensionally reduced data points in a Seurat object.
 }
 \examples{
-KG_dimplto(B_cell_dataset)
+KG_dimplot(B_cell_dataset)
 }

@@ -17,7 +17,7 @@
 #' @param pub_ready Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks.
 #' @export
 #' @examples
-#' KG_dimplto(B_cell_dataset)
+#' KG_dimplot(B_cell_dataset)
 KG_dimplot = function(seurat_object,
                       cells = NULL,
                       reduction = NULL,
@@ -33,6 +33,7 @@ KG_dimplot = function(seurat_object,
                       trajectory_col = NULL,
                       pub_ready = FALSE) {
   require(Seurat)
+  require(SeuratObject)
   require(viridis)
   require(scales)
   require(colorspace)
@@ -40,14 +41,14 @@ KG_dimplot = function(seurat_object,
   require(grid)
 
   # Define reductions, identities, and cells
-  reduction = reduction %||% DefaultDimReduc(seurat_object)
-  seurat_object[['ident']] = factor(Idents(seurat_object))
+  reduction = reduction %||% SeuratObject::DefaultDimReduc(seurat_object)
+  seurat_object[['ident']] = factor(Seurat::Idents(seurat_object))
   group.by = group.by %||% 'ident'
   cells = cells %||% colnames(seurat_object)
 
   # Extract cell embeddings
-  a = data.frame(Embeddings(seurat_object[[reduction]])[cells, dims[1]],
-                 Embeddings(seurat_object[[reduction]])[cells, dims[2]],
+  a = data.frame(Seurat::Embeddings(seurat_object[[reduction]])[cells, dims[1]],
+                 Seurat::Embeddings(seurat_object[[reduction]])[cells, dims[2]],
                  seurat_object[[group.by]][cells, ])
   a[, 3] = factor(a[, 3])
   dims = paste0(Key(seurat_object[[reduction]]), dims)
@@ -61,14 +62,14 @@ KG_dimplot = function(seurat_object,
     cols = scales::hue_pal()(length(levels(seurat_object[[group.by, drop = T]])))
   }
   names(a)[3] = "groups"
-  p = ggplot(a, aes(x = a[,1], y = a[,2], fill = groups)) +
-    geom_point(shape = 21, size = pt.size, stroke = stroke) +
-    theme_classic() +
+  p = ggplot2::ggplot(a, aes(x = a[,1], y = a[,2], fill = groups)) +
+    ggplot2::geom_point(shape = 21, size = pt.size, stroke = stroke) +
+    ggplot2::theme_classic() +
     #labs(fill = legend_title) +
-    scale_fill_manual(values = cols) +
-    labs(x = names(a)[1], y = names(a)[2])
+    ggplot2::scale_fill_manual(values = cols) +
+    ggplot2::labs(x = names(a)[1], y = names(a)[2])
 
-  if(trajectory_coords){
+  if(!is.null(trajectory_coords)){
     p = p +
       ggplot2::geom_segment(trajectory_coords, aes(x = source_dim1, xend = target_dim1,
                                                    y = source_dim2, yend = target_dim2),
@@ -78,37 +79,37 @@ KG_dimplot = function(seurat_object,
   if(pub_ready){
     p = p +
       # Set new axis lines, with arrows
-      geom_segment(aes(x = min(a[,1]) - 0.25 , y = min(a[,2]) - 0.25,
-                       xend = min(a[,1]) + 2.5, yend = min(a[,2]) - 0.25),
-                   arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
-      geom_segment(aes(x = min(a[,1]) - 0.25, y = min(a[,2]) - 0.25,
-                       xend = min(a[,1]) - 0.25, yend = min(a[,2]) + 2.5),
-                   arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
+      ggplot2::geom_segment(aes(x = min(a[,1]) - 0.25 , y = min(a[,2]) - 0.25,
+                                xend = min(a[,1]) + 2.5, yend = min(a[,2]) - 0.25),
+                            arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
+      ggplot2::geom_segment(aes(x = min(a[,1]) - 0.25, y = min(a[,2]) - 0.25,
+                                xend = min(a[,1]) - 0.25, yend = min(a[,2]) + 2.5),
+                            arrow = grid::arrow(length = unit(.3, 'cm'), type = "closed")) +
 
       # Update theme to set text size and remove the original axis lines
-      theme(plot.title = element_text(hjust = 0.5, size = 18),
-            legend.title = element_text(size = 14),
-            legend.text = element_text(size = 11),
-            axis.title.x = element_text(hjust = 0.06, vjust = 5, size = 14),
-            axis.title.y = element_text(hjust = 0.06, vjust = -4, angle = 90, size = 14),
-            axis.text = element_blank(),
-            axis.ticks = element_blank(),
-            axis.line = element_blank(),
-            # Since manually setting axis lines with geom_segment changes the margins of the plot,
-            # reset the margins to visually equal to when pub_ready = FALSE
-            plot.margin = margin(12, 12, 12, 12))
+      ggplot2::theme(plot.title = element_text(hjust = 0.5, size = 18),
+                     legend.title = element_text(size = 14),
+                     legend.text = element_text(size = 11),
+                     axis.title.x = element_text(hjust = 0.06, vjust = 5, size = 14),
+                     axis.title.y = element_text(hjust = 0.06, vjust = -4, angle = 90, size = 14),
+                     axis.text = element_blank(),
+                     axis.ticks = element_blank(),
+                     axis.line = element_blank(),
+                     # Since manually setting axis lines with geom_segment changes the margins of the plot,
+                     # reset the margins to visually equal to when pub_ready = FALSE
+                     plot.margin = margin(12, 12, 12, 12))
   } else{
-    p = p + theme(plot.title = element_text(hjust = 0.5, size = 18),
-                  legend.title = element_text(size = 14),
-                  legend.text = element_text(size = 11),
-                  axis.title.x = element_text(hjust = 0.5, size = 14),
-                  axis.title.y = element_text(hjust = 0.5, angle = 90, size = 14),
-                  axis.text = element_text(size = 10))
+    p = p + ggplot2::theme(plot.title = element_text(hjust = 0.5, size = 18),
+                           legend.title = element_text(size = 14),
+                           legend.text = element_text(size = 11),
+                           axis.title.x = element_text(hjust = 0.5, size = 14),
+                           axis.title.y = element_text(hjust = 0.5, angle = 90, size = 14),
+                           axis.text = element_text(size = 10))
   }
 
   # Legend
   if(!legend) {
-    p = p + theme(legend.position = "none")
+    p = p + ggplot2::theme(legend.position = "none")
   }
 
   # Labels
@@ -122,10 +123,12 @@ KG_dimplot = function(seurat_object,
       dplyr::summarize(center_x = mean(Dim1), center_y = mean(Dim2))
 
     ## Add labels to plot
-    p = p + geom_text(data = group_centers, aes(x = center_x,
-                                                y = center_y,
-                                                label = groups,
-                                                family = "Arial"), size = label.size)
+    p = p + ggplot2::geom_text(data = group_centers,
+                               aes(x = center_x,
+                                   y = center_y,
+                                   label = groups,
+                                   family = "Arial"),
+                               size = label.size)
   }
 
   return(p)
