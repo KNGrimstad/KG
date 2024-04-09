@@ -51,7 +51,7 @@ KG_percent_cells = function(seurat_object,
 
     if(legend){
       p = p +
-        theme(legend.position = "right",
+        ggplot2::theme(legend.position = "right",
               plot.title = element_text(hjust = 0.5))
     } else {
       p = p +
