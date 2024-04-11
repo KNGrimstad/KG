@@ -18,6 +18,7 @@ KG_dimplot(
   cols = NULL,
   trajectory_coords = NULL,
   trajectory_col = NULL,
+  lwd = 0.5,
   pub_ready = FALSE
 )
 }
