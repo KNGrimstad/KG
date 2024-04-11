@@ -34,6 +34,7 @@ KG_dimplot = function(seurat_object,
                       pub_ready = FALSE) {
   require(Seurat)
   require(SeuratObject)
+  require(ggplot2)
   require(viridis)
   require(scales)
   require(colorspace)
@@ -70,10 +71,12 @@ KG_dimplot = function(seurat_object,
     ggplot2::labs(x = names(a)[1], y = names(a)[2])
 
   if(!is.null(trajectory_coords)){
+    trajectory_col = trajectory_col %||% "black"
     p = p +
-      ggplot2::geom_segment(trajectory_coords, aes(x = source_dim1, xend = target_dim1,
-                                                   y = source_dim2, yend = target_dim2),
-                            color = trajectory_col, size = 0.5)
+      ggplot2::geom_segment(data = trajectory_coords, aes(x = source_dim1, xend = target_dim1,
+                                                          y = source_dim2, yend = target_dim2),
+                            color = trajectory_col, size = 0.5,
+                            inherit.aes = FALSE)
   }
 
   if(pub_ready){
