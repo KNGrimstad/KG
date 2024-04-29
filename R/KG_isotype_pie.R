@@ -6,6 +6,7 @@
 #' @param cluster Name of cluster(s) for which to generate pie charts
 #' @param combine Whether or not plots should be combined into a single or separate plots
 #' @param ncol The number of columns for the layout of the plot
+#' @param text Logical; whether or not to print the percentage values for each slice.
 #' @export
 #' @examples
 #' KG_isotype_pie(B_cell_dataset, cluster = "0")
@@ -13,7 +14,8 @@ KG_isotype_pie = function(seurat_object,
                           MGA_only = TRUE,
                           cluster = NULL,
                           combine = TRUE,
-                          ncol = 2) {
+                          ncol = 2,
+                          text = TRUE) {
   require(gridExtra)
   require(ggplot2)
 
@@ -121,14 +123,16 @@ KG_isotype_pie = function(seurat_object,
                                        "IgA" = "tan1",
                                        "IgE" = "lightgreen"),
                             breaks = c("IgM", "IgD", "IgG", "IgA", "IgE")) +
-          geom_text(aes(y = Position,
-                        label = Labels),
-                    color = "white", size = 5) +
           theme_void() +
           labs(title = paste("Cluster", percent_df$Cluster[i])) +
           theme(legend.position = "right",
                 plot.title = element_text(hjust = 0.5))
-
+        if(text){
+          p = p +
+            geom_text(aes(y = Position,
+                          label = Labels),
+                      color = "white", size = 5)
+        }
         plot_list[[i]] = p
       }
     }

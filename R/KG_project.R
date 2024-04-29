@@ -33,7 +33,7 @@ KG_project = function(seurat_object,
   Seurat::DefaultAssay(temp) = assay
 
   # Get reference model
-  cat("Calculating components")
+  cat("Calculating components\n")
   ref = Seurat::RunUMAP(reference,
                         dims = dims,
                         return.model = T,
@@ -42,21 +42,21 @@ KG_project = function(seurat_object,
                         spread = spread,
                         assay = reference.assay)
   # Project data
-  cat("Finding transfer anchors")
+  cat("Finding transfer anchors\n")
   anchors = Seurat::FindTransferAnchors(reference = ref,
                                         query = temp,
                                         dims = dims,
                                         reference.reduction = reference.reduction,
-                                        normalization.method = if(assay == "SCT") "")
+                                        normalization.method = ifelse(assay == "SCT", "SCT", "LogNormalize"))
 
-  cat("Transferring data")
+  cat("Transferring data\n")
   predictions = Seurat::TransferData(anchorset = anchors,
                                      refdata = ref[[reference.idents, drop = TRUE]],
                                      dims = dims)
 
   temp = Seurat::AddMetaData(temp, metadata = predictions)
 
-  cat("Mapping query")
+  cat("Mapping query\n")
   temp = Seurat::MapQuery(anchorset = anchors,
                           reference = ref,
                           query = temp,
@@ -64,5 +64,6 @@ KG_project = function(seurat_object,
                           reference.reduction = reduction,
                            reduction.model = "umap")
   Idents(temp) = temp$predicted.celltype
+  cat("Done\n")
   return(temp)
 }

@@ -9,7 +9,8 @@ KG_isotype_pie(
   MGA_only = TRUE,
   cluster = NULL,
   combine = TRUE,
-  ncol = 2
+  ncol = 2,
+  text = TRUE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ KG_isotype_pie(
 \item{combine}{Whether or not plots should be combined into a single or separate plots}
 
 \item{ncol}{The number of columns for the layout of the plot}
+
+\item{text}{Logical; whether or not to print the percentage values for each slice.}
 }
 \description{
 This function plots the distribution of Ig isotypes for clusters in a Seurat object.
