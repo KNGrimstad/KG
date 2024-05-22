@@ -6,7 +6,7 @@
 \usage{
 KG_clone_tree(
   clones,
-  tips = "c_call",
+  tips = NULL,
   tip_palette = NULL,
   build = "pml",
   tipsize = 7,
@@ -21,7 +21,7 @@ KG_clone_tree(
 \arguments{
 \item{clones}{An airrClone object from dowser::formatClones.}
 
-\item{tips}{The same as in plotTrees.}
+\item{tips}{The same as in plotTrees. Note: Does not accept factors.}
 
 \item{tip_palette}{A vector of colors and names specifying the colors for each state.}
 
