@@ -48,6 +48,8 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_get_trajectory** - Exracts the coordinates from monocle3-generated trajectories.
 
+* **KG_filter_vdj** - Filter AIRR format files from V(D)J-seq for downstream BCR analyses.
+
 ## Helpful wrappers
 * **KG_clones** - Wrapper to call clones in V(D)J-seq data.
 
