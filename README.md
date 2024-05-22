@@ -63,6 +63,8 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_project_3D** - Same as above, but generates a 3D dimension plot. 
 
+* **KG_prep_clones** - Streamlines base clonotype processing from the Immcantation framework.
+
 ## Misc. helpers
 * **KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
 

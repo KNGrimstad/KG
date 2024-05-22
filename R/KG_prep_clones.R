@@ -19,7 +19,6 @@ KG_prep_clones = function(vdj_data,
                           fields = NULL){
   require(shazam)
   require(dowser)
-  require(alakazam)
   require(scoper)
   require(dplyr)
   require(ggplot2)
