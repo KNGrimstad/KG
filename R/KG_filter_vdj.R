@@ -1,5 +1,6 @@
 #' Filter V(D)J-seq data.
 #'
+#' This function streamlines the filtering process of V(D)J-seq data for in-depth BCR analysis.
 #' @param vdj_data An AIRR data object, or a list of AIRR data objects.
 #' @param multiple_samples Logical; whether or not vdj_data consists of a single or multiple objects.
 #' @param remove_duplicate_IGH Logical; whhether heavy chain duplicates should be removed.
