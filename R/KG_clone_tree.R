@@ -2,7 +2,7 @@
 #'
 #' This function uses the dowser and ggtree packages to construct custom clonal trees.
 #' @param clones An airrClone object from dowser::formatClones.
-#' @param tips The same as in plotTrees.
+#' @param tips The same as in plotTrees. Note: Does not accept factors.
 #' @param tip_palette A vector of colors and names specifying the colors for each state.
 #' @param build The program used to construct trees (pratchet, pml, dnappars, dnaml, igphyml).
 #' @param tipsize The size of tree tips.
@@ -16,7 +16,7 @@
 #' @examples
 #' KG_clone_tree(B_cell_clones)
 KG_clone_tree = function(clones,
-                         tips = "c_call",
+                         tips = NULL,
                          tip_palette = NULL,
                          build = "pml",
                          tipsize = 7,
@@ -60,6 +60,8 @@ KG_clone_tree = function(clones,
         "IGHE"    ="lightgreen",
         "IGHA2"   ="tan3",
         "Germline"="lightgrey")
+    } else{
+      tip_palette = NULL
     }
   }
 
@@ -88,7 +90,7 @@ KG_clone_tree = function(clones,
         theme_tree2() +
         xlim_tree(x_max) +
         scale_x_continuous(breaks = breaks) +
-        ggtitle(paste("Clonotype ", trees[[5]][[i]]$name, sep = "")) +
+        ggtitle(paste("Clonotype ", clone_trees[[i]]$labels$title, sep = "")) +
         xlab("SHM frequency") +
         theme(axis.title.x = element_text(hjust = 0.5))
     } else{
