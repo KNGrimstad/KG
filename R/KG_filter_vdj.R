@@ -9,6 +9,7 @@
 #' @param remove_no_j Logical; whether sequences with no annotated J gene should be removed.
 #' @param remove_no_v Logical; whether sequences with no annotated V gene should be removed
 #' @param productive Logical; whether only productively recombined sequuences should be retained.
+#' @param only_paired Logical; whether to only keep sequences that have a matching pair of heavy and light chains.
 #' @export
 #' @examples
 #' KG_filter_vdj(vdj_dataset)
@@ -21,7 +22,8 @@ KG_filter_vdj = function(vdj_data,
                          remove_no_c = TRUE,
                          remove_no_j = TRUE,
                          remove_no_v = TRUE,
-                         productive = TRUE){
+                         productive = TRUE,
+                         only_paired = TRUE){
   require(dplyr)
 
   if(multiple_samples){
@@ -52,6 +54,14 @@ KG_filter_vdj = function(vdj_data,
         multi_igl_cells = names(multi_igl)[multi_igl > 1]
         vdj_data[[i]] = dplyr::filter(vdj_data[[i]], !cell_id %in% multi_igl_cells)
       }
+
+      # Remove single heavy/light chain sequences
+      if(only_paired){
+        heavy_cells = dplyr::filter(vdj_data[[i]], locus == "IGH")$cell_id
+        light_cells = dplyr::filter(vdj_data[[i]], locus == "IGL" | locus == "IGK")$cell_id
+        paired = intersect(heavy_cells, light_cells)
+        vdj_data[[i]] = dplyr::filter(vdj_data[[i]], cell_id %in% paired)
+      }
     }
   } else{
 
@@ -79,6 +89,14 @@ KG_filter_vdj = function(vdj_data,
       multi_igl = table(dplyr::filter(vdj_data, locus == "IGL")$cell_id)
       multi_igl_cells = names(multi_igl)[multi_igl > 1]
       vdj_data = dplyr::filter(vdj_data, !cell_id %in% multi_igl_cells)
+    }
+
+    # Remove single heavy/light chain sequences
+    if(only_paired){
+      heavy_cells = dplyr::filter(vdj_data, locus == "IGH")$cell_id
+      light_cells = dplyr::filter(vdj_data, locus == "IGL" | locus == "IGK")$cell_id
+      paired = intersect(heavy_cells, light_cells)
+      vdj_data = dplyr::filter(vdj_data, cell_id %in% paired)
     }
     gc()
   }
