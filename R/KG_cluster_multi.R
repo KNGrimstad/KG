@@ -20,12 +20,23 @@ KG_cluster_multi = function(seurat_object,
                             assay = "RNA",
                             dims = 1:35,
                             reduction = "pca"){
-  require(ggtree)
-  require(clustree)
-  require(Seurat)
-  require(SeuratObject)
 
-  Seurat::DefaultAssay(seurat_object) = assay
+  suppressPackageStartupMessages(require(ggtree),
+                                 require(clustree),
+                                 require(Seurat),
+                                 require(SeuratObject),
+                                 require(progress))
+
+  if(verbose){
+    pb = progress::progress_bar$new(format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta",
+                                    total = length(resolutions),
+                                    show_after = 0,
+                                    complete = "+",
+                                    incomplete = "-",
+                                    current = ">",
+                                    clear = FALSE,
+                                    width = 100)
+  }
 
   # Remove previous clustering if data is integrated
   if(nrow(unique(seurat_object[["orig.ident"]])) >1){
@@ -38,7 +49,9 @@ KG_cluster_multi = function(seurat_object,
     seurat_object = SeuratObject::UpdateSeuratObject(seurat_object)
   }
   # Perform clustering
-  cat("Finding neighbors\n")
+  if(verbose){
+    cat("Finding neighbors\n")
+  }
   seurat_object = Seurat::FindNeighbors(seurat_object,
                                         assay = assay,
                                         reduction = reduction,
@@ -46,19 +59,29 @@ KG_cluster_multi = function(seurat_object,
                                         verbose = FALSE)
 
   resolutions = seq.int(min.res, max.res, increment)
-  cat("Finding clusters\n")
+  if(verbose){
+    cat("Finding clusters\n")
+  }
   for (i in resolutions){
+    if(verbose){
+      pb$tick()
+    }
     seurat_object = Seurat::FindClusters(seurat_object, resolution = i, verbose = FALSE)
   }
-
-  cat("Constructing cluster tree\n")
+  if(verbose){
+    cat("Constructing cluster tree\n")
+  }
   t = clustree::clustree(seurat_object@meta.data, prefix = paste(assay, "_snn_res.", sep = ""))
   plot(t)
   select_resolution = readline(prompt = "Select cluster resolution: ")
 
-  cat(paste("Finding clusters at a resolution of\n", select_resolution, sep = ""))
+  if(verbose){
+    cat(paste("Finding clusters at a resolution of ", select_resolution, "\n", sep = ""))
+  }
   seurat_object = Seurat::FindClusters(seurat_object, resolution = as.numeric(select_resolution), verbose = FALSE)
 
-  cat("Done\n")
+  if(verbose){
+    cat("Done\n")
+  }
   return(seurat_object)
 }
