@@ -16,11 +16,12 @@ KG_hc = function(seurat_object,
                  title = NULL,
                  ident_col = "seurat_clusters",
                  xlim = c(NA, 200)){
-
-  require(Seurat)
-  require(SeuratObject)
-  require(ggtree)
-  require(ggplot2)
+  suppressPackageStartupMessages({
+    require(Seurat)
+    require(SeuratObject)
+    require(ggtree)
+    require(ggplot2)
+  })
 
   temp = seurat_object
   Seurat::Idents(temp) = temp[[ident_col, drop = TRUE]]
@@ -40,15 +41,15 @@ KG_hc = function(seurat_object,
 
   if(is.null(title)){
     dendro = ggtree::ggtree(phytree) +
-      geom_tiplab() +
-      theme_tree() +
-      xlim(xlim)
+      ggtree::geom_tiplab() +
+      ggtree::theme_tree() +
+      ggtree::xlim(xlim)
   } else {
     dendro = ggtree::ggtree(phytree) +
-      geom_tiplab() +
-      theme_tree() +
-      xlim(xlim) +
-      ggtitle(title)
+      ggtree::geom_tiplab() +
+      ggtree::theme_tree() +
+      ggtree::xlim(xlim) +
+      ggplot2::ggtitle(title)
   }
   return(dendro)
 }

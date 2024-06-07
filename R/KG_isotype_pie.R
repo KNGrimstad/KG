@@ -16,8 +16,10 @@ KG_isotype_pie = function(seurat_object,
                           combine = TRUE,
                           ncol = 2,
                           text = TRUE) {
-  suppressPackageStartupMessages(c(require(gridExtra),
-                                   require(ggplot2)))
+
+  suppressPackageStartupMessages({
+    require(gridExtra)
+    require(ggplot2)})
 
   if(is.null(cluster)) {
     stop("No cluster specified")
@@ -60,20 +62,20 @@ KG_isotype_pie = function(seurat_object,
         # Calculate the cumulative percentages for label placement
         df_for_plot$Position = cumsum(as.integer(df_for_plot$Value)) - 0.5 * as.integer(df_for_plot$Value)
 
-        p = ggplot2::ggplot(df_for_plot, aes(x = "", y = Value, fill = Isotype)) +
+        p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = "", y = Value, fill = Isotype)) +
           ggplot2::geom_bar(width = 1, stat = "identity", colour = "black", stroke = 0.5) +
-          coord_polar("y", start = 0) +
+          ggplot2::coord_polar("y", start = 0) +
           ggplot2::scale_fill_manual(values = c("IgM" = "cornflowerblue",
                                                 "IgG" = "brown4",
                                                 "IgA" = "tan1"),
                                      breaks = c("IgM", "IgG", "IgA")) +
-          ggplot2::geom_text(aes(y = Position,
+          ggplot2::geom_text(ggplot2::aes(y = Position,
                                  label = Labels),
                              color = "white", size = 5) +
           ggplot2::theme_void() +
           ggplot2::labs(title = paste("Cluster", percent_df$Cluster[i])) +
           ggplot2::theme(legend.position = "right",
-                         plot.title = element_text(hjust = 0.5))
+                         plot.title = ggplot2::element_text(hjust = 0.5))
 
         plot_list[[i]] = p
       }
@@ -116,7 +118,7 @@ KG_isotype_pie = function(seurat_object,
         # Calculate the cumulative percentages for label placement
         df_for_plot$Position = cumsum(as.integer(df_for_plot$Value)) - 0.5 * as.integer(df_for_plot$Value)
 
-        p = ggplot2::ggplot(df_for_plot, aes(x = "", y = Value, fill = Isotype)) +
+        p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = "", y = Value, fill = Isotype)) +
           ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
           ggplot2::coord_polar("y", start = 0) +
           ggplot2::scale_fill_manual(values = c("IgM" = "cornflowerblue",
@@ -128,12 +130,12 @@ KG_isotype_pie = function(seurat_object,
           ggplot2::theme_void() +
           ggplot2::labs(title = paste("Cluster", percent_df$Cluster[i])) +
           ggplot2::theme(legend.position = "right",
-                         plot.title = element_text(hjust = 0.5))
+                         plot.title = ggplot2::element_text(hjust = 0.5))
         if(text){
           p = p +
-            geom_text(aes(y = Position,
-                          label = Labels),
-                      color = "white", size = 5)
+            ggplot2::geom_text(ggplot2::aes(y = Position,
+                                   label = Labels),
+                               color = "white", size = 5)
         }
         plot_list[[i]] = p
       }

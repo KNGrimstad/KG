@@ -26,8 +26,11 @@ KG_project = function(seurat_object,
                       reduction.model = "umap",
                       reference.reduction = "pca",
                       reference.idents = NULL){
-  require(Seurat)
-  require(ggplot2)
+
+  suppressPackageStartupMessages({
+    require(Seurat)
+    require(ggplot2)
+  })
 
   temp = seurat_object
   Seurat::DefaultAssay(temp) = assay
@@ -63,7 +66,7 @@ KG_project = function(seurat_object,
                           refdata = list(celltype = reference.idents),
                           reference.reduction = reduction,
                            reduction.model = "umap")
-  Idents(temp) = temp$predicted.celltype
+  Seurat::Idents(temp) = temp$predicted.celltype
   cat("Done\n")
   return(temp)
 }

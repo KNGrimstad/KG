@@ -49,6 +49,8 @@ KG_dimplot(
 
 \item{trajectory_col}{What color to use for the trajectory.}
 
+\item{lwd}{Line width for trajectory.}
+
 \item{pub_ready}{Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks.}
 }
 \description{

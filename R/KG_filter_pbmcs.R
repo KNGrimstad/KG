@@ -11,9 +11,10 @@ KG_filter_pbmcs = function(seurat_object,
                            features = c("CD19", "CD3E", "CD14"),
                            scale.factor = 10000){
 
-  suppressPackageStartupMessages(c(require(Seurat),
-                                   require(patchwork),
-                                   require(base)))
+  suppressPackageStartupMessages({
+    require(Seurat)
+    require(patchwork)
+    require(base)})
 
   plots = list()
   plots[["Dimplot"]] = Seurat::DimPlot(seurat_object, pt.size = 2, label = T, label.size = 6)

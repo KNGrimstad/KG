@@ -17,8 +17,9 @@ KG_subtype_pie = function(seurat_object,
                            combine = TRUE,
                            ncol = 2) {
 
-  suppressPackageStartupMessages(c(require(gridExtra),
-                                   require(ggplot2)))
+  suppressPackageStartupMessages({
+    require(gridExtra)
+    require(ggplot2)})
 
   if(is.null(cluster)) {
     stop("No cluster specified")
@@ -68,21 +69,21 @@ KG_subtype_pie = function(seurat_object,
     for(i in seq_len(nrow(percent_df))) {
       if(subtype == "IgG"){
         df_for_plot = data.frame(
-          Subtype = factor(c("IgG1", "IgG2", "IgG3", "IgG4"),
+          "Subtype" = factor(c("IgG1", "IgG2", "IgG3", "IgG4"),
                            levels = c("IgG4", "IgG3", "IgG2", "IgG1")),
-          Value = as.integer(c(percent_df$IgG1[i], percent_df$IgG2[i],
+          "Value" = as.integer(c(percent_df$IgG1[i], percent_df$IgG2[i],
                                percent_df$IgG3[i], percent_df$IgG4[i])),
-          Labels = paste(c(percent_df$IgG1[i], percent_df$IgG2[i],
+          "Labels" = paste(c(percent_df$IgG1[i], percent_df$IgG2[i],
                            percent_df$IgG3[i], percent_df$IgG4[i]),
                          "%", sep = "")
         )
 
       } else {
         df_for_plot = data.frame(
-          Subtype = factor(c("IgA1", "IgA2"),
+          "Subtype" = factor(c("IgA1", "IgA2"),
                            levels = c("IgA2", "IgA1")),
-          Value = as.integer(c(percent_df$IgA1[i], percent_df$IgA2[i])),
-          Labels = paste(c(percent_df$IgA1[i], percent_df$IgA2[i])),
+          "Value" = as.integer(c(percent_df$IgA1[i], percent_df$IgA2[i])),
+          "Labels" = paste(c(percent_df$IgA1[i], percent_df$IgA2[i])),
           "%", sep = "")
       }
 
@@ -90,7 +91,7 @@ KG_subtype_pie = function(seurat_object,
       df_for_plot$Position = cumsum(as.integer(df_for_plot$Value)) - 0.5 * as.integer(df_for_plot$Value)
 
       if(subtype == "IgG"){
-        p = ggplot2::ggplot(df_for_plot, aes(x = "", y = Value, fill = Subtype)) +
+        p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = "", y = Value, fill = Subtype)) +
           ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
           ggplot2::coord_polar("y", start = 0) +
           ggplot2::scale_fill_manual(values = c("IgG1" = "brown4",
@@ -102,11 +103,11 @@ KG_subtype_pie = function(seurat_object,
           ggplot2::theme_void() +
           ggplot2::labs(title = paste("Cluster", percent_df$Cluster[i])) +
           ggplot2::theme(legend.position = "right",
-                         plot.title = element_text(hjust = 0.5))
+                         plot.title = ggplot2::element_text(hjust = 0.5))
 
         plot_list[[i]] = p
       } else {
-        p = ggplot2::ggplot(df_for_plot, aes(x = "", y = Value, fill = Subtype)) +
+        p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = "", y = Value, fill = Subtype)) +
           ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
           ggplot2::coord_polar("y", start = 0) +
           ggplot2::scale_fill_manual(values = c("IgA1" = "tan1",
@@ -116,7 +117,7 @@ KG_subtype_pie = function(seurat_object,
           ggplot2::theme_void() +
           ggplot2::labs(title = paste("Cluster", percent_df$Cluster[i])) +
           ggplot2::theme(legend.position = "right",
-                         plot.title = element_text(hjust = 0.5))
+                         plot.title = ggplot2::element_text(hjust = 0.5))
 
         plot_list[[i]] = p
       }

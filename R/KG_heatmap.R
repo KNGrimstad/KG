@@ -35,10 +35,11 @@ KG_heatmap = function(seurat_object,
                       split_column_at = NULL,
                       raster = FALSE) {
 
-  suppressPackageStartupMessages(c(require(ComplexHeatmap),
-                                   require(scales),
-                                   require(circlize),
-                                   require(Seurat)))
+  suppressPackageStartupMessages({require(ComplexHeatmap)
+    require(scales)
+    require(circlize)
+    require(Seurat)
+    require(grid)})
 
   # Define the color function
   col_fun = circlize::colorRamp2(breaks = c(-2, 0, 2), colors = cols)
@@ -52,9 +53,9 @@ KG_heatmap = function(seurat_object,
   avg_matrix = t(scale(t(as.matrix(Seurat::AverageExpression(seurat_object, features = genes)[[assay]]))))
 
   # Annotations for clusters
-  annotations_df = data.frame(factor(levels(Idents(seurat_object))))
+  annotations_df = data.frame(factor(levels(Seurat::Idents(seurat_object))))
   names(annotations_df) = "Cluster"
-  rownames(annotations_df) = levels(Idents(seurat_object))
+  rownames(annotations_df) = levels(Seurat::Idents(seurat_object))
 
   # Assign colors to the clusters if not specified
   if (is.null(group_bar_fill_cols)) {
@@ -68,7 +69,7 @@ KG_heatmap = function(seurat_object,
                          which = "col",
                          show_annotation_name = FALSE,
                          border = TRUE,
-                         gp = gpar(col = "black"),
+                         gp = grid::gpar(col = "black"),
                          show_legend = FALSE)
 
   # Dynamic font size
@@ -79,8 +80,8 @@ KG_heatmap = function(seurat_object,
 
                # Overall layout
                border = TRUE,
-               border_gp = gpar(col = "black", lty = 1, lwd = 1),
-               rect_gp = gpar(col = "black", lwd = 1),
+               border_gp = grid::gpar(col = "black", lty = 1, lwd = 1),
+               rect_gp = grid::gpar(col = "black", lwd = 1),
                col = col_fun,
                use_raster = raster,
 
@@ -105,7 +106,7 @@ KG_heatmap = function(seurat_object,
                # Legend
                name = "Average\nExpression",
                heatmap_legend_param = list(at = c(-2, 2),
-                                           tick_length = unit(0, "cm"),
+                                           tick_length = grid::unit(0, "cm"),
                                            labels = c("Low", "High")),
 
                # Annotations
@@ -115,8 +116,8 @@ KG_heatmap = function(seurat_object,
 
   # Draw the heatmap
   leg = ComplexHeatmap::Legend(col_fun = col_fun, title = "Average\nExpression",
-                               legend_height = unit(4, "cm"),
-                               grid_width = unit(1, "cm"))
+                               legend_height = grid::unit(4, "cm"),
+                               grid_width = grid::unit(1, "cm"))
 
   ComplexHeatmap::draw(ht, heatmap_legend_side = "right", annotation_legend_side = "right")
 }

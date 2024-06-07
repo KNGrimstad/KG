@@ -13,6 +13,7 @@
 #' @param group.by Controls how cells should be grouped/colored. By default, uses the default identity of cells in the Seurat object.
 #' @param trajectory_coords A vector containing coordinates for drawing trajectory lines.
 #' @param trajectory_col What color to use for the trajectory.
+#' @param lwd Line width for trajectory.
 #' @export
 #' @examples
 #' KG_3DPlot(B_cell_dataset)
@@ -30,11 +31,12 @@ KG_3DPlot = function(seurat_object,
                      trajectory_col = NULL,
                      lwd = 2){
 
-  suppressPackageStartupMessages(c(require(plotly),
-                                 require(scales),
-                                 require(KernSmooth),
-                                 require(Seurat),
-                                 require(dplyr)))
+  suppressPackageStartupMessages({
+    require(plotly)
+    require(scales)
+    require(KernSmooth)
+    require(Seurat)
+    require(dplyr)})
 
   # Calculate UMAP for three components
   if (!is.null(group.by)){
@@ -54,7 +56,7 @@ KG_3DPlot = function(seurat_object,
   df = data.frame(umap1 = temp@reductions$umap@cell.embeddings[, 1],
                   umap2 = temp@reductions$umap@cell.embeddings[, 2],
                   umap3 = temp@reductions$umap@cell.embeddings[, 3],
-                  cell = Idents(temp))
+                  cell = Seurat::Idents(temp))
 
   # Select color palette
   if(is.null(cols)){

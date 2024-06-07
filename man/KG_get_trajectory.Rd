@@ -12,18 +12,6 @@ KG_get_trajectory(monocle_object, reduction = "UMAP", is_3D = FALSE)
 \item{reduction}{The dimensionality reduction to use.}
 
 \item{is_3D}{Whether trajectory has been drawn for a 3D dimension plot.}
-
-\item{spread}{Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.}
-
-\item{bg_col}{The background color. Currently not supported.}
-
-\item{file}{The file name to use for the GIF.}
-
-\item{fps}{Frames per secund; controls the speed at which the plot will rotate.}
-
-\item{trajectory_coords}{A data frame with coordinates for plotting a trajectory.}
-
-\item{trajectory_col}{The color for the trajectory, if coordinates are provided.}
 }
 \description{
 This function extracts all corrdinates for a trajectory created in monocle3. .

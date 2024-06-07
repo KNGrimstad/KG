@@ -34,8 +34,11 @@ KG_project_3D = function(seurat_object,
                          pt.size = 5,
                          cols = NULL,
                          bg_col = "white"){
-  require(Seurat)
-  require(plotly)
+
+  suppressPackageStartupMessages({
+    require(Seurat)
+    require(plotly)
+  })
 
   temp = seurat_object
   Seurat::DefaultAssay(temp) = assay
@@ -66,13 +69,14 @@ KG_project_3D = function(seurat_object,
   Seurat::Idents(temp) = temp$predicted.celltype
 
   # Plot 3D
-  df = data.frame(umap1 = temp@reductions$ref.umap@cell.embeddings[,
-                                                                   1], umap2 = temp@reductions$ref.umap@cell.embeddings[, 2],
-                  umap3 = temp@reductions$ref.umap@cell.embeddings[, 3], cell = Idents(temp))
+  df = data.frame(umap1 = temp@reductions$ref.umap@cell.embeddings[,1],
+                  umap2 = temp@reductions$ref.umap@cell.embeddings[, 2],
+                  umap3 = temp@reductions$ref.umap@cell.embeddings[, 3],
+                  cell = Seurat::Idents(temp))
 
   # Select color palette
   if(is.null(cols)){
-    cols = hue_pal()(length(levels(df$cell)))
+    cols = scales::hue_pal()(length(levels(df$cell)))
   }
 
   # Plot in 3D
@@ -82,10 +86,10 @@ KG_project_3D = function(seurat_object,
                   color = ~cell,
                   marker = list(size = pt.size),
                   colors = cols) %>%
-    add_markers() %>%
-    layout(scene = list(xaxis = list(title = "UMAP_1"),
-                        yaxis = list(title = "UMAP_2"),
-                        zaxis = list(title = "UMAP_3"))) %>%
-    layout(plot_bgcolor = bg_col) %>%
-    layout(paper_bgcolor = bg_col)
+    plotly::add_markers() %>%
+    plotly::layout(scene = list(xaxis = list(title = "UMAP_1"),
+                                yaxis = list(title = "UMAP_2"),
+                                zaxis = list(title = "UMAP_3"))) %>%
+    plotly::layout(plot_bgcolor = bg_col) %>%
+    plotly::layout(paper_bgcolor = bg_col)
 }

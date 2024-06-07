@@ -27,7 +27,7 @@ KG_integrate_CCA(
 
 \item{scale_data}{Logical, whether or not to scale the data following integration.}
 
-\item{new_name}{The name to give to the integrated assay.}
+\item{new.name}{The name to give to the integrated assay.}
 }
 \description{
 A function for streamlining integration of Seurat objects with Seurat's CCA model.

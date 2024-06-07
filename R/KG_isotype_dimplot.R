@@ -37,12 +37,12 @@ KG_isotype_dimplot = function(seurat_object,
                               ncol = 2
 ){
 
-  suppressPackageStartupMessages(c(
-    require(Seurat),
-    require(SeuratObject),
-    require(ggplot2),
-    require(patchwork),
-    require(dplyr)))
+  suppressPackageStartupMessages({
+    require(Seurat)
+    require(SeuratObject)
+    require(ggplot2)
+    require(patchwork)
+    require(dplyr)})
 
   # Set up the basics
   reduction = reduction %||% SeuratObject::DefaultDimReduc(seurat_object)
@@ -77,20 +77,20 @@ KG_isotype_dimplot = function(seurat_object,
     df = df[order(df$highlight), ]
 
     ## Construct plots
-    plots[[i]] = ggplot2::ggplot(df, aes(x = Dim1, y = Dim2)) +
+    plots[[i]] = ggplot2::ggplot(df, ggplot2::aes(x = Dim1, y = Dim2)) +
       ggplot2::geom_point(shape = 21, size = pt.size,
                           stroke = stroke,
                           color = "black",
-                          aes(fill = highlight)) +
+                          ggplot2::aes(fill = highlight)) +
       ggplot2::scale_fill_manual(values = c("TRUE" = cols[i],
                                             "FALSE" = "lightgrey"), na.value = "lightgrey") +
       ggplot2::theme_classic() +
       ggplot2::ggtitle(isotypes[i]) +
       ggplot2::xlab(dim_names[1]) +
       ggplot2::ylab(dim_names[2]) +
-      ggplot2::theme(plot.title = element_text(hjust = 0.5, size = 24, family = "Arial"),
-                     axis.title = element_text(hjust = 0.5, size = 20, family = "Arial"),
-                     axis.text = element_text(size = 14, family = "Arial"))
+      ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 24, family = "Arial"),
+                     axis.title = ggplot2::element_text(hjust = 0.5, size = 20, family = "Arial"),
+                     axis.text = ggplot2::element_text(size = 14, family = "Arial"))
   }
 
   # Label identity classes?
@@ -105,7 +105,7 @@ KG_isotype_dimplot = function(seurat_object,
     for(i in 1:length(plots)){
       plots[[i]] = plots[[i]] +
         ggplot2::geom_text(data = group_centers,
-                           aes(x = center_x,
+                           ggplot2::aes(x = center_x,
                                y = center_y,
                                label = Identity),
                            size = label.size)
@@ -131,7 +131,7 @@ KG_isotype_dimplot = function(seurat_object,
   if(!heading){
     for(i in 1:length(plots)){
       plots[[i]] = plots[[i]] +
-        ggplot2::theme(plot.title = element_blank())
+        ggplot2::theme(plot.title = ggplot2::element_blank())
     }
   }
   if(combine){

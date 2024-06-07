@@ -25,8 +25,9 @@ KG_multi_gene_plot = function(seurat_object,
                               group.by = NULL,
                               verbose = TRUE){
 
-  suppressPackageStartupMessages(c(require(Seurat),
-                                   require(scales)))
+  suppressPackageStartupMessages({
+    require(Seurat)
+    require(scales)})
 
   if(is.null(genes)){
     stop("You forgot to include the list of genes.")
@@ -67,7 +68,7 @@ KG_multi_gene_plot = function(seurat_object,
                                  order = T,
                                  pt.size = pt.size, label = feature_label,
                                  label.size = feature_label_size) +
-               NoAxes())
+               Seurat::NoAxes())
       }
 
       # Violin plot

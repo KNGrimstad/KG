@@ -20,10 +20,12 @@ KG_percent_cells = function(seurat_object,
                             label_size = 3,
                             label_col = "black",
                             legend = T){
-  suppressPackageStartupMessages(c(require(gridExtra),
-                                   require(ggplot2),
-                                   require(scales),
-                                   require(Seurat)))
+  suppressPackageStartupMessages({
+    require(gridExtra)
+    require(ggplot2)
+    require(scales)
+    require(Seurat)})
+
   # Define stuff
   seurat_object[['ident']] = factor(Seurat::Idents(seurat_object))
   group.by = group.by %||% 'ident'
@@ -43,7 +45,7 @@ KG_percent_cells = function(seurat_object,
     df_for_plot$Labels = labels
     df_for_plot$Position = cumsum(df_for_plot$Percentage) - 0.25 * df_for_plot$Percentage
 
-    p = ggplot2::ggplot(df_for_plot, aes(x = "", y = rev(Percentage), fill = Cluster)) +
+    p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = "", y = rev(Percentage), fill = Cluster)) +
       ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
       ggplot2::coord_polar("y", start = 0) +
       ggplot2::scale_fill_manual(values = rev(cols)) +
@@ -52,11 +54,11 @@ KG_percent_cells = function(seurat_object,
     if(legend){
       p = p +
         ggplot2::theme(legend.position = "right",
-              plot.title = element_text(hjust = 0.5))
+              plot.title =ggplot2::element_text(hjust = 0.5))
     } else {
       p = p +
         ggplot2::theme(legend.position = "none",
-                       plot.title = element_text(hjust = 0.5))
+                       plot.title =ggplot2::element_text(hjust = 0.5))
     }
     if(label){
       p = p +
@@ -75,7 +77,7 @@ KG_percent_cells = function(seurat_object,
     df_for_plot$Position = cumsum(df_for_plot$Percentage) - 0.5 * df_for_plot$Percentage
 
 
-    p = ggplot2::ggplot(df_for_plot, aes(x = "", y = rev(Percentage), fill = Cluster)) +
+    p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = "", y = rev(Percentage), fill = Cluster)) +
       ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
       ggplot2::coord_polar("y", start = 0) +
       ggplot2::scale_fill_manual(values = rev(cols)) +
@@ -107,26 +109,26 @@ KG_percent_cells = function(seurat_object,
 
   } else if(plot == "bar"){
     df_for_plot$Position = df_for_plot$Percentage +0.5
-    p = ggplot2::ggplot(df_for_plot, aes(x = Cluster, y = Percentage, fill = Cluster)) +
+    p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = Cluster, y = Percentage, fill = Cluster)) +
       ggplot2::geom_bar(stat = "identity", colour = "black") +
       ggplot2::scale_fill_manual(values = cols) +
       ggplot2::theme_classic() +
-      ggplot2::theme(axis.title = element_text(size = 16),
-                     axis.text = element_text(size = 12),
-                     axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))
+      ggplot2::theme(axis.title =ggplot2::element_text(size = 16),
+                     axis.text =ggplot2::element_text(size = 12),
+                     axis.text.x =ggplot2::element_text(angle = 45, hjust = 0.5, vjust = 0.5))
 
     if(legend){
       p = p +
         ggplot2::theme(legend.position = "right",
-                       plot.title = element_text(hjust = 0.5))
+                       plot.title =ggplot2::element_text(hjust = 0.5))
     } else {
       p = p +
         ggplot2::theme(legend.position = "none",
-                       plot.title = element_text(hjust = 0.5))
+                       plot.title =ggplot2::element_text(hjust = 0.5))
     }
     if(label){
       p = p +
-        ggplot2::geom_text(data = df_for_plot, aes(label = paste0(Percentage, "%", sep = ""),
+        ggplot2::geom_text(data = df_for_plot, ggplot2::aes(label = paste0(Percentage, "%", sep = ""),
                                                    y = Position),
                            position = ggplot2::position_stack(),
                            size = label_size, color = label_col)

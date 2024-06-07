@@ -11,7 +11,7 @@ KG_dotplot(
   border = TRUE,
   title = NULL,
   portrait = TRUE,
-  font = "arial"
+  font = "Arial"
 )
 }
 \arguments{
@@ -26,6 +26,8 @@ KG_dotplot(
 \item{title}{A title for the plot.}
 
 \item{portrait}{Whether or not to plot genes on the y-axis}
+
+\item{font}{Font to use for text.}
 }
 \description{
 This function wraps the Seurat DotPlot function with ggplot2 functions, for added customizability.

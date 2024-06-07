@@ -23,9 +23,10 @@ KG_import_seurat_clusters = function(monocle_object,
                                      spread = 1,
                                      ident_col = "seurat_clusters"){
 
-  suppressPackageStartupMessages(c(require(plotly),
-                                   require(scales),
-                                   require(Seurat)))
+  suppressPackageStartupMessages({
+    require(plotly)
+    require(scales)
+    require(Seurat)})
 
   # For plotting in 3D
   if(plot_3d == TRUE){

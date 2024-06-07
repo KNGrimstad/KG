@@ -27,9 +27,10 @@ KG_clone_tree = function(clones,
                          common_scale = FALSE,
                          stroke = 0.5){
 
-  suppressPackageStartupMessages(c(require(ggtree),
-                                   require(dowser),
-                                   require(ggplot2)))
+  suppressPackageStartupMessages({
+    require(ggtree)
+    require(dowser)
+    require(ggplot2)})
 
   # Initiate empty list to store plots in
   tree_list = list()
@@ -93,14 +94,14 @@ KG_clone_tree = function(clones,
         ggplot2::scale_x_continuous(breaks = breaks) +
         ggplot2::ggtitle(paste("Clonotype ", clone_trees[[i]]$labels$title, sep = "")) +
         ggplot2::xlab("SHM frequency") +
-        ggplot2::theme(axis.title.x = element_text(hjust = 0.5))
+        ggplot2::theme(axis.title.x = ggplot2::element_text(hjust = 0.5))
     } else{
       tree_list[[i]] = clone_trees[[i]] +
         ggtree::geom_tippoint(shape = 21, size = tipsize, stroke = stroke) +
         ggtree:theme_tree() +
         ggplot2::ggtitle(paste("Clonotype ", trees[[5]][[i]]$name, sep = "")) +
         ggplot2::xlab("SHM frequency") +
-        ggplot2::theme(axis.title.x = element_text(hjust = 0.5))
+        ggplot2::theme(axis.title.x = ggplot2::element_text(hjust = 0.5))
     }
   }
   return(tree_list)

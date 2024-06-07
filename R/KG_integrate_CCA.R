@@ -7,7 +7,7 @@
 #' @param reduction Name of dimensional reduction method to use in integration
 #' @param dims The range of principal components to use.
 #' @param scale_data Logical, whether or not to scale the data following integration.
-#' @param new_name The name to give to the integrated assay.
+#' @param new.name The name to give to the integrated assay.
 #' @export
 #' @examples
 #' KG_integrate_CCA(B_cell_datasets)

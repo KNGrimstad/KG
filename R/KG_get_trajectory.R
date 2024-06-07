@@ -4,21 +4,17 @@
 #' @param monocle_object A monocle3 cell_data_set object.
 #' @param reduction The dimensionality reduction to use.
 #' @param is_3D Whether trajectory has been drawn for a 3D dimension plot.
-#' @param spread Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.
-#' @param bg_col The background color. Currently not supported.
-#' @param file The file name to use for the GIF.
-#' @param fps Frames per secund; controls the speed at which the plot will rotate.
-#' @param trajectory_coords A data frame with coordinates for plotting a trajectory.
-#' @param trajectory_col The color for the trajectory, if coordinates are provided.
 #' @export
 #' @examples
 #' KG_get_trajectory(cds)
 KG_get_trajectory = function(monocle_object,
                              reduction = "UMAP",
                              is_3D = FALSE){
-  suppressPackageStartupMessages(c(require(dplyr),
-                                   require(igraph),
-                                   require(monocle3)))
+
+  suppressPackageStartupMessages({
+    require(dplyr)
+    require(igraph)
+    require(monocle3)})
 
   # Extract data point coordinates
   if(is_3D){

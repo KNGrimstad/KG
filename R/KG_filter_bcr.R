@@ -15,7 +15,9 @@ KG_filter_bcr = function(bcr_data,
                          c_annotated = TRUE,
                          hl_pair = TRUE){
 
-  suppressPackageStartupMessages(require(dplyr))
+  suppressPackageStartupMessages({
+    require(dplyr)
+    require(stats)})
 
   # Count number of sequences before filtering
   base_cells = nrow(bcr_data)
@@ -42,7 +44,7 @@ KG_filter_bcr = function(bcr_data,
   if(c_annotated){
     base_cells2 = nrow(bcr_data)
     message("Removing cells with no annotated C gene.")
-    bcr_data = bcr_data[complete.cases(bcr_data$c_call),]
+    bcr_data = bcr_data[stats::complete.cases(bcr_data$c_call),]
     message(paste(base_cells2 - nrow(bcr_data), " sequences were removed.", sep = ""))
   }
 

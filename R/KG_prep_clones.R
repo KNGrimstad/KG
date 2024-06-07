@@ -18,22 +18,23 @@ KG_prep_clones = function(vdj_data,
                           summarize_clones = FALSE,
                           fields = NULL){
 
-  suppressPackageStartupMessages(c(require(shazam),
-                                   require(dowser),
-                                   require(scoper),
-                                   require(dplyr),
-                                   require(ggplot2)))
+  suppressPackageStartupMessages({
+    require(shazam)
+    require(dowser)
+    require(scoper)
+    require(dplyr)
+    require(ggplot2)})
 
   # Distance to nearest
   dist_nearest = shazam::distToNearest(dplyr::filter(vdj_data, locus == "IGH"))
 
-  ggplot2::ggplot(filter(dist_nearest, !is.na(dist_nearest)),
-                  aes(x = dist_nearest)) +
+  ggplot2::ggplot(dplyr::filter(dist_nearest, !is.na(dist_nearest)),
+                  ggplot2::aes(x = dist_nearest)) +
     ggplot2::geom_histogram(color = "white", binwidth = 0.02) +
     ggplot2::labs(x = "Hamming distance", y = "Count") +
     ggplot2::scale_x_continuous(breaks = seq(0, 1, 0.1)) +
     ggplot2::theme_classic() +
-    ggplot2::theme(axis.title = element_text(size = 16))
+    ggplot2::theme(axis.title = ggplot2::element_text(size = 16))
 
   thresh = readline(prompt = "Select distance threshold for clonal grouping: \n")
 

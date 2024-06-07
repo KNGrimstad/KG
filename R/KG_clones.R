@@ -10,10 +10,12 @@
 KG_clones = function(bcr_data,
                      threshold = 0.15,
                      reference_dir = NULL){
-  suppressPackageStartupMessages(c(require(scoper),
-                                   require(dowser),
-                                   require(shazam),
-                                   require(dplyr)))
+
+  suppressPackageStartupMessages({
+    require(scoper)
+    require(dowser)
+    require(shazam)
+    require(dplyr)})
 
   # Cluster BCR sequences
   cat("Clustering BCR sequences")
@@ -27,9 +29,9 @@ KG_clones = function(bcr_data,
   # Read in references
   references = dowser::readIMGT(dir = reference_dir)
 
-  igh = dowser::createGermlines(filter(res, locus == "IGH"), references)
-  igk = dowser::createGermlines(filter(res, locus == "IGK"), references)
-  igl = dowser::createGermlines(filter(res, locus == "IGL"), references)
+  igh = dowser::createGermlines(dplyr::filter(res, locus == "IGH"), references)
+  igk = dowser::createGermlines(dplyr::filter(res, locus == "IGK"), references)
+  igl = dowser::createGermlines(dplyr::filter(res, locus == "IGL"), references)
 
   # Calculate SHM frequency
   ## Heavy chain

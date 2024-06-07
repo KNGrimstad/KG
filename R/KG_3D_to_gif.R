@@ -34,11 +34,13 @@ KG_3D_to_gif = function(seurat_object,
                         trajectory_coords = NULL,
                         trajectory_col = NULL){ # currently not supported
 
-  suppressPackageStartupMessages(c(require(SeuratObject),
-                                   require(Seurat),
-                                   require(scales),
-                                   require(rgl),
-                                   require(magick)))
+  suppressPackageStartupMessages({
+    require(SeuratObject)
+    require(Seurat)
+    require(scales)
+    require(rgl)
+    require(magick)
+    require(stats)})
 
   # Set the scene
   seurat_object[['ident']] = factor(SeuratObject::Idents(seurat_object))
@@ -69,7 +71,7 @@ KG_3D_to_gif = function(seurat_object,
     names(df)[4] = "Idents"
   }
   # Map colors to IDs
-  coloramp = setNames(cols, unique(df$Idents))
+  coloramp = stats::setNames(cols, unique(df$Idents))
 
   # Set color scheme for the plot based on background color
   material_color = if(bg_col == "black") "white" else "black"
@@ -77,7 +79,7 @@ KG_3D_to_gif = function(seurat_object,
   # Plot 3D data
   rgl::open3d(windowRect = c(1920, 143, 2550, 681)) +
     #material3d(color = "black") +
-    bg3d(bg_col) +
+    rgl::bg3d(bg_col) +
     rgl::plot3d(x = df$UMAP_1,
                 y = df$UMAP_2,
                 z = df$UMAP_3,

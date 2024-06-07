@@ -8,8 +8,8 @@ KG_filter_vdj(
   vdj_data,
   multiple_samples = FALSE,
   remove_duplicate_IGH = TRUE,
-  remove_duplicte_IGK = TRUE,
-  remove_duplicte_IGL = TRUE,
+  remove_duplicate_IGK = TRUE,
+  remove_duplicate_IGL = TRUE,
   remove_no_c = TRUE,
   remove_no_j = TRUE,
   remove_no_v = TRUE,
@@ -24,6 +24,10 @@ KG_filter_vdj(
 
 \item{remove_duplicate_IGH}{Logical; whhether heavy chain duplicates should be removed.}
 
+\item{remove_duplicate_IGK}{Logical; whether kappa light chain duplicates should be removed.}
+
+\item{remove_duplicate_IGL}{Logical; whether lambda light chain duplicates should be removed.}
+
 \item{remove_no_c}{Logical; whether sequences with no annotated C gene should be removed.}
 
 \item{remove_no_j}{Logical; whether sequences with no annotated J gene should be removed.}
@@ -33,10 +37,6 @@ KG_filter_vdj(
 \item{productive}{Logical; whether only productively recombined sequuences should be retained.}
 
 \item{only_paired}{Logical; whether to only keep sequences that have a matching pair of heavy and light chains.}
-
-\item{remove_duplicate_IGK}{Logical; whether kappa light chain duplicates should be removed.}
-
-\item{remove_duplicate_IGL}{Logical; whether lambda light chain duplicates should be removed.}
 }
 \description{
 This function streamlines the filtering process of V(D)J-seq data for in-depth BCR analysis.

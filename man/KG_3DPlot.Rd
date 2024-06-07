@@ -44,6 +44,8 @@ KG_3DPlot(
 \item{trajectory_coords}{A vector containing coordinates for drawing trajectory lines.}
 
 \item{trajectory_col}{What color to use for the trajectory.}
+
+\item{lwd}{Line width for trajectory.}
 }
 \description{
 This function computes and plots cells in three dimensions.

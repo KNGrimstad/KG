@@ -20,8 +20,11 @@ KG_plot_to_pdf = function(plots,
                            file = NULL,
                            pdf_size = a4,
                            portrait = TRUE){
-  suppressPackageStartupMessages(c(require(stats),
-                                   require(grDevices)))
+
+  suppressPackageStartupMessages({
+    require(stats)
+    require(grDevices)
+    require(grid)})
 
   # Formats
   a4 = c(8.27, 11.69)
@@ -42,8 +45,8 @@ KG_plot_to_pdf = function(plots,
                           ncol = ncol,
                           nrow = nrow,
                           top = heading,
-                          padding = if(is.null(padding)) unit(1, "lines") else padding,
+                          padding = if(is.null(padding)) grid::unit(1, "lines") else padding,
                           pages = length(plots) %/% (ncol * nrow) + ifelse(length(plots) %% (ncol * nrow) > 0, 1, 0)) %>%
-    grid.draw()
-  dev.off()
+    grid::grid.draw()
+  grDevices::dev.off()
 }

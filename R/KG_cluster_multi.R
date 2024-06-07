@@ -21,11 +21,12 @@ KG_cluster_multi = function(seurat_object,
                             dims = 1:35,
                             reduction = "pca"){
 
-  suppressPackageStartupMessages(require(ggtree),
-                                 require(clustree),
-                                 require(Seurat),
-                                 require(SeuratObject),
-                                 require(progress))
+  suppressPackageStartupMessages({
+    require(ggtree)
+    require(clustree)
+    require(Seurat)
+    require(SeuratObject)
+    require(progress)})
 
   if(verbose){
     pb = progress::progress_bar$new(format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta",
