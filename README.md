@@ -33,6 +33,8 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_percent_cells** - Plots percentage of cells in each cluster.
 
+* **KG_isotype_dimplot** - Dimplots that highlight cells by their IGH isotype.
+
 ## Data wrangling
 * **KG_remove_BCR** - Removes BCR genes from the dataset. 
 
@@ -57,13 +59,15 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_integrate_CCA** - Wrapper for Seurat's CCA integration workflow. 
 
-* **KG_hc** - Wrapper for SEurat's hierarchical clustering.
+* **KG_hc** - Wrapper for Seurat's hierarchical clustering.
 
 * **KG_project** - Wrapper for Seurat's functions for projecting datasets onto a reference.
 
 * **KG_project_3D** - Same as above, but generates a 3D dimension plot. 
 
 * **KG_prep_clones** - Streamlines base clonotype processing from the Immcantation framework.
+
+* **KG_multi_gene_plot** - Plots gene expression (feature or violoin) for a list of genes one by one.
 
 ## Misc. helpers
 * **KG_add_suffix** - Simply adds a suffix to all strings supplied (optimal for cell barcodes).
