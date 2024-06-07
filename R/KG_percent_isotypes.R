@@ -10,7 +10,8 @@
 KG_percent_isotypes = function(seurat_object,
                                MGA_only = TRUE,
                                return_table = FALSE){
-  require(Seurat)
+
+  suppressPackageStartupMessages(require(Seurat))
 
   # Initialize an empty data frame to store results
   results_df = data.frame()

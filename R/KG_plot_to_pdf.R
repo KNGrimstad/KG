@@ -20,8 +20,8 @@ KG_plot_to_pdf = function(plots,
                            file = NULL,
                            pdf_size = a4,
                            portrait = TRUE){
-  require(stats)
-  require(grDevices)
+  suppressPackageStartupMessages(c(require(stats),
+                                   require(grDevices)))
 
   # Formats
   a4 = c(8.27, 11.69)

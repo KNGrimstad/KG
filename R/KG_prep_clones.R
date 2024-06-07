@@ -17,11 +17,12 @@ KG_prep_clones = function(vdj_data,
                           split_light = TRUE,
                           summarize_clones = FALSE,
                           fields = NULL){
-  require(shazam)
-  require(dowser)
-  require(scoper)
-  require(dplyr)
-  require(ggplot2)
+
+  suppressPackageStartupMessages(c(require(shazam),
+                                   require(dowser),
+                                   require(scoper),
+                                   require(dplyr),
+                                   require(ggplot2)))
 
   # Distance to nearest
   dist_nearest = shazam::distToNearest(dplyr::filter(vdj_data, locus == "IGH"))

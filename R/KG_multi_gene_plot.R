@@ -55,7 +55,8 @@ KG_multi_gene_plot = function(seurat_object,
 
       # Generate plot
       if(verbose){
-        cat("Showing plot ", i, " of ", length(genes), "\nPress [Enter] to continue, or type 'x' to exit.\n", sep = "")
+        cat("Showing plot ", i, " of ", length(genes),
+            "\nPress [Enter] to continue, or type 'x' to exit.\n", sep = "")
       }
 
       # Feature plot

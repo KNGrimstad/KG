@@ -37,13 +37,12 @@ KG_isotype_dimplot = function(seurat_object,
                               ncol = 2
 ){
 
-  suppressPackageStartupMessages({
-    require(Seurat)
-    require(SeuratObject)
-    require(ggplot2)
-    require(patchwork)
-    require(dplyr)
-  })
+  suppressPackageStartupMessages(c(
+    require(Seurat),
+    require(SeuratObject),
+    require(ggplot2),
+    require(patchwork),
+    require(dplyr)))
 
   # Set up the basics
   reduction = reduction %||% SeuratObject::DefaultDimReduc(seurat_object)
@@ -98,10 +97,10 @@ KG_isotype_dimplot = function(seurat_object,
   if(label){
     names(df)[1:2] = c("Dim1", "Dim2")
     group_centers = df %>%
-      group_by(Identity) %>%
-      summarize(center_x = mean(Dim1),
-                center_y = mean(Dim2),
-                .groups = 'drop')
+      dplyr::group_by(Identity) %>%
+      dplyr::summarize(center_x = mean(Dim1),
+                       center_y = mean(Dim2),
+                       .groups = 'drop')
 
     for(i in 1:length(plots)){
       plots[[i]] = plots[[i]] +
@@ -115,14 +114,16 @@ KG_isotype_dimplot = function(seurat_object,
   # Legend?
   if(!legend){
     for(i in 1:length(plots)){
-      plots[[i]] = plots[[i]] + ggplot2::theme(legend.position = "none")
+      plots[[i]] = plots[[i]] +
+        ggplot2::theme(legend.position = "none")
     }
   }
 
   # Axes?
   if(!axes){
     for(i in 1:length(plots)){
-      plots[[i]] = plots[[i]] + Seurat::NoAxes()
+      plots[[i]] = plots[[i]] +
+        Seurat::NoAxes()
     }
   }
 

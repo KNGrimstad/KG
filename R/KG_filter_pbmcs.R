@@ -10,8 +10,13 @@
 KG_filter_pbmcs = function(seurat_object,
                            features = c("CD19", "CD3E", "CD14"),
                            scale.factor = 10000){
+
+  suppressPackageStartupMessages(c(require(Seurat),
+                                   require(patchwork),
+                                   require(base)))
+
   plots = list()
-  plots[["Dimplot"]] = DimPlot(seurat_object, pt.size = 2, label = T, label.size = 6)
+  plots[["Dimplot"]] = Seurat::DimPlot(seurat_object, pt.size = 2, label = T, label.size = 6)
   plots[["VlnPlots"]] = suppressWarnings(Seurat::VlnPlot(seurat_object, features = features,
                                                          ncol = 1))
 
@@ -22,7 +27,7 @@ KG_filter_pbmcs = function(seurat_object,
   keep_clusters = strsplit(keep_clusters, ',')
   keep_clusters = as.numeric(unlist(keep_clusters))
   seurat_object = base::subset(seurat_object, idents = keep_clusters)
-  DefaultAssay(seurat_object) = "RNA"
+  Seurat::DefaultAssay(seurat_object) = "RNA"
   seurat_object = Seurat::NormalizeData(object = seurat_object,
                                         scale.factor = scale.factor,
                                         verbose = F)

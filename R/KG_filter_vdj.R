@@ -25,7 +25,8 @@ KG_filter_vdj = function(vdj_data,
                          remove_no_v = TRUE,
                          productive = TRUE,
                          only_paired = TRUE){
-  require(dplyr)
+
+  suppressPackageStartupMessages(require(dplyr))
 
   if(multiple_samples){
     for(i in 1:length(vdj_data)){

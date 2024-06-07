@@ -6,6 +6,7 @@
 #' @examples
 #' KG_isotype_switch(B_cell_dataset)
 KG_isotype_switch = function(seurat_object){
+
   # Check that the isotype slot exists
   if(!("isotype" %in% names(seurat_object@meta.data))){
     stop(paste("Meta data slot isotype not found in the Seurat object.\n Please run KG_gene_to_isotype."))

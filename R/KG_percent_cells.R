@@ -20,10 +20,10 @@ KG_percent_cells = function(seurat_object,
                             label_size = 3,
                             label_col = "black",
                             legend = T){
-  require(gridExtra)
-  require(ggplot2)
-  require(scales)
-  require(Seurat)
+  suppressPackageStartupMessages(c(require(gridExtra),
+                                   require(ggplot2),
+                                   require(scales),
+                                   require(Seurat)))
   # Define stuff
   seurat_object[['ident']] = factor(Seurat::Idents(seurat_object))
   group.by = group.by %||% 'ident'

@@ -26,9 +26,10 @@ KG_clone_tree = function(clones,
                          breaks = NULL,
                          common_scale = FALSE,
                          stroke = 0.5){
-  require(ggtree)
-  require(dowser)
-  require(ggplot2)
+
+  suppressPackageStartupMessages(c(require(ggtree),
+                                   require(dowser),
+                                   require(ggplot2)))
 
   # Initiate empty list to store plots in
   tree_list = list()
@@ -86,20 +87,20 @@ KG_clone_tree = function(clones,
     }
     if(layout == "rectangular"){
       tree_list[[i]] = clone_trees[[i]] +
-        geom_tippoint(shape = 21, size = tipsize, stroke = stroke) +
-        theme_tree2() +
-        xlim_tree(x_max) +
-        scale_x_continuous(breaks = breaks) +
-        ggtitle(paste("Clonotype ", clone_trees[[i]]$labels$title, sep = "")) +
-        xlab("SHM frequency") +
-        theme(axis.title.x = element_text(hjust = 0.5))
+        ggtree::geom_tippoint(shape = 21, size = tipsize, stroke = stroke) +
+        ggtree::theme_tree2() +
+        ggtree::xlim_tree(x_max) +
+        ggplot2::scale_x_continuous(breaks = breaks) +
+        ggplot2::ggtitle(paste("Clonotype ", clone_trees[[i]]$labels$title, sep = "")) +
+        ggplot2::xlab("SHM frequency") +
+        ggplot2::theme(axis.title.x = element_text(hjust = 0.5))
     } else{
       tree_list[[i]] = clone_trees[[i]] +
-        geom_tippoint(shape = 21, size = tipsize, stroke = stroke) +
-        theme_tree() +
-        ggtitle(paste("Clonotype ", trees[[5]][[i]]$name, sep = "")) +
-        xlab("SHM frequency") +
-        theme(axis.title.x = element_text(hjust = 0.5))
+        ggtree::geom_tippoint(shape = 21, size = tipsize, stroke = stroke) +
+        ggtree:theme_tree() +
+        ggplot2::ggtitle(paste("Clonotype ", trees[[5]][[i]]$name, sep = "")) +
+        ggplot2::xlab("SHM frequency") +
+        ggplot2::theme(axis.title.x = element_text(hjust = 0.5))
     }
   }
   return(tree_list)

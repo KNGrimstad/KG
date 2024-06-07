@@ -30,5 +30,4 @@ This function extracts all corrdinates for a trajectory created in monocle3. .
 }
 \examples{
 KG_get_trajectory(cds)
-
 }

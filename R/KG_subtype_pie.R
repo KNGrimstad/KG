@@ -16,8 +16,9 @@ KG_subtype_pie = function(seurat_object,
                            cluster = NULL,
                            combine = TRUE,
                            ncol = 2) {
-  require(gridExtra)
-  require(ggplot2)
+
+  suppressPackageStartupMessages(c(require(gridExtra),
+                                   require(ggplot2)))
 
   if(is.null(cluster)) {
     stop("No cluster specified")
@@ -29,7 +30,8 @@ KG_subtype_pie = function(seurat_object,
     # Calculate percentages for each cluster
     percent_df <- data.frame() # Empty data frame to store percentages in
 
-    tab = table(Idents(seurat_object), seurat_object[[c_call, drop = T]])
+    tab = table(Seurat::Idents(seurat_object),
+                seurat_object[[c_call, drop = T]])
 
     if(subtype == "IgG"){
       tab = tab[, c(5, 6, 7, 8)]
@@ -88,33 +90,33 @@ KG_subtype_pie = function(seurat_object,
       df_for_plot$Position = cumsum(as.integer(df_for_plot$Value)) - 0.5 * as.integer(df_for_plot$Value)
 
       if(subtype == "IgG"){
-        p = ggplot(df_for_plot, aes(x = "", y = Value, fill = Subtype)) +
-          geom_bar(width = 1, stat = "identity", colour = "black") +
-          coord_polar("y", start = 0) +
-          scale_fill_manual(values = c("IgG1" = "brown4",
-                                       "IgG2" = "indianred3",
-                                       "IgG3" = "indianred1",
-                                       "IgG4" = "darksalmon"),
-                            breaks = c("IgG1", "IgG2", "IgG3", "IgG4")) +
-          geom_text(aes(y = Position, label = Labels), color = "white", size = 5) +
-          theme_void() +
-          labs(title = paste("Cluster", percent_df$Cluster[i])) +
-          theme(legend.position = "right",
-                plot.title = element_text(hjust = 0.5))
+        p = ggplot2::ggplot(df_for_plot, aes(x = "", y = Value, fill = Subtype)) +
+          ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
+          ggplot2::coord_polar("y", start = 0) +
+          ggplot2::scale_fill_manual(values = c("IgG1" = "brown4",
+                                                "IgG2" = "indianred3",
+                                                "IgG3" = "indianred1",
+                                                "IgG4" = "darksalmon"),
+                                     breaks = c("IgG1", "IgG2", "IgG3", "IgG4")) +
+          ggplot2::geom_text(aes(y = Position, label = Labels), color = "white", size = 5) +
+          ggplot2::theme_void() +
+          ggplot2::labs(title = paste("Cluster", percent_df$Cluster[i])) +
+          ggplot2::theme(legend.position = "right",
+                         plot.title = element_text(hjust = 0.5))
 
         plot_list[[i]] = p
       } else {
-        p = ggplot(df_for_plot, aes(x = "", y = Value, fill = Subtype)) +
-          geom_bar(width = 1, stat = "identity", colour = "black") +
-          coord_polar("y", start = 0) +
-          scale_fill_manual(values = c("IgA1" = "tan1",
-                                       "IgA2" = "tan3"),
-                            breaks = c("IgA1", "IgA2")) +
-          geom_text(aes(y = Position, label = Labels), color = "white", size = 5) +
-          theme_void() +
-          labs(title = paste("Cluster", percent_df$Cluster[i])) +
-          theme(legend.position = "right",
-                plot.title = element_text(hjust = 0.5))
+        p = ggplot2::ggplot(df_for_plot, aes(x = "", y = Value, fill = Subtype)) +
+          ggplot2::geom_bar(width = 1, stat = "identity", colour = "black") +
+          ggplot2::coord_polar("y", start = 0) +
+          ggplot2::scale_fill_manual(values = c("IgA1" = "tan1",
+                                                "IgA2" = "tan3"),
+                                     breaks = c("IgA1", "IgA2")) +
+          ggplot2::geom_text(aes(y = Position, label = Labels), color = "white", size = 5) +
+          ggplot2::theme_void() +
+          ggplot2::labs(title = paste("Cluster", percent_df$Cluster[i])) +
+          ggplot2::theme(legend.position = "right",
+                         plot.title = element_text(hjust = 0.5))
 
         plot_list[[i]] = p
       }

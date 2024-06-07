@@ -14,7 +14,8 @@ KG_filter_bcr = function(bcr_data,
                          single_IgH = TRUE,
                          c_annotated = TRUE,
                          hl_pair = TRUE){
-  require(dplyr)
+
+  suppressPackageStartupMessages(require(dplyr))
 
   # Count number of sequences before filtering
   base_cells = nrow(bcr_data)
@@ -23,7 +24,7 @@ KG_filter_bcr = function(bcr_data,
   if(productive){
     message("Removing unproductive transcripts")
     bcr_data = bcr_data %>%
-      filter(productive)
+      dplyr::filter(productive)
     message(paste(base_cells - nrow(bcr_data), " sequences were removed.", sep = ""))
   }
 
@@ -31,9 +32,9 @@ KG_filter_bcr = function(bcr_data,
   if(single_IgH){
     message("Removing cells with multiple heavy chains.")
     base_cells1 = nrow(bcr_data)
-    multi_h = table(filter(bcr_data, locus == "IGH")$cell_id)
+    multi_h = table(dplyr::filter(bcr_data, locus == "IGH")$cell_id)
     multi_h_cells = names(multi_h)[multi_h >1]
-    bcr_data = filter(bcr_data, !cell_id %in% multi_h_cells)
+    bcr_data = dplyr::filter(bcr_data, !cell_id %in% multi_h_cells)
     message(paste(base_cells1 - nrow(bcr_data), " sequences were removed.", sep = ""))
   }
 
@@ -49,11 +50,11 @@ KG_filter_bcr = function(bcr_data,
   if(hl_pair){
     message("Removing cells with unpaired IgH/IgL chains.")
     base_cells3 = nrow(bcr_data)
-    h_cells = filter(bcr_data, locus == "IGH")$cell_id
-    l_cells = filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id
+    h_cells = dplyr::filter(bcr_data, locus == "IGH")$cell_id
+    l_cells = dplyr::filter(bcr_data, locus == "IGK" | locus == "IGL")$cell_id
     no_heavy = l_cells[which(!l_cells %in% h_cells)]
     no_light = h_cells[which(!h_cells %in% l_cells)]
-    bcr_data = filter(bcr_data, !cell_id %in% c(no_heavy, no_light))
+    bcr_data = dplyr::filter(bcr_data, !cell_id %in% c(no_heavy, no_light))
     message(paste(base_cells3 - nrow(bcr_data), " sequences were removed.", sep = ""))
   }
   message(paste("Filtering complete. ", base_cells - nrow(bcr_data), " sequences were removed."))

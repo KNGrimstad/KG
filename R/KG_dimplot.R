@@ -33,14 +33,14 @@ KG_dimplot = function(seurat_object,
                       trajectory_col = NULL,
                       lwd = 0.5,
                       pub_ready = FALSE) {
-  require(Seurat)
-  require(SeuratObject)
-  require(ggplot2)
-  require(viridis)
-  require(scales)
-  require(colorspace)
-  require(grDevices)
-  require(grid)
+  suppressPackageStartupMessages(c(require(Seurat),
+                                   require(SeuratObject),
+                                   require(ggplot2),
+                                   require(viridis),
+                                   require(scales),
+                                   require(colorspace),
+                                   require(grDevices),
+                                   require(grid)))
 
   # Define reductions, identities, and cells
   reduction = reduction %||% SeuratObject::DefaultDimReduc(seurat_object)

@@ -22,29 +22,30 @@ KG_import_seurat_clusters = function(monocle_object,
                                      min.dist = 0.3,
                                      spread = 1,
                                      ident_col = "seurat_clusters"){
-  #DefaultAssay(seurat_object) = assay
+
+  suppressPackageStartupMessages(c(require(plotly),
+                                   require(scales),
+                                   require(Seurat)))
 
   # For plotting in 3D
   if(plot_3d == TRUE){
 
     # Prep the Seurat object for 3D plotting
-    require(plotly)
-    require(scales)
     if(sparse == TRUE){
       cat("Calculating 3D components")
-      temp = RunUMAP(object = seurat_object, dims = 1:dims,
-                     n.components = 3,
-                     spread = spread,
-                     min.dist = min.dist,
-                     verbose = F,
-                     assay = assay)
+      temp = Seurat::RunUMAP(object = seurat_object, dims = 1:dims,
+                             n.components = 3,
+                             spread = spread,
+                             min.dist = min.dist,
+                             verbose = F,
+                             assay = assay)
     } else {
       cat("Calculating 2D components")
-      temp = RunUMAP(object = seurat_object,
-                     dims = 1:dims,
-                     n.components = 3,
-                     verbose = F,
-                     assay = assay)
+      temp = Seurat::RunUMAP(object = seurat_object,
+                             dims = 1:dims,
+                             n.components = 3,
+                             verbose = F,
+                             assay = assay)
     }
 
   }

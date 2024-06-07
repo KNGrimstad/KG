@@ -13,13 +13,12 @@
 #' @export
 #' @examples
 #' KG_get_trajectory(cds)
-#'
 KG_get_trajectory = function(monocle_object,
                              reduction = "UMAP",
                              is_3D = FALSE){
-  require(dplyr)
-  require(igraph)
-  require(monocle3)
+  suppressPackageStartupMessages(c(require(dplyr),
+                                   require(igraph),
+                                   require(monocle3)))
 
   # Extract data point coordinates
   if(is_3D){

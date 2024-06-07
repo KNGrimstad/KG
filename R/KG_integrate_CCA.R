@@ -19,42 +19,46 @@ KG_integrate_CCA = function(seurat_objects,
                             scale_data = TRUE,
                             new.name = "Integrated"){
 
+  suppressPackageStartupMessages(require(Seurat))
+
   # Find most variable features across samples to integrate
   cat(paste("Finding",
             nIntegration_features,
             "integration features\n",
             sep = " "))
-  integ_features = SelectIntegrationFeatures(seurat_objects,
-                                             nfeatures = nIntegration_features)
+  integ_features = Seurat::SelectIntegrationFeatures(seurat_objects,
+                                                     nfeatures = nIntegration_features)
   gc()
 
   # Prep data for integration
   cat("Preparing data for integration\n")
-  seurat_int = PrepSCTIntegration(seurat_objects,
-                                  anchor.features = integ_features)
+  seurat_int = Seurat::PrepSCTIntegration(seurat_objects,
+                                          anchor.features = integ_features)
   gc()
   # Identify integration anchors
   cat("Finding integration anchors\n")
-  anchors = FindIntegrationAnchors(seurat_int,
-                                   dims = dims,
-                                   reduction = reduction,
-                                   anchor.features = integ_features,
-                                   normalization.method = "SCT")
+  anchors = Seurat::FindIntegrationAnchors(seurat_int,
+                                           dims = dims,
+                                           reduction = reduction,
+                                           anchor.features = integ_features,
+                                           normalization.method = "SCT")
   gc()
   # Integrate the datasets
   cat("Integrating datasets\n")
-  seurat_int = IntegrateData(anchors,
-                             dims = dims, new.assay.name = new.name, normalization.method = "SCT")
+  seurat_int = Seurat::IntegrateData(anchors,
+                                     dims = dims,
+                                     new.assay.name = new.name,
+                                     normalization.method = "SCT")
   gc()
   if (scale_data == TRUE){
     message("Scaling data")
-    seurat_int = ScaleData(seurat_int, features = rownames(seurat_int))
+    seurat_int = Seurat::ScaleData(seurat_int, features = rownames(seurat_int))
   }
   gc()
   # Run PCA
   cat("Running principal component analysis\n")
-  seurat_int = RunPCA(seurat_int,
-                      verbose = F)
+  seurat_int = Seurat::RunPCA(seurat_int,
+                              verbose = F)
 
   return(seurat_int)
 }

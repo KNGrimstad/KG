@@ -10,10 +10,10 @@
 KG_clones = function(bcr_data,
                      threshold = 0.15,
                      reference_dir = NULL){
-  require(scoper)
-  require(dowser)
-  require(shazam)
-  require(dplyr)
+  suppressPackageStartupMessages(c(require(scoper),
+                                   require(dowser),
+                                   require(shazam),
+                                   require(dplyr)))
 
   # Cluster BCR sequences
   cat("Clustering BCR sequences")

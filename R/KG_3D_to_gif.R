@@ -33,11 +33,12 @@ KG_3D_to_gif = function(seurat_object,
                         fps = 5,
                         trajectory_coords = NULL,
                         trajectory_col = NULL){ # currently not supported
-  require(SeuratObject)
-  require(Seurat)
-  require(scales)
-  require(rgl)
-  require(magick)
+
+  suppressPackageStartupMessages(c(require(SeuratObject),
+                                   require(Seurat),
+                                   require(scales),
+                                   require(rgl),
+                                   require(magick)))
 
   # Set the scene
   seurat_object[['ident']] = factor(SeuratObject::Idents(seurat_object))

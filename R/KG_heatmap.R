@@ -34,20 +34,22 @@ KG_heatmap = function(seurat_object,
                       split_row_at = NULL,
                       split_column_at = NULL,
                       raster = FALSE) {
-  require(ComplexHeatmap)
-  require(scales)
-  require(circlize)
+
+  suppressPackageStartupMessages(c(require(ComplexHeatmap),
+                                   require(scales),
+                                   require(circlize),
+                                   require(Seurat)))
 
   # Define the color function
   col_fun = circlize::colorRamp2(breaks = c(-2, 0, 2), colors = cols)
 
   # Set the group_by identifier as the active identity class
     if(!is.null(group_by)){
-    Idents(seurat_object) = factor(seurat_object[[group_by, drop = TRUE]])
+    Seurat::Idents(seurat_object) = factor(seurat_object[[group_by, drop = TRUE]])
   }
 
   # Calculate average expression of genes for each cluster
-  avg_matrix = t(scale(t(as.matrix(AverageExpression(seurat_object, features = genes)[[assay]]))))
+  avg_matrix = t(scale(t(as.matrix(Seurat::AverageExpression(seurat_object, features = genes)[[assay]]))))
 
   # Annotations for clusters
   annotations_df = data.frame(factor(levels(Idents(seurat_object))))
@@ -112,7 +114,9 @@ KG_heatmap = function(seurat_object,
                column_names_rot = 45)
 
   # Draw the heatmap
-  leg = Legend(col_fun = col_fun, title = "Average\nExpression", legend_height = unit(4, "cm"), grid_width = unit(1, "cm"))
+  leg = ComplexHeatmap::Legend(col_fun = col_fun, title = "Average\nExpression",
+                               legend_height = unit(4, "cm"),
+                               grid_width = unit(1, "cm"))
 
-  draw(ht, heatmap_legend_side = "right", annotation_legend_side = "right")
+  ComplexHeatmap::draw(ht, heatmap_legend_side = "right", annotation_legend_side = "right")
 }

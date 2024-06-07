@@ -29,11 +29,12 @@ KG_3DPlot = function(seurat_object,
                      trajectory_coords = NULL,
                      trajectory_col = NULL,
                      lwd = 2){
-  require(plotly)
-  require(scales)
-  require(KernSmooth)
-  require(Seurat)
-  require(dplyr)
+
+  suppressPackageStartupMessages(c(require(plotly),
+                                 require(scales),
+                                 require(KernSmooth),
+                                 require(Seurat),
+                                 require(dplyr)))
 
   # Calculate UMAP for three components
   if (!is.null(group.by)){
