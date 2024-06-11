@@ -12,7 +12,8 @@ KG_cluster_multi(
   plot = TRUE,
   assay = "RNA",
   dims = 1:35,
-  reduction = "pca"
+  reduction = "pca",
+  verbose = TRUE
 )
 }
 \arguments{

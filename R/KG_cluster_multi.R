@@ -19,7 +19,8 @@ KG_cluster_multi = function(seurat_object,
                             plot = TRUE,
                             assay = "RNA",
                             dims = 1:35,
-                            reduction = "pca"){
+                            reduction = "pca",
+                            verbose = TRUE){
 
   suppressPackageStartupMessages({
     require(ggtree)
