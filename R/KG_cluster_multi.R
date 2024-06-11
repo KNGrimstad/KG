@@ -29,6 +29,9 @@ KG_cluster_multi = function(seurat_object,
     require(SeuratObject)
     require(progress)})
 
+  # Define resolutions
+  resolutions = seq.int(min.res, max.res, increment)
+
   if(verbose){
     pb = progress::progress_bar$new(format = "(:spin) [:bar] :percent [Elapsed time: :elapsedfull || Estimated time remaining: :eta",
                                     total = length(resolutions),
@@ -60,7 +63,6 @@ KG_cluster_multi = function(seurat_object,
                                         dims = dims,
                                         verbose = FALSE)
 
-  resolutions = seq.int(min.res, max.res, increment)
   if(verbose){
     cat("Finding clusters\n")
   }
