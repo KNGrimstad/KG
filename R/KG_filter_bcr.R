@@ -19,6 +19,8 @@ KG_filter_bcr = function(bcr_data,
     require(dplyr)
     require(stats)})
 
+  warning("KG_filter_bcr is deprecated, please use KG_filter_vdj instead.")
+
   # Count number of sequences before filtering
   base_cells = nrow(bcr_data)
 

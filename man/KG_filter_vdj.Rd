@@ -14,13 +14,15 @@ KG_filter_vdj(
   remove_no_j = TRUE,
   remove_no_v = TRUE,
   productive = TRUE,
-  only_paired = TRUE
+  only_paired = TRUE,
+  save_filtered = FALSE,
+  print_numbers = TRUE
 )
 }
 \arguments{
-\item{vdj_data}{An AIRR data object, or a list of AIRR data objects.}
+\item{vdj_data}{A data frame of V(D)J-seq data, or a list of data frames containing multiple V(D)J-seq.}
 
-\item{multiple_samples}{Logical; whether or not vdj_data consists of a single or multiple objects.}
+\item{multiple_samples}{Logical; whether or not vdj_data consists of a single data frame or a list of data frames.}
 
 \item{remove_duplicate_IGH}{Logical; whhether heavy chain duplicates should be removed.}
 
@@ -37,6 +39,10 @@ KG_filter_vdj(
 \item{productive}{Logical; whether only productively recombined sequuences should be retained.}
 
 \item{only_paired}{Logical; whether to only keep sequences that have a matching pair of heavy and light chains.}
+
+\item{save_filtered}{Logical; whether sequences that are removed should be saved to an xlsx file.}
+
+\item{print_numbers}{Logical; whether the number of sequences removed in each step should be printed in the console.}
 }
 \description{
 This function streamlines the filtering process of V(D)J-seq data for in-depth BCR analysis.

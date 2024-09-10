@@ -40,8 +40,6 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_import_seurat_clusters** - Imports Seurat annotations to monocle3 object.
 
-* **KG_filter_bcr** - Filters an AIRR data frame from V(D)J-seq for quality.
-
 * **KG_filter_pbmcs** - Plots expression for common PBMC genes so you can filter out the cells you want.
 
 * **KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
@@ -51,6 +49,8 @@ devtools::install_github("KNGrimstad/KG")
 * **KG_get_trajectory** - Exracts the coordinates from monocle3-generated trajectories.
 
 * **KG_filter_vdj** - Filter AIRR format files from V(D)J-seq for downstream BCR analyses.
+
+* **KG_matchGEXtoVDJ** - Matches V(D)J-seq data to paired GEX data.
 
 ## Helpful wrappers
 * **KG_clones** - Wrapper to call clones in V(D)J-seq data.

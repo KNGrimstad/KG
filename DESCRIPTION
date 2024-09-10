@@ -1,6 +1,6 @@
 Package: KG
 Title: A Random Collection of R Functions Related to scRNA-Seqs (One Line, Title Case)
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Kristoffer", family = "Grimstad", , "kristoffer.nilsson.grimstad@gu.se", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0001-5460-4246"))
