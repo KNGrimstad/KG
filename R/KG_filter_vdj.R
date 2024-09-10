@@ -45,7 +45,7 @@ KG_filter_vdj = function(vdj_data,
                                paste0(names(vdj_data)[i], "_unproductive_sequences.xlsx"))
         }
         if(print_numbers){
-          cat(paste0("Number of unproductive sequences in ", names(vdj_data)[i], ": ", nrow(dplyr::filter(vdj_data[[i]], productive == "false")), "\n"))
+          cat(paste0("Number of unproductive sequences in ", names(vdj_data)[i], ": ", nrow(dplyr::filter(vdj_data[[i]], productive == "FALSE")), "\n"))
         }
 
         vdj_data[[i]] = dplyr::filter(vdj_data[[i]], productive == "TRUE")
