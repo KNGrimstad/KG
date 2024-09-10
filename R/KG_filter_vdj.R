@@ -144,7 +144,7 @@ KG_filter_vdj = function(vdj_data,
         paired = intersect(heavy_cells, light_cells)
 
         if(save_filtered){
-          openxlsx::write.xlsx(dplyr::filter(vdj_data, !cell_id %in% paired),
+          openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], !cell_id %in% paired),
                                paste0(names(vdj_data)[i], "_unpaired_sequences.xlsx"))
         }
         if(print_numbers){
