@@ -51,7 +51,7 @@ KG_filter_vdj = function(vdj_data,
 
       # Remove duplicate heavy chains
       if(remove_duplicate_IGH){
-        mulit_heavy = table(dplyr::filter(vdj_data[[i]], locus == "IGH")$cell_id)
+        multi_heavy = table(dplyr::filter(vdj_data[[i]], locus == "IGH")$cell_id)
         multi_heavy_cells = names(multi_heavy)[multi_heavy > 1]
 
         if(save_filtered){
@@ -168,7 +168,7 @@ KG_filter_vdj = function(vdj_data,
     }
     # Remove duplicate heavy chains
     if(remove_duplicate_IGH){
-      mulit_heavy = table(dplyr::filter(vdj_data, locus == "IGH")$cell_id)
+      multi_heavy = table(dplyr::filter(vdj_data, locus == "IGH")$cell_id)
       multi_heavy_cells = names(multi_heavy)[multi_heavy > 1]
 
       if(save_filtered){
