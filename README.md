@@ -2,9 +2,16 @@
   KG - A Collection of Random scRNA-Seq Functions&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
 </h1>
 
-This repository is composed of functions and wrappers designed to make life easier for the owner of the repo. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
+<!-- badges: start -->
+![GitHub R package version](https://img.shields.io/github/r-package/v/KNGrimstad/KG)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KNGrimstad/KG)
+![GitHub License](https://img.shields.io/github/license/KNGrimstad/KG))
+<!-- badges: end -->
+This repository is composed of functions and wrappers designed to make life easier for the owner of the repo, and maybe for you, too. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
 
 Some of these functions are exceptionally base, while others are used to construct figures of varying degrees of complexity and customizability. 
+
+If you are working with lymphocyte scRNA-seq data, consider giving our [*protocol paper*](https://doi.org/10.1093/bfgp/elac044) a read.
 
 ---
 ## Installation
