@@ -39,14 +39,14 @@ KG_filter_vdj = function(vdj_data,
       # Remove unproductive sequences
       if(productive){
         if(save_filtered){
-          openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], productive == "false"),
+          openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], productive == "FALSE"),
                                paste0(names(vdj_data)[i], "_unproductive_sequences.xlsx"))
         }
         if(print_numbers){
           cat(paste0("Number of unproductive sequences in ", names(vdj_data)[i], ": ", nrow(dplyr::filter(vdj_data[[i]], productive == "false")), "\n"))
         }
 
-        vdj_data[[i]] = dplyr::filter(vdj_data[[i]], productive == "true")
+        vdj_data[[i]] = dplyr::filter(vdj_data[[i]], productive == "TRUE")
       }
 
       # Remove duplicate heavy chains
@@ -97,7 +97,7 @@ KG_filter_vdj = function(vdj_data,
 
       # Remove sequences with no annotated c_call
       if(remove_no_c){
-        no_c = dplyr::filter(vdj_data[[i]], c_call == "")$cell_id
+        no_c = dplyr::filter(vdj_data[[i]], is.na(c_call))$cell_id
 
         if(save_filtered){
           openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], cell_id %in% no_c),
@@ -111,7 +111,7 @@ KG_filter_vdj = function(vdj_data,
 
       # Remove sequences with no annotated v_call
       if(remove_no_v){
-        no_v = dplyr::filter(vdj_data[[i]], v_call == "")$cell_id
+        no_v = dplyr::filter(vdj_data[[i]], is.na(v_call))$cell_id
 
         if(save_filtered){
           openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], cell_id %in% no_v),
@@ -125,7 +125,7 @@ KG_filter_vdj = function(vdj_data,
 
       # Remove sequences with no annotated j_call
       if(remove_no_j){
-        no_j = dplyr::filter(vdj_data[[i]], j_call == "")$cell_id
+        no_j = dplyr::filter(vdj_data[[i]], is.na(j_call))$cell_id
 
         if(save_filtered){
           openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], cell_id %in% no_j),
@@ -162,9 +162,9 @@ KG_filter_vdj = function(vdj_data,
                              paste0(deparse(vdj_data), "_unproductive_sequences.xlsx"))
       }
       if(print_numbers){
-        cat(paste0("Number of unproductive sequences: ", nrow(dplyr::filter(vdj_data, productive == "false")), "\n"))
+        cat(paste0("Number of unproductive sequences: ", nrow(dplyr::filter(vdj_data, productive == "FALSE")), "\n"))
       }
-      vdj_data = dplyr::filter(vdj_data, productive == "true")
+      vdj_data = dplyr::filter(vdj_data, productive == "TRUE")
     }
     # Remove duplicate heavy chains
     if(remove_duplicate_IGH){
@@ -213,7 +213,7 @@ KG_filter_vdj = function(vdj_data,
 
     # Remove sequences with no annotated c_call
     if(remove_no_c){
-      no_c = dplyr::filter(vdj_data, c_call == "")$cell_id
+      no_c = dplyr::filter(vdj_data, is.na(c_call))$cell_id
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% no_c),
@@ -227,7 +227,7 @@ KG_filter_vdj = function(vdj_data,
 
     # Remove sequences with no annotated v_call
     if(remove_no_v){
-      no_v = dplyr::filter(vdj_data, v_call == "")$cell_id
+      no_v = dplyr::filter(vdj_data, is.na(v_call))$cell_id
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% no_v),
@@ -241,7 +241,7 @@ KG_filter_vdj = function(vdj_data,
 
     # Remove sequences with no annotated j_call
     if(remove_no_j){
-      no_j = dplyr::filter(vdj_data, j_call == "")$cell_id
+      no_j = dplyr::filter(vdj_data, is.na(j_call))$cell_id
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% no_j),
