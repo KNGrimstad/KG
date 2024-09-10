@@ -21,7 +21,7 @@ KG_matchGEXtoVDJ = function(gex_data,
 
 
   if(multiple_samples){
-    if(names(vdj_data) == NULL){
+    if(is.null(names(vdj_data))){
       names(vdj_data) = paste0("vdj_data", seq(length(vdj_data)))
     }
     # If vdj_data is a list of data frames
