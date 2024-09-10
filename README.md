@@ -3,10 +3,10 @@
 </h1>
 
 <!-- badges: start -->
-![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)
+![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)(https://github.com/KNGrimstad/KG/releases/tag/v0.1.0)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KNGrimstad/KG)
-![GitHub License](https://img.shields.io/github/license/KNGrimstad/KG)
-![Static Badge](https://img.shields.io/badge/repo%20status-active-lightgreen)
+![GitHub License](https://img.shields.io/github/license/KNGrimstad/KG)(https://github.com/KNGrimstad/KG?tab=MIT-1-ov-file)
+![Static Badge](https://img.shields.io/badge/repo%20status-active-lightgreen)(https://www.repostatus.org/#active)
 <!-- badges: end -->
 This repository is composed of functions and wrappers designed to make life easier for the owner of the repo, and maybe for you, too. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
 
