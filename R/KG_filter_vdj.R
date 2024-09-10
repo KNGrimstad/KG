@@ -34,8 +34,10 @@ KG_filter_vdj = function(vdj_data,
   suppressPackageStartupMessages(require(openxlsx))
 
   if(multiple_samples){
+    if(is.null(names(vdj_data))){
+      names(vdj_data) = paste0("vdj_data", seq(length(vdj_data)))
+      }
     for(i in 1:length(vdj_data)){
-
       # Remove unproductive sequences
       if(productive){
         if(save_filtered){
