@@ -3,14 +3,14 @@
 </h1>
 
 <!-- badges: start -->
-![GitHub R package version](https://img.shields.io/github/r-package/v/KNGrimstad/KG)
+![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KNGrimstad/KG)
 ![GitHub License](https://img.shields.io/github/license/KNGrimstad/KG)
 ![Static Badge](https://img.shields.io/badge/repo%20status-active-lightgreen)
 <!-- badges: end -->
 This repository is composed of functions and wrappers designed to make life easier for the owner of the repo, and maybe for you, too. The functions included are all, in one way or another, related to processing and analysis of scRNA-seq data. 
 
-Some of these functions are exceptionally base, while others are used to construct figures of varying degrees of complexity and customizability. 
+Some of these functions are exceptionally base, while others are used to construct figures of varying degrees of complexity and customizability. Note that these functions were created with and for use with the Seurat package prior to the v5 update. Functions may be updated in the future, but Seurat v5 is currently not supported.
 
 If you are working with lymphocyte scRNA-seq data, consider giving our [*protocol paper*](https://doi.org/10.1093/bfgp/elac044) a read.
 
@@ -88,3 +88,5 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_percent_isotypes** - Calculates the percent of Ig isotypes in each Seurat identity.
 
+## Repository activity
+![Alt](https://repobeats.axiom.co/api/embed/9baa88e7488279b7170d442f240ed5cc46abfd5a.svg "Repobeats analytics image")
