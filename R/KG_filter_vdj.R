@@ -161,7 +161,7 @@ KG_filter_vdj = function(vdj_data,
     if(productive){
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, productive == "false"),
-                             paste0(deparse(vdj_data), "_unproductive_sequences.xlsx"))
+                             paste0(substitute(vdj_data), "_unproductive_sequences.xlsx"))
       }
       if(print_numbers){
         cat(paste0("Number of unproductive sequences: ", nrow(dplyr::filter(vdj_data, productive == "FALSE")), "\n"))
@@ -175,7 +175,7 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% multi_heavy_cells),
-                             paste0(deparse(vdj_data), "_multiple_IGH_sequences.xlsx"))
+                             paste0(substitute(vdj_data), "_multiple_IGH_sequences.xlsx"))
       }
       if(print_numbers){
         cat(paste0("Number of sequences with >1 IGH: ", nrow(dplyr::filter(vdj_data, cell_id %in% multi_heavy_cells)), "\n"))
@@ -190,7 +190,7 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% multi_igk_cells),
-                             paste0(deparse(vdj_data), "_multiple_IGK_sequences.xlsx"))
+                             paste0(substitute(vdj_data), "_multiple_IGK_sequences.xlsx"))
       }
       if(print_numbers){
         cat(paste0("Number of sequences with >1 IGK: ", nrow(dplyr::filter(vdj_data, cell_id %in% multi_igk_cells)), "\n"))
@@ -205,7 +205,7 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% multi_igl_cells),
-                             paste0(deparse(vdj_data), "_multiple_IGL_sequences.xlsx"))
+                             paste0(substitute(vdj_data), "_multiple_IGL_sequences.xlsx"))
       }
       if(print_numbers){
         cat(paste0("Number of sequences with >1 IGL: ", nrow(dplyr::filter(vdj_data, cell_id %in% multi_igl_cells)), "\n"))
@@ -219,10 +219,10 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% no_c),
-                             paste0(deparse(vdj_data), "_no_c_call.xlsx"))
+                             paste0(substitute(vdj_data), "_no_c_call.xlsx"))
       }
       if(print_numbers){
-        cat(paste0("Number of sequences without c_call in ", deparse(vdj_data), ": ", nrow(dplyr::filter(vdj_data, cell_id %in% no_c)), "\n"))
+        cat(paste0("Number of sequences without c_call in ", substitute(vdj_data), ": ", nrow(dplyr::filter(vdj_data, cell_id %in% no_c)), "\n"))
       }
       vdj_data = dplyr::filter(vdj_data, !cell_id %in% no_c)
     }
@@ -233,10 +233,10 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% no_v),
-                             paste0(deparse(vdj_data), "_no_v_call.xlsx"))
+                             paste0(substitute(vdj_data), "_no_v_call.xlsx"))
       }
       if(print_numbers){
-        cat(paste0("Number of sequences without v_call in ", deparse(vdj_data), ": ", nrow(dplyr::filter(vdj_data, cell_id %in% no_v)), "\n"))
+        cat(paste0("Number of sequences without v_call in ", substitute(vdj_data), ": ", nrow(dplyr::filter(vdj_data, cell_id %in% no_v)), "\n"))
       }
       vdj_data = dplyr::filter(vdj_data, !cell_id %in% no_v)
     }
@@ -247,10 +247,10 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, cell_id %in% no_j),
-                             paste0(deparse(vdj_data), "_no_j_call.xlsx"))
+                             paste0(substitute(vdj_data), "_no_j_call.xlsx"))
       }
       if(print_numbers){
-        cat(paste0("Number of sequences without j_call in ", deparse(vdj_data), ": ", nrow(dplyr::filter(vdj_data, cell_id %in% no_j)), "\n"))
+        cat(paste0("Number of sequences without j_call in ", substitute(vdj_data), ": ", nrow(dplyr::filter(vdj_data, cell_id %in% no_j)), "\n"))
       }
       vdj_data = dplyr::filter(vdj_data, !cell_id %in% no_j)
     }
@@ -263,7 +263,7 @@ KG_filter_vdj = function(vdj_data,
 
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data, !cell_id %in% paired),
-                             paste0(deparse(vdj_data), "_unpaired_sequences.xlsx"))
+                             paste0(substitute(vdj_data), "_unpaired_sequences.xlsx"))
       }
       if(print_numbers){
         cat(paste0("Number of unpaired sequences: ", nrow(dplyr::filter(vdj_data, !cell_id %in% paired)), "\n"))
