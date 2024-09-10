@@ -88,5 +88,5 @@ devtools::install_github("KNGrimstad/KG")
 
 * **KG_percent_isotypes** - Calculates the percent of Ig isotypes in each Seurat identity.
 
-## Repository activity
+# Repository Activity
 ![Alt](https://repobeats.axiom.co/api/embed/9baa88e7488279b7170d442f240ed5cc46abfd5a.svg "Repobeats analytics image")
