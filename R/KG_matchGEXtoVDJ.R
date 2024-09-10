@@ -19,19 +19,19 @@ KG_matchGEXtoVDJ = function(gex_data,
   suppressPackageStartupMessages(require(openxlsx))
   suppressPackageStartupMessages(require(Seurat))
 
-
   if(multiple_samples){
     if(is.null(names(vdj_data))){
       names(vdj_data) = paste0("vdj_data", seq(length(vdj_data)))
     }
     # If vdj_data is a list of data frames
     for(i in 1:length(vdj_data)){
-      nseq_vdj = length(unique(vdj_data[[i]]["cell_id"]))
+      nseq_vdj = length(unique(vdj_data[[i]][["cell_id"]]))
       nseq_gex = ncol(gex_data[[i]])
-      matching_seqs = intersect(Seurat::Cells(gex_data[[i]]), vdj_data[[i]]["cell_id"])
+      matching_seqs = intersect(Seurat::Cells(gex_data[[i]]), vdj_data[[i]][["cell_id"]])
+      percent_match = round(length(matching_seqs) / nseq_gex * 100, 1)
       if(print_numbers){
-        cat(paste0("Total number of V(D)J sequences in ", names(vdj_data)[i], ": ", length(nseq_vdj), "\n"))
-        cat(paste0("Number of matching sequences in ", names(vdj_data)[i], ": ", length(matchings_seqs), "(", length(matching_seqs) / nseq_gex, "% of GEX matching V(D)J)\n"))
+        cat(paste0("Total number of V(D)J sequences in ", names(vdj_data)[i], ": ", nseq_vdj, "\n"))
+        cat(paste0("Number of matching sequences in ", names(vdj_data)[i], ": ", length(matching_seqs), " (", percent_match, "% of GEX matching V(D)J)\n"))
       }
       if(save_filtered){
         openxlsx::write.xlsx(dplyr::filter(vdj_data[[i]], !cell_id %in% matching_seqs),
@@ -43,12 +43,13 @@ KG_matchGEXtoVDJ = function(gex_data,
     }
   } else{
     # If vdj_data is a single data frame
-    nseq_vdj = length(unique(vdj_data["cell_id"]))
+    nseq_vdj = length(unique(vdj_data[["cell_id"]]))
     nseq_gex = ncol(gex_data)
-    matching_seqs = intersect(Seurat::Cells(gex_data))
+    matching_seqs = intersect(Seurat::Cells(gex_data), vdj_data[["cell_id"]])
+    percent_match = round(length(matching_seqs) / nseq_gex * 100, 1)
     if(print_numbers){
       cat(paste0("Total number of V(D)J sequences: ", length(nseq_vdj), "\n"))
-      cat(paste0("Number of matching sequences: ", length(matchings_seqs), "(", length(matching_seqs) / nseq_gex, "% of GEX matching V(D)J)\n"))
+      cat(paste0("Number of matching sequences: ", length(matching_seqs), " (", percent_match, "% of GEX matching V(D)J)\n"))
     }
     if(save_filtered){
       openxlsx::write.xlsx(dplyr::filter(vdj_data, !cell_id %in% matching_seqs),
