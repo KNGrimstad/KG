@@ -1,5 +1,5 @@
 <h1>
-  KG - A Collection of Random scRNA-Seq Functions <img src="images/KG_logotype.png" style="float: right; width: auto; height: auto;">
+  KG - A Collection of Random scRNA-Seq Functions <img src="images/KG_logotype.png" style="float: right; width: 25%; height: auto;">
 </h1>
 <!-- badges: start -->
 [![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v0.1.0)
