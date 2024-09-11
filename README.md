@@ -2,6 +2,10 @@
 # KG - A collection of scRNA-seq functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" align="right" width="114.3" height="127.275" /></a>
 </h1>
 
+<h1>
+  KG - A Collection of Random scRNA-Seq Functions&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
+</h1>
+
 <!-- badges: start -->
 [![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v0.1.0)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KNGrimstad/KG)](https://github.com/KNGrimstad/KG)
