@@ -25,7 +25,7 @@ devtools::install_github("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-<img align="right" src="images/example_plots4.png" width = "265" height = "340">
+
 These functions are either original plotting functions or wrappers for existing ones, aiming to generate more clean and publication-friendly figures.
 
 | **Function** | **Description** |
@@ -38,7 +38,7 @@ These functions are either original plotting functions or wrappers for existing 
 | **`KG_dotplot`** | A basic dot plot, albeit subjectively nicer. |
 | **`KG_clone_tree`** | Wrapper to make clone trees from V(D)J-seq data. |
 | **`KG_percent_cells`** | Plots percentage of cells in each cluster. |
-| **`KG_isotype_dimplot`** | Dimension plots that highlight cells by their IgH isotype. |
+| **`KG_isotype_dimplot`** | Dimension plots that highlight cells by their IgH isotype. |<img align="right" src="images/example_plots4.png" width = "265" height = "340">
 
 ## Data wrangling
 
@@ -62,7 +62,7 @@ The functions here are all wrappers to existing functions, including ones in Seu
 | **Function** | **Description** |
 | --- | --- |
 | **`KG_clones`** | Wrapper for calling clones in V(D)J-seq data. Wraps Immcantation framework functions. |
-| **`KG_cluster_multi´** | Wrapper that runs Seurat::FindClusters for a range of resolutions, and prompts you to select the one you want to go ahead with. |
+| **`KG_cluster_multi`** | Wrapper that runs Seurat::FindClusters for a range of resolutions, and prompts you to select the one you want to go ahead with. |
 | **`KG_integrate_CCA`** | Wrapper for Seurat's CCA integration workflow. | 
 | **`KH_hc`** | Wrapper for Seurat's hierarchical clustering workflow. |
 | **`KG_project`** | Wrapper for Seurat's functions for projecting datasets onto a reference in dimensionally reduced space. | 
