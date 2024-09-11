@@ -1,8 +1,5 @@
-<div style="float: right">
-	<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" width="125.73" height="139.8925"/></a> 
-</div>
 <h1>
-	KG - A Collection of scRNA-seq Functions
+<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" width="125.73" height="139.8925"/></a><br   /> KG - A Collection of scRNA-seq Functions
 </h1>
 
 
