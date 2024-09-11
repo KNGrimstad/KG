@@ -1,3 +1,5 @@
+# KG - A collection of scRNA-seq functions  <a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" align="right" height="138" /></a>
+
 <div style="display: flex; align-items: center; justify-content: space-between;">
   <h1 style="margin: 0;">
     KG - A Collection of scRNA-Seq Functions
