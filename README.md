@@ -1,9 +1,11 @@
-<h1>
-# KG - A Collection of scRNA-seq Functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" align="right" width="114.3" height="127.275" /></a>
-</h1>
+<div style="text-align: right;">
+ <h1>
+  KG - A Collection of scRNA-seq Functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" width="114.3" height="127.275" /></a>
+ </h1>
+</div>
 
 <h1>
-  KG - A Collection of Random scRNA-Seq Functions&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
+  KG - A Collection of scRNA-Seq Functions&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
 </h1>
 
 <!-- badges: start -->
