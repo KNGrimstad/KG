@@ -26,12 +26,8 @@ devtools::install_github("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-<div style="float: right;">
- <img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
-</div>
+<img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 
-| **Fancy plotting functions** |
-| --- |
 | **Function** | **Description** |
 | --- | --- |
 | `KG_dimplot` | Make a clean dimplot for puclications. |
@@ -42,7 +38,7 @@ devtools::install_github("KNGrimstad/KG")
 | `KG_dotplot`| A basic dot plot, albeit subjectively nicer. |
 | `KG_clone_tree` | Wrapper to make clone trees from V(D)J-seq data. |
 | `KG_percent_cells` | Plots percentage of cells in each cluster. |
-| `KG_isotype_dimplot` | Dimension plots that highlight cells by their IgH isotype. |
+| `KG_isotype_dimplot` | Dimension plots that highlight cells by their IgH isotype. |&nbsp;<img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 
 
 
