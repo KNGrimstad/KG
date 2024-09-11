@@ -26,10 +26,11 @@ devtools::install_github("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-<div style="text-align: right;">
+<div style="float: right;">
  <img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 </div>
 
+| **Fancy plotting functions** |
 | **Function** | **Description** |
 | --- | --- |
 | `KG_dimplot` | Make a clean dimplot for puclications. |
