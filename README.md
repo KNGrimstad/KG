@@ -26,7 +26,7 @@ devtools::install_github("KNGrimstad/KG")
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
 
-These functions are either original plotting functions or wrappers for existing ones, aiming to generate more clean and publication-friendly figures. 
+These functions are either original plotting functions or wrappers for existing ones, aiming to generate more clean and publication-friendly figures. <img align="right" src="images/example_plots4.png" width = "265" height = "340">
 
 | **Function** | **Description** |
 | --- | --- |
@@ -38,7 +38,7 @@ These functions are either original plotting functions or wrappers for existing 
 | **`KG_dotplot`** | A basic dot plot, albeit subjectively nicer. |
 | **`KG_clone_tree`** | Wrapper to make clone trees from V(D)J-seq data. |
 | **`KG_percent_cells`** | Plots percentage of cells in each cluster. |
-| **`KG_isotype_dimplot`** | Dimension plots that highlight cells by their IgH isotype. | <img align="right" src="images/example_plots4.png" width = "265" height = "340">
+| **`KG_isotype_dimplot`** | Dimension plots that highlight cells by their IgH isotype. |
 
 ## Data wrangling
 
