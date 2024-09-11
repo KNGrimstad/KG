@@ -25,8 +25,8 @@ devtools::install_github("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-
-These functions are either original plotting functions or wrappers for existing ones, aiming to generate more clean and publication-friendly figures. <img align="right" src="images/example_plots4.png" width = "265" height = "340">
+<img align="right" src="images/example_plots4.png" width = "265" height = "340">
+These functions are either original plotting functions or wrappers for existing ones, aiming to generate more clean and publication-friendly figures.
 
 | **Function** | **Description** |
 | --- | --- |
