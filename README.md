@@ -3,7 +3,7 @@
     KG - A Collection of scRNA-Seq Functions
   </h1>
   <a href="https://github.com/KNGrimstad/KG">
-    <img src="images/KG_logotype.png" height="130" />
+    <img src="images/KG_logotype.png" height="120" />
   </a>
 </div>
 
