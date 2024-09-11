@@ -1,4 +1,8 @@
-# KG - A Collection of scRNA-seq Functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" style="float: right;" width="125.73" height="139.8925"></a> 
+<h1>
+[!KG - A Collection of scRNA-seq Functions
+[!<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" style="float: right;" width="125.73" height="139.8925"></a> 
+</h1>
+
 
 <!-- badges: start -->
 [![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v0.1.0)
