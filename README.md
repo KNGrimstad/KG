@@ -1,5 +1,5 @@
 <h1>
-# KG - A collection of scRNA-seq functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" align="right" width="114.3" height="127.275" /></a>
+# KG - A Collection of scRNA-seq Functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" align="right" width="114.3" height="127.275" /></a>
 </h1>
 
 <h1>
@@ -28,7 +28,7 @@ devtools::install_github("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-<img align = "right" src = "images/example_plots4.png" width = "265" height = "340">
+<img align="right" src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 
 * **KG_dimplot** - Make clean dimplots for publications.
 
