@@ -30,15 +30,15 @@ devtools::install_github("KNGrimstad/KG")
 
 | **Function** | **Description** |
 | --- | --- |
-| `KG_dimplot` | Make a clean dimplot for puclications. |
-| `KG_heatmap`| Fancy heatmap for cell-by-cell or cluster-average expression of genes. |
-| `KG_isotype_pie` | Pie chart of Ig isotype distributions in clusters. |
-| `KG_subtype_pie`| Same as above, but for Ig subtypes |
-| `KG_3DPlot`| A classic dimension plot in 3D. |
-| `KG_dotplot`| A basic dot plot, albeit subjectively nicer. |
-| `KG_clone_tree` | Wrapper to make clone trees from V(D)J-seq data. |
-| `KG_percent_cells` | Plots percentage of cells in each cluster. |
-| `KG_isotype_dimplot` | Dimension plots that highlight cells by their IgH isotype. |&nbsp;<img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
+| **`KG_dimplot`** | Make a clean dimplot for puclications. |
+| **`KG_heatmap`** | Fancy heatmap for cell-by-cell or cluster-average expression of genes. |
+| **`KG_isotype_pie`** | Pie chart of Ig isotype distributions in clusters. |
+| **`KG_subtype_pie`** | Same as above, but for Ig subtypes |
+| **`KG_3DPlot`** | A classic dimension plot in 3D. |
+| **`KG_dotplot`** | A basic dot plot, albeit subjectively nicer. |
+| **`KG_clone_tree`** | Wrapper to make clone trees from V(D)J-seq data. |
+| **`KG_percent_cells`** | Plots percentage of cells in each cluster. |
+| **`KG_isotype_dimplot`** | Dimension plots that highlight cells by their IgH isotype. | <img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 
 
 
