@@ -31,6 +31,7 @@ devtools::install_github("KNGrimstad/KG")
 </div>
 
 | **Fancy plotting functions** |
+| --- |
 | **Function** | **Description** |
 | --- | --- |
 | `KG_dimplot` | Make a clean dimplot for puclications. |
