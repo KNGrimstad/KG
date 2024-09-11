@@ -40,14 +40,4 @@ KG_filter_vdj(
 
 \item{only_paired}{Logical; whether to only keep sequences that have a matching pair of heavy and light chains.}
 
-\item{save_filtered}{Logical; whether sequences that are removed should be saved to an xlsx file.}
-
-\item{print_numbers}{Logical; whether the number of sequences removed in each step should be printed in the console.}
-}
-\description{
-This function streamlines the filtering process of V(D)J-seq data for in-depth BCR analysis.
-}
-\examples{
-KG_filter_vdj(vdj_dataset)
-
-}
+\item{save_filtered}{Logical; whether sequences tha

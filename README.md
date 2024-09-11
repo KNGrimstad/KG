@@ -1,5 +1,6 @@
 <h1>
-  KG - A Collection of Random scRNA-Seq Functions&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
+  KG - A Collection of Random scRNA-Seq Functions
+&nbsp;<img align = "right" src = "images/KG_logotype.png" width = "114.3" height = "127.275">
 </h1>
 
 <!-- badges: start -->

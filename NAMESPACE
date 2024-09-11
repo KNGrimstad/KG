@@ -30,5 +30,4 @@ export(KG_prep_clones)
 export(KG_project)
 export(KG_project_3D)
 export(KG_remove_BCR)
-export(KG_remove_suffix)
-export(KG_subtype_pie)
+export(KG_remove_suffix
