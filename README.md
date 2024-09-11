@@ -1,8 +1,4 @@
-<div style="text-align: right;">
-	<h1>
-		KG - A Collection of scRNA-seq Functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" width="125.73" height="139.8925"></a> 
-	</h1> 
-</div>
+# KG - A Collection of scRNA-seq Functions&nbsp;<a href="https://github.com/KNGrimstad/KG"><img src="images/KG_logotype.png" style="float: right;" width="125.73" height="139.8925"></a> 
 
 <!-- badges: start -->
 [![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v0.1.0)
@@ -26,7 +22,6 @@ devtools::install_github("KNGrimstad/KG")
 ---
 # Functions Currently Included in this Package
 ## Fancy plotting functions 
-###<img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 
 | **Function** | **Description** |
 | --- | --- |
@@ -41,21 +36,17 @@ devtools::install_github("KNGrimstad/KG")
 | **`KG_isotype_dimplot`** | Dimension plots that highlight cells by their IgH isotype. | <img src="images/example_plots4.png" style="float: right;" width = "265" height = "340">
 
 ## Data wrangling
-* **KG_remove_BCR** - Removes BCR genes from the dataset. 
 
-* **KG_import_seurat_clusters** - Imports Seurat annotations to monocle3 object.
-
-* **KG_filter_pbmcs** - Plots expression for common PBMC genes so you can filter out the cells you want.
-
-* **KG_gene_to_isotype** - Converts c calls to main Ig isotypes.
-
-* **KG_isotype_switch** - Converts Ig isotype to switch status (unswitched/switched).
-
-* **KG_get_trajectory** - Exracts the coordinates from monocle3-generated trajectories.
-
-* **KG_filter_vdj** - Filter AIRR format files from V(D)J-seq for downstream BCR analyses.
-
-* **KG_matchGEXtoVDJ** - Matches V(D)J-seq data to paired GEX data.
+| **Function** | **Description** |
+| --- | --- |
+| **`KG_remove_BCR`** | Removes the BCR genes from the dataset, see [**Sundell et al., 2022**](https://doi.org/10.1093/bfgp/elac044). |
+| **`KG_import_seurat_clusters`** | Imports Seurat annotations to a monocle3 dataset. |
+| **`KG_filter_pbmcs`** | Plots expression for common PBMC genes and prompts you which clusters you want to keep. |
+| **`KG_gene_to_isotype`** | Converts C calls from V(D)J-seq data to Ig isotypes. |
+| **`KG_isotype_switch`** | Converts Ig isotype to switch status (unswitched/switched). |
+| **`KG_get_trajectory`** | Extracts the coordinates from monocle3-generated trajectories. |
+| **`KG_filter_vdj`** | Filter V(D)J-seq data frames for downstream BCR analyses. |
+| **`KG_matchGEXtoVDJ`** | Matched V(D)J-seq data to paired GEX data. |
 
 ## Helpful wrappers
 * **KG_clones** - Wrapper to call clones in V(D)J-seq data.
