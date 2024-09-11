@@ -61,4 +61,6 @@ KG_filter_bcr = function(bcr_data,
     bcr_data = dplyr::filter(bcr_data, !cell_id %in% c(no_heavy, no_light))
     message(paste(base_cells3 - nrow(bcr_data), " sequences were removed.", sep = ""))
   }
-  message(paste("Filtering complete. ", ba
+  message(paste("Filtering complete. ", base_cells - nrow(bcr_data), " sequences were removed."))
+  return(bcr_data)
+}
