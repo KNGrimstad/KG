@@ -46,7 +46,7 @@ The functions in this section aim to make life a bit easier for working with scR
 
 | **Function** | **Description** |
 | --- | --- |
-| **`KG_remove_BCR`** | Removes the BCR genes from the dataset, see [**Sundell et al.(2022)**](https://doi.org/10.1093/bfgp/elac044). |
+| **`KG_remove_BCR`** | Removes the BCR genes from the dataset, see [Sundell *et al*.(2022)](https://doi.org/10.1093/bfgp/elac044). |
 | **`KG_import_seurat_clusters`** | Imports Seurat annotations to a monocle3 dataset. |
 | **`KG_filter_pbmcs`** | Plots expression for common PBMC genes and prompts you which clusters you want to keep. |
 | **`KG_gene_to_isotype`** | Converts C calls from V(D)J-seq data to Ig isotypes. |
