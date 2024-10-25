@@ -108,14 +108,20 @@ KG_percent_cells = function(seurat_object,
     stop("Tables are currently not supported. \nThis feature will be added in the future.")
 
   } else if(plot == "bar"){
-    df_for_plot$Position = df_for_plot$Percentage +0.5
-    p = ggplot2::ggplot(df_for_plot, ggplot2::aes(x = Cluster, y = Percentage, fill = Cluster)) +
-      ggplot2::geom_bar(stat = "identity", colour = "black") +
+    df_for_plot$Position = df_for_plot$Percentage + 0.5
+    p = ggplot2::ggplot(df_for_plot,
+                        ggplot2::aes(x = Cluster,
+                                     y = Percentage,
+                                     fill = Cluster)) +
+      ggplot2::geom_bar(stat = "identity",
+                        colour = "black") +
       ggplot2::scale_fill_manual(values = cols) +
       ggplot2::theme_classic() +
-      ggplot2::theme(axis.title =ggplot2::element_text(size = 16),
-                     axis.text =ggplot2::element_text(size = 12),
-                     axis.text.x =ggplot2::element_text(angle = 45, hjust = 0.5, vjust = 0.5))
+      ggplot2::theme(axis.title = ggplot2::element_text(size = 16),
+                     axis.text = ggplot2::element_text(size = 12),
+                     axis.text.x = ggplot2::element_text(angle = 45,
+                                                        hjust = 0.5,
+                                                        vjust = 0.5))
 
     if(legend){
       p = p +
@@ -128,10 +134,13 @@ KG_percent_cells = function(seurat_object,
     }
     if(label){
       p = p +
-        ggplot2::geom_text(data = df_for_plot, ggplot2::aes(label = paste0(Percentage, "%", sep = ""),
-                                                   y = Position),
+        ggplot2::geom_text(data = df_for_plot,
+                           ggplot2::aes(label = paste0(Percentage, "%",
+                                                       sep = ""),
+                                        y = Position),
                            position = ggplot2::position_stack(),
-                           size = label_size, color = label_col)
+                           size = label_size,
+                           color = label_col)
     }
 
   }

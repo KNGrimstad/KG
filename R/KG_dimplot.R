@@ -12,10 +12,12 @@
 #' @param stroke Size of border to data points. NOTE: when exportet as PDF, borders can alter the appearance of the plot. To avoid this, export externally as PNG file.
 #' @param legend Whether or not to plot the legend/key to the group identifier.
 #' @param cols A vector of colors to use for the shading of data points.
+#' @param axes Logical; whether axes should be shown.
+#' @param legend Logical; whether to plot the legend.
 #' @param trajectory_coords A vector containing coordinates for drawing trajectory lines.
 #' @param trajectory_col What color to use for the trajectory.
 #' @param lwd Line width for trajectory.
-#' @param pub_ready Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks.
+#' @param pub_ready Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks. NOTE: this argument needs more work.
 #' @export
 #' @examples
 #' KG_dimplot(B_cell_dataset)
@@ -24,12 +26,13 @@ KG_dimplot = function(seurat_object,
                       reduction = NULL,
                       dims = c(1, 2),
                       group.by = NULL,
-                      label = FALSE,
+                      label = TRUE,
                       label.size = 4,
                       pt.size = 3,
-                      stroke = 0.2,
-                      legend = TRUE,
+                      stroke = 0.1,
                       cols = NULL,
+                      axes = TRUE,
+                      legend = FALSE,
                       trajectory_coords = NULL,
                       trajectory_col = NULL,
                       lwd = 0.5,
@@ -50,6 +53,7 @@ KG_dimplot = function(seurat_object,
   seurat_object[['ident']] = factor(Seurat::Idents(seurat_object))
   group.by = group.by %||% 'ident'
   cells = cells %||% colnames(seurat_object)
+  cols = cols %||% scales::hue_pal()(length(unique(seurat_object[[group.by]])))
 
   # Extract cell embeddings
   a = data.frame(Seurat::Embeddings(seurat_object[[reduction]])[cells, dims[1]],
@@ -65,13 +69,21 @@ KG_dimplot = function(seurat_object,
   if(is.null(cols)){
     cols = scales::hue_pal()(length(levels(seurat_object[[group.by, drop = T]])))
   }
-  names(a)[3] = "groups"
+  names(a)[3] = "Identity"
   p = ggplot2::ggplot(a, ggplot2::aes(x = a[,1], y = a[,2], fill = groups)) +
     ggplot2::geom_point(shape = 21, size = pt.size, stroke = stroke) +
     ggplot2::theme_classic() +
     #labs(fill = legend_title) +
     ggplot2::scale_fill_manual(values = cols) +
     ggplot2::labs(x = names(a)[1], y = names(a)[2])
+
+  if(legend == FALSE){
+    p = p + ggplot2::theme(legend.position = "none")
+  }
+
+  if(axes == FALSE){
+    p = p + Seurat::NoAxes()
+  }
 
   if(!is.null(trajectory_coords)){
     trajectory_col = trajectory_col %||% "black"

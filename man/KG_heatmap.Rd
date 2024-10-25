@@ -10,15 +10,26 @@ KG_heatmap(
   assay = "RNA",
   group_by = NULL,
   show_genes = TRUE,
-  cols = c("#FF00FF", "black", "#FFFF00"),
+  plot_only_once = TRUE,
+  expression_cols = c("#FF00FF", "black", "#FFFF00"),
+  cols = NULL,
   heading = TRUE,
   title = NA,
-  group_bar_fill_cols = NULL,
-  border_col = "black",
+  column_title_size = 15,
+  group_label_size = 15,
+  row_label_size = NULL,
+  group_border_col = "black",
+  group_border_lwd = 1,
+  border = TRUE,
+  border_col_major = "black",
+  border_lwd_major = 1,
+  border_col_minor = "black",
+  border_lwd_minor = 1,
   cluster_rows = FALSE,
   cluster_columns = FALSE,
-  split_row_at = NULL,
-  split_column_at = NULL,
+  row_splits = NULL,
+  row_gap_size = 2,
+  column_splits = NULL,
   raster = FALSE
 )
 }
@@ -33,29 +44,51 @@ KG_heatmap(
 
 \item{show_genes}{Whether or not to show the gene names on the y-axis.}
 
-\item{cols}{A vector of colors used for plotting the relative expression.}
+\item{plot_only_once}{Logical; whether a gene should be plotted only once or each time it appears in the genes vector.}
+
+\item{expression_cols}{A vector of colors used for plotting the relative expression.}
+
+\item{cols}{A vector of colors to use for the group bars. If NULL, default colors are used.}
 
 \item{heading}{Whether or not to include a heaing to the heatmap.}
 
 \item{title}{The title, if heading = TRUE.}
 
-\item{group_bar_fill_cols}{A vector of colors to use for the group bars. If NULL, default colors are used.}
+\item{column_title_size}{Font size of title text.}
 
-\item{border_col}{The color for the border of the tiles.}
+\item{group_label_size}{Font size of group labels.}
+
+\item{row_label_size}{Font size of rownames (genes). If NA, will set dynamic font size.}
+
+\item{group_border_col}{The color of the border for the group label boxes.}
+
+\item{group_border_lwd}{Line width of the border for the group label boxes.}
+
+\item{border}{Logical; whether borders should be drawn.}
+
+\item{border_col_major}{The color for the outer borders of the heatmap.}
+
+\item{border_lwd_major}{Line width for the outer borders of the heatmap.}
+
+\item{border_col_minor}{The color for the inner borders of the heatmap (the tiles).}
+
+\item{border_lwd_minor}{Line width for the inner borders of the heatmap (the tiles).}
 
 \item{cluster_rows}{Whether or not genes should be clustered.}
 
 \item{cluster_columns}{Whether or not groups should be clustered.}
 
-\item{split_row_at}{A value, or vector of values, detailing at which row numbers a gap should be included. If NULL, no gaps.}
+\item{row_splits}{A value, or vector of values, detailing the group number and the number of genes in the group, to split rows between groups, e.g., c(rep(1, 3), rep(2, 4)) adds gaps between the third and the fourth gene, assuming there are seven genes in total.}
 
-\item{split_column_at}{A value, or vector of values, detailing at which column numbers a gap should be included. If NULL, no gaps.}
+\item{column_splits}{Same as split_row_at, but for columns.}
 
-\item{raster}{Whether or not the heatmap should be rasterized.}
+\item{raster}{Whether or not the heatmap should be rasterized}
+
+\item{row_gap}{The size o the row gap in mm.}
 }
 \description{
 This functions draws a heatmap displaying the relative cluster-average expression of specific genes.
 }
 \examples{
-# KG_heatmap(B_cell_dataset, genes = c("CD19", "CD27", "HLA-DRB1"))
+KG_heatmap(B_cell_dataset, genes = c("CD19", "CD27", "HLA-DRB1"))
 }

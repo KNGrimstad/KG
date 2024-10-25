@@ -10,12 +10,13 @@ KG_dimplot(
   reduction = NULL,
   dims = c(1, 2),
   group.by = NULL,
-  label = FALSE,
+  label = TRUE,
   label.size = 4,
   pt.size = 3,
-  stroke = 0.2,
-  legend = TRUE,
+  stroke = 0.1,
   cols = NULL,
+  axes = TRUE,
+  legend = FALSE,
   trajectory_coords = NULL,
   trajectory_col = NULL,
   lwd = 0.5,
@@ -41,9 +42,11 @@ KG_dimplot(
 
 \item{stroke}{Size of border to data points. NOTE: when exportet as PDF, borders can alter the appearance of the plot. To avoid this, export externally as PNG file.}
 
-\item{legend}{Whether or not to plot the legend/key to the group identifier.}
-
 \item{cols}{A vector of colors to use for the shading of data points.}
+
+\item{axes}{Logical; whether axes should be shown.}
+
+\item{legend}{Logical; whether to plot the legend.}
 
 \item{trajectory_coords}{A vector containing coordinates for drawing trajectory lines.}
 
@@ -51,7 +54,7 @@ KG_dimplot(
 
 \item{lwd}{Line width for trajectory.}
 
-\item{pub_ready}{Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks.}
+\item{pub_ready}{Layout option. When TRUE, produces a more clean plot, with shorter axis lines and no ticks. NOTE: this argument needs more work.}
 }
 \description{
 This function constructs a nice, clean dimplot from dimensionally reduced data points in a Seurat object.

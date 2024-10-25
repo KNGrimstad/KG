@@ -17,8 +17,9 @@ KG_project_3D(
   reduction.model = "umap",
   reference.idents = NULL,
   pt.size = 5,
+  stroke = 1,
   cols = NULL,
-  bg_col = "white"
+  bg.col = "black"
 )
 }
 \arguments{
@@ -46,9 +47,11 @@ KG_project_3D(
 
 \item{pt.size}{Controls the size of plotted points/cells.}
 
+\item{stroke}{Size of border to data points.}
+
 \item{cols}{Determines the color palette to use for cells. If NULL, uses default colors.}
 
-\item{bg_col}{Controls the background color of the plot.}
+\item{bg.col}{Controls the background color of the plot.}
 }
 \description{
 This function projects a Seurat object onto the clusters and UMAP coordinates from a reference, and plots the projected data in 3D.
