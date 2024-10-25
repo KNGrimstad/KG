@@ -83,7 +83,7 @@ The functions in this category are very basic and only strive to reduce the time
 | **`KG_remove_suffix`** | Same as above, but for removing a suffix. |
 | **`KG_fetch_genes`** | Returns all genes in a Seurat object with the supplied gene name prefix. Nice for pesky HLA genes. | 
 | **`KG_plot_to_pdf`** | Writes plots to PDF, with customizable layouts. |
-| **`KG_3D-to_gif`** | Sometimes you want a GIF of a dimplot in 3D in your PowerPoint. Here's how you get it. |
+| **`KG_3D_to_gif`** | Sometimes you want a GIF of a dimplot in 3D in your PowerPoint. Here's how you get it. |
 | **`KG_percent_isotypes`** | Calculates the percent of Ig isotypes in each Seurat identity. |
 
 # Repository Activity
