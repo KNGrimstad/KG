@@ -31,10 +31,12 @@ These functions are either original plotting functions or wrappers for existing 
 | **Function** | **Description** |
 | --- | --- |
 | **`KG_dimplot`** | Make a clean dimplot for puclications. |
+| **`KG_featureplot`** | Make similarly clean feature plot. |
 | **`KG_heatmap`** | Fancy heatmap for cell-by-cell or cluster-average expression of genes. |
 | **`KG_isotype_pie`** | Pie chart of Ig isotype distributions in clusters. |
 | **`KG_subtype_pie`** | Same as above, but for Ig subtypes |
 | **`KG_3DPlot`** | A classic dimension plot in 3D. |
+| **`KG_3DFeaturePlot`** | Visualize feature expression in 3D. |
 | **`KG_dotplot`** | A basic dot plot, albeit subjectively nicer. |
 | **`KG_clone_tree`** | Wrapper to make clone trees from V(D)J-seq data. |
 | **`KG_percent_cells`** | Plots percentage of cells in each cluster. |
@@ -49,8 +51,9 @@ The functions in this section aim to make life a bit easier for working with scR
 | **`KG_remove_BCR`** | Removes the BCR genes from the dataset, see [Sundell *et al*.(2022)](https://doi.org/10.1093/bfgp/elac044). |
 | **`KG_import_seurat_clusters`** | Imports Seurat annotations to a monocle3 dataset. |
 | **`KG_filter_pbmcs`** | Plots expression for common PBMC genes and prompts you which clusters you want to keep. |
-| **`KG_gene_to_isotype`** | Converts C calls from V(D)J-seq data to Ig isotypes. |
-| **`KG_isotype_switch`** | Converts Ig isotype to switch status (unswitched/switched). |
+| **`KG_gene_to_isotype`** | Converts C calls from V(D)J-seq data to Ig isotypes in a Seurat object. |
+| **`KG_vdj_isotype`** | Converts C calls in BCR data to Ig isotypes. | 
+| **`KG_isotype_switch`** | Converts Ig isotype to switch status (unswitched/switched) in a Seurat object. |
 | **`KG_get_trajectory`** | Extracts the coordinates from monocle3-generated trajectories. |
 | **`KG_filter_vdj`** | Filter V(D)J-seq data frames for downstream BCR analyses. |
 | **`KG_matchGEXtoVDJ`** | Matched V(D)J-seq data to paired GEX data. |
