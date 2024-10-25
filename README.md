@@ -4,7 +4,7 @@
 
 
 <!-- badges: start -->
-[![Static Badge](https://img.shields.io/badge/Version-0.1.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v1.0.0)
+[![Static Badge](https://img.shields.io/badge/Version-1.0.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v1.0.0)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KNGrimstad/KG)](https://github.com/KNGrimstad/KG)
 [![GitHub License](https://img.shields.io/github/license/KNGrimstad/KG)](https://github.com/KNGrimstad/KG?tab=MIT-1-ov-file)
 [![Static Badge](https://img.shields.io/badge/repo%20status-active-lightgreen)](https://www.repostatus.org/#active)
