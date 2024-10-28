@@ -67,7 +67,7 @@ KG_dimplot = function(seurat_object,
 
   # Colors
   if(is.null(cols)){
-    cols = scales::hue_pal()(length(levels(seurat_object[[group.by, drop = T]])))
+    cols = scales::hue_pal()(length(unique(a[3])))
   }
   names(a)[3] = "Identity"
   p = ggplot2::ggplot(a, ggplot2::aes(x = a[,1], y = a[,2], fill = Identity)) +
