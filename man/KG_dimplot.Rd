@@ -11,7 +11,7 @@ KG_dimplot(
   dims = c(1, 2),
   group.by = NULL,
   label = TRUE,
-  label.size = 4,
+  label.size = 7,
   pt.size = 3,
   stroke = 0.1,
   cols = NULL,

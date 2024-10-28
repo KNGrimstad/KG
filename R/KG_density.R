@@ -74,7 +74,7 @@ KG_density = function(seurat_object,
 
     if(pal == "viridis"){
       p = p +
-        viridis::scale_fill_viridis(option = option)
+        viridis::scale_fill_viridis(option = pal.option)
     } else if(pal == "flame"){
       p = p +
         ggplot2::scale_fill_gradientn(colors = KG::KG_flame_pal(50))
@@ -139,7 +139,7 @@ KG_density = function(seurat_object,
 
         if(pal == "viridis"){
           p1 = p1 +
-            viridis::scale_fill_viridis(option = option)
+            viridis::scale_fill_viridis(option = pal.option)
         } else if(pal == "flame"){
           p1 = p1 +
             ggplot2::scale_fill_gradientn(colors = KG::KG_flame_pal(50))
