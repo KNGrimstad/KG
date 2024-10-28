@@ -53,7 +53,7 @@ KG_dimplot = function(seurat_object,
   seurat_object[['ident']] = factor(Seurat::Idents(seurat_object))
   group.by = group.by %||% 'ident'
   cells = cells %||% colnames(seurat_object)
-  cols = cols %||% scales::hue_pal()(length(unique(seurat_object[[group.by]])))
+  cols = cols %||% scales::hue_pal()(length(unique(seurat_object[[group.by, drop = T]])))
 
   # Extract cell embeddings
   a = data.frame(Seurat::Embeddings(seurat_object[[reduction]])[cells, dims[1]],
@@ -65,10 +65,6 @@ KG_dimplot = function(seurat_object,
                dims[2],
                group.by)
 
-  # Colors
-  if(is.null(cols)){
-    cols = scales::hue_pal()(length(unique(a[3])))
-  }
   names(a)[3] = "Identity"
   p = ggplot2::ggplot(a, ggplot2::aes(x = a[,1], y = a[,2], fill = Identity)) +
     ggplot2::geom_point(shape = 21, size = pt.size, stroke = stroke) +
