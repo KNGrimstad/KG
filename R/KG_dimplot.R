@@ -140,7 +140,7 @@ KG_dimplot = function(seurat_object,
     p = p + ggplot2::geom_text(data = group_centers,
                                ggplot2::aes(x = center_x,
                                    y = center_y,
-                                   label = group.by,
+                                   label = Identity,
                                    family = "Arial"),
                                size = label.size)
   }
