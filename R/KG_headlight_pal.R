@@ -5,8 +5,8 @@
 #' @return A character vector of color hex codes.
 #' @export
 #' @examples
-#' KG_headlight(50)
-KG_headlight = function(n){
+#' KG_headlight_pal(50)
+KG_headlight_pal = function(n){
   suppressPackageStartupMessages(require(grDevices))
   grDevices::colorRampPalette(c("black", "gold", "white"))(n)
 }

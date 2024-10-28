@@ -8,7 +8,7 @@
 #' KG_list_palettes()
 KG_list_pals = function() {
 
-  pal_functions = ls(pattern = "^KG_.*pal$")
+  pal_functions <- ls(envir = asNamespace("KG"), pattern = "^KG_.*pal$")
 
   gsub("^KG_", "", pal_functions)
 }
