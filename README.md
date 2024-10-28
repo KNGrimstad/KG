@@ -4,7 +4,7 @@
 
 
 <!-- badges: start -->
-[![Static Badge](https://img.shields.io/badge/Version-1.0.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v1.0.0)
+[![Static Badge](https://img.shields.io/badge/Version-1.1.0-lightblue)](https://github.com/KNGrimstad/KG/releases/tag/v1.1.0)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KNGrimstad/KG)](https://github.com/KNGrimstad/KG)
 [![GitHub License](https://img.shields.io/github/license/KNGrimstad/KG)](https://github.com/KNGrimstad/KG?tab=MIT-1-ov-file)
 [![Static Badge](https://img.shields.io/badge/repo%20status-active-lightgreen)](https://www.repostatus.org/#active)
@@ -31,6 +31,7 @@ These functions are either original plotting functions or wrappers for existing 
 | **Function** | **Description** |
 | --- | --- |
 | **`KG_dimplot`** | Make a clean dimplot for puclications. |
+| **`KG_density`** | Visualize feature expression with density plots. |
 | **`KG_featureplot`** | Make similarly clean feature plot. |
 | **`KG_heatmap`** | Fancy heatmap for cell-by-cell or cluster-average expression of genes. |
 | **`KG_isotype_pie`** | Pie chart of Ig isotype distributions in clusters. |
@@ -85,6 +86,7 @@ The functions in this category are very basic and only strive to reduce the time
 | **`KG_plot_to_pdf`** | Writes plots to PDF, with customizable layouts. |
 | **`KG_3D_to_gif`** | Sometimes you want a GIF of a dimplot in 3D in your PowerPoint. Here's how you get it. |
 | **`KG_percent_isotypes`** | Calculates the percent of Ig isotypes in each Seurat identity. |
+| **`KG_list_pals`** | List the color palettes available in KG. |
 
 # Repository Activity
 ![Alt](https://repobeats.axiom.co/api/embed/9baa88e7488279b7170d442f240ed5cc46abfd5a.svg "Repobeats analytics image")

@@ -73,14 +73,6 @@ KG_dimplot = function(seurat_object,
     ggplot2::scale_fill_manual(values = cols) +
     ggplot2::labs(x = names(a)[1], y = names(a)[2])
 
-  if(legend == FALSE){
-    p = p + ggplot2::theme(legend.position = "none")
-  }
-
-  if(axes == FALSE){
-    p = p + Seurat::NoAxes()
-  }
-
   if(!is.null(trajectory_coords)){
     trajectory_col = trajectory_col %||% "black"
     p = p +
@@ -124,6 +116,9 @@ KG_dimplot = function(seurat_object,
   # Legend
   if(!legend) {
     p = p + ggplot2::theme(legend.position = "none")
+  }
+  if(axes == FALSE){
+    p = p + Seurat::NoAxes()
   }
 
   # Labels
