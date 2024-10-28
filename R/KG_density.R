@@ -138,22 +138,22 @@ KG_density = function(seurat_object,
           ggplot2::xlab(dim_names[1])
 
         if(pal == "viridis"){
-          p = p +
+          p1 = p1 +
             viridis::scale_fill_viridis(option = option)
         } else if(pal == "flame"){
-          p = p +
+          p1 = p1 +
             ggplot2::scale_fill_gradientn(colors = KG::KG_flame_pal(50))
         } else if(pal == "ghost"){
-          p = p +
+          p1 = p1 +
             ggplot2::scale_fill_gradientn(colors = KG::KG_ghost_pal(50))
         } else if (pal == "headlight"){
-          p = p +
+          p1 = p1 +
             ggplot2::scale_fill_gradientn(colors = KG::KG_headlight_pal(50))
         } else if (pal == "mutant"){
-          p = p +
+          p1 = p1 +
             ggplot2::scale_fill_gradientn(colors = KG::KG_mutant_pal(50))
         } else {
-          p = p +
+          p1 = p1 +
             ggplot2::scale_fill_gradientn(colors = pal)
         }
         if(axes == FALSE){
