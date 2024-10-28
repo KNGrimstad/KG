@@ -137,7 +137,7 @@ KG_dimplot = function(seurat_object,
 
     ## Calculate cluster centroids
     group_centers = b %>%
-      dplyr::group.by(group.by) %>%
+      dplyr::group_by(group.by) %>%
       dplyr::summarize(center_x = mean(Dim1), center_y = mean(Dim2))
 
     ## Add labels to plot
