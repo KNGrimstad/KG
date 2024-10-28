@@ -70,7 +70,7 @@ KG_dimplot = function(seurat_object,
     cols = scales::hue_pal()(length(levels(seurat_object[[group.by, drop = T]])))
   }
   names(a)[3] = "Identity"
-  p = ggplot2::ggplot(a, ggplot2::aes(x = a[,1], y = a[,2], fill = groups)) +
+  p = ggplot2::ggplot(a, ggplot2::aes(x = a[,1], y = a[,2], fill = Identity)) +
     ggplot2::geom_point(shape = 21, size = pt.size, stroke = stroke) +
     ggplot2::theme_classic() +
     #labs(fill = legend_title) +
@@ -137,14 +137,14 @@ KG_dimplot = function(seurat_object,
 
     ## Calculate cluster centroids
     group_centers = b %>%
-      dplyr::group.by(groups) %>%
+      dplyr::group.by(group.by) %>%
       dplyr::summarize(center_x = mean(Dim1), center_y = mean(Dim2))
 
     ## Add labels to plot
     p = p + ggplot2::geom_text(data = group_centers,
                                ggplot2::aes(x = center_x,
                                    y = center_y,
-                                   label = groups,
+                                   label = group.by,
                                    family = "Arial"),
                                size = label.size)
   }
