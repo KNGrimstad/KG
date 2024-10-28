@@ -80,11 +80,11 @@ KG_heatmap(
 
 \item{row_splits}{A value, or vector of values, detailing the group number and the number of genes in the group, to split rows between groups, e.g., c(rep(1, 3), rep(2, 4)) adds gaps between the third and the fourth gene, assuming there are seven genes in total.}
 
+\item{row_gap_size}{The size o the row gap in mm.}
+
 \item{column_splits}{Same as split_row_at, but for columns.}
 
 \item{raster}{Whether or not the heatmap should be rasterized}
-
-\item{row_gap}{The size o the row gap in mm.}
 }
 \description{
 This functions draws a heatmap displaying the relative cluster-average expression of specific genes.

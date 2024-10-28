@@ -62,7 +62,7 @@ KG_featureplot = function(seurat_object,
                                       na.value = "lightgrey",
                                       limits = c(0.5, max(a$Gene))) +
         ggplot2::labs(fill = "Expression") +
-        ggplot2::guides(fill = guide_colorbar(ticks.colour = NA)) +
+        ggplot2::guides(fill = ggplot2::guide_colorbar(ticks.colour = NA)) +
         ggplot2::ggtitle(genes[i]) +
         ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5, size = 18),
                        legend.title = ggplot2::element_text(size = 14),
