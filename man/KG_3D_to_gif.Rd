@@ -15,6 +15,8 @@ KG_3D_to_gif(
   min.dist = 0.3,
   spread = 1,
   bg_col = "white",
+  type = "p",
+  decorate = TRUE,
   file = "plot.gif",
   fps = 5,
   trajectory_coords = NULL,
@@ -41,6 +43,10 @@ KG_3D_to_gif(
 \item{spread}{Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.}
 
 \item{bg_col}{The background color. Currently not supported.}
+
+\item{type}{Same as in rgl::plot3d; for the purpose of scRNA-seq, either "p" (point) or "s" (spehere) would be appropriate.}
+
+\item{decorate}{Same as in rgl::plot3d; set as FALSE if you want to remove axes etc.}
 
 \item{file}{The file name to use for the GIF.}
 

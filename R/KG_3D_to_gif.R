@@ -11,6 +11,8 @@
 #' @param min.dist Controls how tightly embeddings are allowed to compress points together. Larger values result in more even distribution. Smaller values optimize more accurately the local structure.
 #' @param spread Effective scale of embedded points. Determines, along with min.dist, how clumped embedded points are.
 #' @param bg_col The background color. Currently not supported.
+#' @param type Same as in rgl::plot3d; for the purpose of scRNA-seq, either "p" (point) or "s" (spehere) would be appropriate.
+#' @param decorate Same as in rgl::plot3d; set as FALSE if you want to remove axes etc.
 #' @param file The file name to use for the GIF.
 #' @param fps Frames per secund; controls the speed at which the plot will rotate.
 #' @param trajectory_coords A data frame with coordinates for plotting a trajectory.
@@ -29,6 +31,8 @@ KG_3D_to_gif = function(seurat_object,
                         min.dist = 0.3,
                         spread = 1,
                         bg_col = "white", # currently not supported
+                        type = "p",
+                        decorate = TRUE,
                         file = "plot.gif",
                         fps = 5,
                         trajectory_coords = NULL,
@@ -87,7 +91,9 @@ KG_3D_to_gif = function(seurat_object,
                 ylab = names(df)[2],
                 zlab = names(df)[3],
                 col = coloramp[df$Idents],
-                size = pt.size)
+                size = pt.size,
+                type = type,
+                decorate = decorate)
 
   # Plot trajectory if coordinates have been provided
   if(!is.null(trajectory_coords)){

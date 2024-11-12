@@ -64,7 +64,7 @@ KG_heatmap = function (seurat_object,
     require(Seurat)
     require(grid)
   })
-  col_fun = circlize::colorRamp2(breaks = c(-2, 0, 2), colors = expression_cols)
+
   if (!is.null(group_by)) {
     Seurat::Idents(seurat_object) = factor(seurat_object[[group_by,
                                                           drop = TRUE]])
@@ -73,8 +73,18 @@ KG_heatmap = function (seurat_object,
     if(is.null(genes)){
       stop("No genes included.")
     }
+    # Average expression matrix
     avg_matrix = t(scale(t(as.matrix(Seurat::AverageExpression(seurat_object,
                                                                features = genes)[[assay]]))))
+    # Dynamic color scale
+    expr_range = range(as.matrix(avg_matrix))
+    breaks = c(expr_range[1],
+               mean(expr_range),
+               expr_range[2])
+    col_fun = circlize::colorRamp2(breaks = breaks,
+                                   colors = expression_cols)
+
+    # Annotating the heatmap
     annotations_df = data.frame(factor(levels(Seurat::Idents(seurat_object))))
     names(annotations_df) = "Cluster"
     rownames(annotations_df) = levels(Seurat::Idents(seurat_object))
@@ -156,9 +166,9 @@ KG_heatmap = function (seurat_object,
         indexed_genes[indices] = paste0(gene, "_", seq_along(indices))
       }
     }
+    # Average expression matrix
     avg_matrix = t(scale(t(as.matrix(Seurat::AverageExpression(seurat_object,
                                                                features = genes)[[assay]]))))
-
     new_avg_matrix = matrix(nrow = length(genes), ncol = ncol(avg_matrix)) # Create a new matrix
     rownames(new_avg_matrix) = indexed_genes
     colnames(new_avg_matrix) = colnames(avg_matrix)
@@ -170,6 +180,15 @@ KG_heatmap = function (seurat_object,
 
     avg_matrix = new_avg_matrix
 
+    # Dynamic color scale
+    expr_range = range(as.matrix(avg_matrix))
+    breaks = c(expr_range[1],
+               mean(expr_range),
+               expr_range[2])
+    col_fun = circlize::colorRamp2(breaks = breaks,
+                                   colors = expression_cols)
+
+    # Annotating the heatmap
     annotations_df = data.frame(factor(levels(Seurat::Idents(seurat_object))))
     names(annotations_df) = "Cluster"
     rownames(annotations_df) = levels(Seurat::Idents(seurat_object))
