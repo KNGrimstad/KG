@@ -67,8 +67,9 @@ KG_filter_pbmcs = function(seurat_object,
   Seurat::DefaultAssay(seurat_object) = assay.reproc
 
   # Normalize data?
-  cat("Normalizing data\n")
-  if(normalize){seurat_object = Seurat::NormalizeData(object = seurat_object,
+  if(normalize){
+    cat("Normalizing data\n")
+    seurat_object = Seurat::NormalizeData(object = seurat_object,
                                                       scale.factor = scale.factor,
                                                       verbose = F)
   }
@@ -86,8 +87,8 @@ KG_filter_pbmcs = function(seurat_object,
                                                  nfeatures = n.var.feats, verbose = FALSE)
   }
   # Run PCA?
-  cat("Running PCA\n")
   if(runPCA){
+    cat("Running PCA\n")
     seurat_object = Seurat::RunPCA(seurat_object, verbose = FALSE)
   }
   cat("Done\n")
