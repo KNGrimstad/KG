@@ -16,7 +16,7 @@
 #' @export
 #' @examples
 #' KG_filter_pbmcs(B_cell_dataset)
-KG_filter_pbmcs_test = function(seurat_object,
+KG_filter_pbmcs = function(seurat_object,
                            features = c("CD19", "CD3E", "CD14"),
                            dims = c(1, 2),
                            assay = "RNA",
