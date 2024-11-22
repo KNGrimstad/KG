@@ -8,19 +8,38 @@
 #' @param title A title for the plot.
 #' @param portrait Whether or not to plot genes on the y-axis
 #' @param font Font to use for text.
+#' @param plot_missing Logical; whether genes not found in the Seurat object should still be included in the plot.
 #' @export
 #' @examples
 #' KG_dotplot(B_cell_dataset, genes = c("CD19", "CD27", "CD38", "CR2"))
 KG_dotplot = function(seurat_object, genes, cols = c("blue4", "red2"),
-                      border = TRUE, title = NULL, portrait = TRUE, font = "Arial") {
+                      border = TRUE,
+                      title = NULL,
+                      portrait = TRUE,
+                      font = "Arial",
+                      plot_missing = FALSE) {
 
   suppressPackageStartupMessages({
     require(Seurat)
     require(ggplot2)
-    require(stats)})
+    require(stats)
+    require(dplyr)
+    require(S4Vectors)
+    require(plotly)})
 
   # Extract values from Seurat's DotPlot function
   df = Seurat::DotPlot(object = seurat_object, features = genes)$data
+
+  if(plot_missing){
+    missing_genes = setdiff(genes, unique(df$features.plot))
+
+    missing_df = S4Vectors::expand.grid(features.plot = missing_genes,
+                                        id = unique(df$id)) %>%
+      plotly::mutate(avg.expr.scaled = 0,
+                    pct.exp = 0)
+
+    df = dplyr::bind_rows(df, missing_df)
+  }
 
   # Construct the plot
   plot = ggplot2::ggplot(df, ggplot2::aes(x = stats::reorder(features.plot, dplyr::desc(features.plot)), y = reorder(id, dplyr::desc(id)))) +

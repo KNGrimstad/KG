@@ -11,7 +11,8 @@ KG_dotplot(
   border = TRUE,
   title = NULL,
   portrait = TRUE,
-  font = "Arial"
+  font = "Arial",
+  plot_missing = FALSE
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ KG_dotplot(
 \item{portrait}{Whether or not to plot genes on the y-axis}
 
 \item{font}{Font to use for text.}
+
+\item{plot_missing}{Logical; whether genes not found in the Seurat object should still be included in the plot.}
 }
 \description{
 This function wraps the Seurat DotPlot function with ggplot2 functions, for added customizability.

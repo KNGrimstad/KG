@@ -65,6 +65,21 @@ KG_heatmap = function (seurat_object,
     require(grid)
   })
 
+  # Check if input genes are present in Seurat object
+  valid_genes = intersect(genes, rownames(seurat_object[[assay]]@data))
+  missing_genes = setdiff(genes, valid_genes)
+
+  if(length(valid_genes) == 0){
+    stop("None of the input genes were found in the Seurat object.")
+  }
+
+  if(length(missing_genes) > 0){
+    warning("The following genes were not found in the Seurat object and will be excluded: ",
+            paste(missing_genes, collapse = ", "))
+  }
+
+  genes = valid_genes
+
   if (!is.null(group_by)) {
     Seurat::Idents(seurat_object) = factor(seurat_object[[group_by,
                                                           drop = TRUE]])
@@ -74,10 +89,31 @@ KG_heatmap = function (seurat_object,
       stop("No genes included.")
     }
     # Average expression matrix
-    avg_matrix = t(scale(t(as.matrix(Seurat::AverageExpression(seurat_object,
-                                                               features = genes)[[assay]]))))
+    avg_matrix = as.matrix(Seurat::AverageExpression(seurat_object, features = genes)[[assay]])
+
+    ## Check for rows with all zero values
+    zero_rows = rowSums(avg_matrix != 0) == 0
+
+    ## Scale only non-zero rows to prevent NaNs
+    if(any(zero_rows)){
+      warning("Some genes have zero expression across all clusters and will not be scaled.")
+      scaled_matrix = avg_matrix
+      scaled_matrix[!zero_rows,] = t(scale(t(avg_matrix[!zero_rows, ])))
+      scaled_matrix[zero_rows, ] = 0 # Retain zeros for rows with no expression
+    } else{
+      scaled_matrix = t(scale(t(avg_matrix)))
+    }
+
+    avg_matrix = scaled_matrix
+
     # Dynamic color scale
     expr_range = range(as.matrix(avg_matrix))
+
+    ## Ensure the range has at least two distinct values
+    if(expr_range[1] == expr_range[2]){
+      expr_range = c(expr_range[1] - 0.01, expr_range[2] + 0.01)
+    }
+
     breaks = c(expr_range[1],
                mean(expr_range),
                expr_range[2])
@@ -167,9 +203,25 @@ KG_heatmap = function (seurat_object,
       }
     }
     # Average expression matrix
-    avg_matrix = t(scale(t(as.matrix(Seurat::AverageExpression(seurat_object,
-                                                               features = genes)[[assay]]))))
-    new_avg_matrix = matrix(nrow = length(genes), ncol = ncol(avg_matrix)) # Create a new matrix
+    avg_matrix = as.matrix(Seurat::AverageExpression(seurat_object, features = genes)[[assay]])
+
+    ## Check for rows with all zero values
+    zero_rows = rowSums(avg_matrix != 0) == 0
+
+    ## Scale only non-zero rows to prevent NaNs
+    if(any(zero_rows)){
+      warning("Some genes have zero expression across all clusters and will not be scaled.")
+      scaled_matrix = avg_matrix
+      scaled_matrix[!zero_rows,] = t(scale(t(avg_matrix[!zero_rows, ])))
+      scaled_matrix[zero_rows, ] = 0 # Retain zeros for rows with no expression
+    } else{
+      scaled_matrix = t(scale(t(avg_matrix)))
+    }
+
+    avg_matrix = scaled_matrix
+
+    ## Create a new matrix
+    new_avg_matrix = matrix(nrow = length(genes), ncol = ncol(avg_matrix))
     rownames(new_avg_matrix) = indexed_genes
     colnames(new_avg_matrix) = colnames(avg_matrix)
 
@@ -182,6 +234,12 @@ KG_heatmap = function (seurat_object,
 
     # Dynamic color scale
     expr_range = range(as.matrix(avg_matrix))
+
+    ## Ensure the range has at least two distinct values
+    if(expr_range[1] == expr_range[2]){
+      expr_range = c(expr_range[1] - 0.01, expr_range[2] + 0.01)
+    }
+
     breaks = c(expr_range[1],
                mean(expr_range),
                expr_range[2])
